@@ -1,0 +1,660 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Square Root Interactive Workbook | เตรียมสอบ สอวน. คอมพิวเตอร์</title>
+  <style>
+    :root{
+      --navy:#17324D;
+      --blue:#2563EB;
+      --teal:#0F766E;
+      --orange:#F59E0B;
+      --red:#DC2626;
+      --green:#15803D;
+      --ink:#1F2937;
+      --muted:#64748B;
+      --line:#D7DEE8;
+      --soft:#F8FAFC;
+      --soft-blue:#EFF6FF;
+      --soft-teal:#ECFDF5;
+      --soft-orange:#FFF7ED;
+      --white:#FFFFFF;
+      --shadow:0 10px 25px rgba(15, 23, 42, .08);
+      --radius:18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      font-family:-apple-system,BlinkMacSystemFont,"Noto Sans Thai","Sarabun","Segoe UI",Arial,sans-serif;
+      line-height:1.62;
+      background:linear-gradient(180deg,#F8FAFC 0%,#EEF6FF 45%,#F8FAFC 100%);
+    }
+    .formula,.math{
+      font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;
+      letter-spacing:.01em;
+    }
+    .page{
+      max-width:1080px;
+      margin:0 auto;
+      padding:28px 18px 64px;
+    }
+    header.hero{
+      color:#fff;
+      background:
+        radial-gradient(circle at 85% 10%,rgba(245,158,11,.34),transparent 30%),
+        linear-gradient(135deg,#10263E 0%,#17324D 50%,#0F766E 100%);
+      border-radius:28px;
+      padding:34px 34px 26px;
+      box-shadow:var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    header.hero:after{
+      content:"√";
+      position:absolute;
+      right:30px; bottom:-78px;
+      font:800 220px/1 Georgia,serif;
+      color:rgba(255,255,255,.10);
+      transform:rotate(-7deg);
+    }
+    .eyebrow{
+      display:inline-flex;
+      gap:8px;
+      align-items:center;
+      padding:6px 12px;
+      border:1px solid rgba(255,255,255,.24);
+      border-radius:999px;
+      font-size:13px;
+      color:#DBEAFE;
+      background:rgba(255,255,255,.08);
+    }
+    h1{font-size:clamp(28px,5vw,48px);line-height:1.12;margin:16px 0 10px;letter-spacing:-.03em}
+    .subtitle{max-width:760px;font-size:17px;color:#E2E8F0;margin:0 0 20px}
+    .hero-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin-top:22px;position:relative;z-index:1}
+    .hero-card{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:14px 16px;color:#F8FAFC}
+    .hero-card b{display:block;color:#fff;font-size:15px;margin-bottom:2px}
+    .hero-card span{font-size:13px;color:#D9E6F7}
+    .toolbar{
+      position:sticky;top:0;z-index:10;
+      margin:18px 0 22px;
+      background:rgba(255,255,255,.88);
+      backdrop-filter:blur(14px);
+      border:1px solid var(--line);
+      border-radius:20px;
+      padding:12px;
+      box-shadow:0 8px 24px rgba(15,23,42,.06);
+      display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:space-between;
+    }
+    .navlinks{display:flex;flex-wrap:wrap;gap:8px}
+    .btn,a.btn{
+      border:1px solid var(--line);
+      background:#fff;
+      color:var(--navy);
+      border-radius:999px;
+      padding:8px 13px;
+      font:600 13px/1.2 inherit;
+      cursor:pointer;
+      text-decoration:none;
+      transition:.18s ease;
+    }
+    .btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px rgba(15,23,42,.08)}
+    .btn.primary{background:var(--navy);border-color:var(--navy);color:#fff}
+    .btn.teal{background:var(--teal);border-color:var(--teal);color:#fff}
+    .btn.orange{background:var(--orange);border-color:var(--orange);color:#111827}
+    .progress-wrap{min-width:250px;display:flex;align-items:center;gap:10px}
+    .progress-label{font-size:13px;color:var(--muted);white-space:nowrap}
+    .bar{height:10px;background:#E5E7EB;border-radius:999px;overflow:hidden;flex:1;min-width:120px}
+    .bar>span{display:block;height:100%;width:0%;background:linear-gradient(90deg,var(--teal),var(--blue));border-radius:inherit;transition:.25s ease}
+    section.card{
+      background:var(--white);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:26px;
+      margin:18px 0;
+    }
+    .section-head{display:flex;gap:16px;align-items:flex-start;justify-content:space-between;margin-bottom:16px}
+    h2{font-size:24px;line-height:1.25;color:var(--navy);margin:0 0 6px;letter-spacing:-.02em}
+    h3{font-size:18px;line-height:1.35;color:var(--navy);margin:18px 0 8px}
+    p{margin:8px 0 12px}
+    .small{font-size:13px;color:var(--muted)}
+    .tag{display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:5px 10px;font-size:12px;font-weight:700;background:var(--soft-blue);color:#1D4ED8;white-space:nowrap}
+    .grid{display:grid;gap:14px}
+    .grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .note,.rule,.warn,.example,.summary{
+      border-radius:16px;
+      padding:15px 16px;
+      border:1px solid var(--line);
+    }
+    .rule{background:var(--soft-blue);border-left:5px solid var(--blue)}
+    .note{background:var(--soft-teal);border-left:5px solid var(--teal)}
+    .warn{background:var(--soft-orange);border-left:5px solid var(--orange)}
+    .example{background:#fff;border-left:5px solid var(--navy)}
+    .summary{background:#F8FAFC}
+    .formula-box{
+      background:#FFFFFF;
+      border:1px dashed #9DB2CE;
+      border-radius:14px;
+      padding:12px 14px;
+      margin:10px 0;
+      text-align:center;
+      font-size:20px;
+      color:#0F172A;
+      overflow-x:auto;
+    }
+    .formula-row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+    .pill{display:inline-flex;align-items:center;justify-content:center;padding:6px 10px;border-radius:10px;background:#F1F5F9;border:1px solid #E2E8F0;font-weight:700;color:#334155}
+    table{width:100%;border-collapse:separate;border-spacing:0;overflow:hidden;border:1px solid var(--line);border-radius:14px;background:#fff}
+    th,td{padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+    th{background:#F1F5F9;text-align:left;color:var(--navy);font-weight:800}
+    tr:last-child td{border-bottom:0}
+    .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}
+    .tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;cursor:pointer;font-weight:700;color:#334155}
+    .tab.active{background:var(--navy);color:#fff;border-color:var(--navy)}
+    .tab-panel{display:none}
+    .tab-panel.active{display:block}
+    details{border:1px solid var(--line);border-radius:14px;background:#fff;margin:10px 0;overflow:hidden}
+    summary{cursor:pointer;padding:12px 14px;font-weight:800;color:var(--navy);background:#F8FAFC}
+    details .inside{padding:0 14px 14px}
+    .exercise-set{border-top:1px solid var(--line);padding-top:14px;margin-top:14px}
+    .q{
+      border:1px solid #DDE6F1;
+      border-radius:16px;
+      padding:15px;
+      background:#FFFFFF;
+      margin:12px 0;
+    }
+    .q-head{display:flex;gap:10px;align-items:flex-start;justify-content:space-between;margin-bottom:8px}
+    .q-title{font-weight:800;color:#0F172A}
+    .q-text{font-size:16px;margin:8px 0 10px}
+    .choices{display:grid;gap:8px;margin-top:8px}
+    .choices label{display:flex;gap:8px;align-items:flex-start;border:1px solid #E2E8F0;border-radius:12px;padding:9px 10px;background:#F8FAFC;cursor:pointer}
+    .choices label:hover{border-color:#B8C7D9;background:#F1F5F9}
+    .answer-line{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-top:10px}
+    input[type="text"],input[type="number"]{
+      border:1px solid #CBD5E1;
+      border-radius:12px;
+      padding:9px 11px;
+      min-width:180px;
+      font:600 15px/1.2 inherit;
+      background:#fff;
+    }
+    input:focus{outline:3px solid rgba(37,99,235,.18);border-color:var(--blue)}
+    .feedback{font-weight:800;margin-top:8px;min-height:24px}
+    .feedback.ok{color:var(--green)}
+    .feedback.no{color:var(--red)}
+    .solution{display:none;margin-top:10px;background:#F8FAFC;border:1px solid #E2E8F0;border-radius:12px;padding:10px 12px;color:#334155}
+    .solution.show{display:block}
+    .skill{font-size:12px;font-weight:800;color:#475569;background:#F1F5F9;border-radius:999px;padding:5px 9px;white-space:nowrap}
+    .mini-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+    .mini-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px;text-align:center}
+    .mini-card .num{font:800 25px/1.1 "Cambria Math",serif;color:var(--teal)}
+    .mini-card .label{font-size:12px;color:var(--muted);margin-top:3px}
+    .quiz-box{background:linear-gradient(135deg,#F8FAFC,#EFF6FF);border:1px solid #D7E6FF;border-radius:18px;padding:18px}
+    .quiz-options{display:grid;gap:8px;margin:12px 0}
+    .footer-note{font-size:12px;color:#64748B;text-align:center;margin-top:24px}
+    @media (max-width:780px){
+      .hero-grid,.grid.two,.grid.three,.mini-grid{grid-template-columns:1fr}
+      header.hero{padding:26px 22px}
+      section.card{padding:20px}
+      .toolbar{position:static}
+      .progress-wrap{width:100%}
+    }
+    @media print{
+      @page{size:A4;margin:14mm 12mm}
+      body{background:#fff;color:#111827;font-size:11pt}
+      .page{max-width:none;padding:0}
+      .toolbar,.no-print,.btn,.tabs{display:none!important}
+      header.hero{background:#fff!important;color:#111827;border:2px solid #17324D;box-shadow:none;border-radius:0;page-break-after:avoid}
+      header.hero:after{display:none}
+      .eyebrow{color:#17324D;border-color:#17324D;background:#fff}
+      .subtitle,.hero-card span{color:#334155}
+      .hero-grid{grid-template-columns:repeat(3,1fr)}
+      .hero-card{border:1px solid #CBD5E1;background:#fff;color:#111827}
+      section.card{box-shadow:none;border:1px solid #CBD5E1;border-radius:0;break-inside:avoid;padding:14px;margin:10px 0}
+      .tab-panel{display:block!important}
+      .q{break-inside:avoid}
+      .solution{display:block!important}
+      a{color:#111827;text-decoration:none}
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <header class="hero">
+    <div class="eyebrow">Interactive Math Workbook • ม.ต้น • Square Root</div>
+    <h1>รากที่สองแบบเข้าใจเร็ว<br><span class="formula">Square Root</span> สำหรับเตรียมสอบ สอวน. คอมพิวเตอร์</h1>
+    <p class="subtitle">เอกสาร HTML แบบโต้ตอบได้: สรุปกฎสำคัญ ตัวอย่างทีละขั้น แบบฝึกหัดตรวจคำตอบอัตโนมัติ และโจทย์เชิงตรรกะที่เชื่อมกับการคิดแบบคอมพิวเตอร์</p>
+    <div class="hero-grid">
+      <div class="hero-card"><b>เป้าหมาย</b><span>คิดเร็ว จัดรูปเป็น เห็น pattern จำนวนเต็ม</span></div>
+      <div class="hero-card"><b>เหมาะกับ</b><span>ม.ต้นที่ต้องการพื้นฐานแน่นก่อนทำโจทย์แข่งขัน</span></div>
+      <div class="hero-card"><b>ใช้ได้ทันที</b><span>เปิดใน Browser / Print เป็นเอกสารแจกได้</span></div>
+    </div>
+  </header>
+
+  <nav class="toolbar no-print">
+    <div class="navlinks">
+      <a class="btn" href="#concept">Concept</a>
+      <a class="btn" href="#rules">Rules</a>
+      <a class="btn" href="#examples">Examples</a>
+      <a class="btn" href="#osn">OSN Logic</a>
+      <a class="btn" href="#practice">Practice</a>
+      <a class="btn" href="#quiz">Mini Quiz</a>
+    </div>
+    <div class="progress-wrap">
+      <span class="progress-label" id="progressText">Progress: 0/0</span>
+      <div class="bar"><span id="progressBar"></span></div>
+      <button class="btn primary" onclick="window.print()">Print</button>
+    </div>
+  </nav>
+
+  <section class="card" id="concept">
+    <div class="section-head">
+      <div>
+        <h2>1) แนวคิดหลักของ Square Root</h2>
+        <p class="small">รากที่สองไม่ใช่แค่การกดเครื่องคิดเลข แต่คือการย้อนกลับของการยกกำลังสอง</p>
+      </div>
+      <span class="tag">Core Concept</span>
+    </div>
+    <div class="grid two">
+      <div class="rule">
+        <b>นิยามสำคัญ</b>
+        <div class="formula-box formula">√a = b หมายถึง b² = a และ b ≥ 0</div>
+        <p>เช่น <span class="formula">√49 = 7</span> เพราะ <span class="formula">7² = 49</span></p>
+      </div>
+      <div class="warn">
+        <b>จุดที่พลาดบ่อย</b>
+        <div class="formula-box formula">√x² = |x| ไม่ใช่ x เสมอไป</div>
+        <p>ถ้า <span class="formula">x = -5</span> จะได้ <span class="formula">√x² = √25 = 5 = |x|</span></p>
+      </div>
+    </div>
+    <h3>Perfect Squares ที่ควรจำ</h3>
+    <div class="mini-grid" id="squareGrid"></div>
+  </section>
+
+  <section class="card" id="rules">
+    <div class="section-head">
+      <div>
+        <h2>2) กฎการคูณ หาร และยกกำลังที่ต้องใช้เป็น</h2>
+        <p class="small">จำกฎอย่างเดียวไม่พอ ต้องรู้เงื่อนไขและรู้ว่าเมื่อใดควรแยกตัวประกอบ</p>
+      </div>
+      <span class="tag">Formula Rules</span>
+    </div>
+    <div class="grid two">
+      <div class="rule">
+        <b>กฎการคูณ</b>
+        <div class="formula-box formula">√a × √b = √(ab), เมื่อ a,b ≥ 0</div>
+        <p>ใช้รวมรากหรือแยกรากเพื่อทำให้เป็นจำนวนเต็มง่ายขึ้น</p>
+      </div>
+      <div class="rule">
+        <b>กฎการหาร</b>
+        <div class="formula-box formula">√a ÷ √b = √(a/b), เมื่อ a ≥ 0, b &gt; 0</div>
+        <p>ระวังตัวส่วนต้องไม่เป็นศูนย์ และควรทำให้ส่วนอยู่ในรูปง่ายที่สุด</p>
+      </div>
+      <div class="rule">
+        <b>กฎยกกำลังสอง</b>
+        <div class="formula-box formula">(√a)² = a, เมื่อ a ≥ 0</div>
+        <p>รากที่สองกับกำลังสองหักล้างกันได้ แต่ต้องดู domain</p>
+      </div>
+      <div class="rule">
+        <b>กำลังสองอยู่ใต้ราก</b>
+        <div class="formula-box formula">√(a²b) = |a|√b</div>
+        <p>ถ้า <span class="formula">a ≥ 0</span> จึงเขียนเป็น <span class="formula">a√b</span> ได้ตรง ๆ</p>
+      </div>
+    </div>
+
+    <h3>วิธีจัดรูปกรณฑ์อย่างเร็ว</h3>
+    <table>
+      <thead><tr><th>สถานการณ์</th><th>แนวคิดที่ควรใช้</th><th>ตัวอย่าง</th></tr></thead>
+      <tbody>
+        <tr><td>มีตัวประกอบที่เป็นกำลังสองสมบูรณ์</td><td>ดึงออกจากราก</td><td class="formula">√72 = √(36×2) = 6√2</td></tr>
+        <tr><td>คูณรากสองจำนวน</td><td>รวมในรากก่อน แล้วค่อยถอด</td><td class="formula">√8×√18 = √144 = 12</td></tr>
+        <tr><td>หารราก</td><td>หารตัวใต้รากก่อน</td><td class="formula">√75÷√3 = √25 = 5</td></tr>
+        <tr><td>มีตัวแปรกำลังสอง</td><td>ถอดเป็นค่าสัมบูรณ์</td><td class="formula">√x² = |x|</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card" id="examples">
+    <div class="section-head">
+      <div>
+        <h2>3) ตัวอย่างแบบเป็นขั้นตอน</h2>
+        <p class="small">กดเปิดเพื่อดูเฉลยทีละข้อ เหมาะสำหรับใช้สอนหน้าห้องหรือให้นักเรียนฝึกด้วยตนเอง</p>
+      </div>
+      <span class="tag">Worked Examples</span>
+    </div>
+    <details>
+      <summary>Example 1: จัดรูป √180 ให้ง่ายที่สุด</summary>
+      <div class="inside">
+        <p class="formula">√180 = √(36×5) = √36 × √5 = 6√5</p>
+        <p><b>หลักคิด:</b> หา perfect square ที่หาร 180 ลงตัวให้ใหญ่ที่สุด ในที่นี้คือ 36</p>
+      </div>
+    </details>
+    <details>
+      <summary>Example 2: คำนวณ √12 × √27</summary>
+      <div class="inside">
+        <p class="formula">√12 × √27 = √(12×27) = √324 = 18</p>
+        <p><b>หลักคิด:</b> ถ้าคูณแล้วได้ perfect square ให้รวมก่อน จะเร็วกว่าแยกทีละตัว</p>
+      </div>
+    </details>
+    <details>
+      <summary>Example 3: ทำไม √x² = |x|?</summary>
+      <div class="inside">
+        <p>สัญลักษณ์ <span class="formula">√</span> หมายถึงรากที่สองหลัก ซึ่งต้องไม่ติดลบ ดังนั้นไม่ว่า <span class="formula">x</span> จะเป็นบวกหรือลบ ผลลัพธ์ต้องเป็นค่าบวกหรือศูนย์</p>
+        <p class="formula">ถ้า x = -8, √x² = √64 = 8 = |-8|</p>
+      </div>
+    </details>
+  </section>
+
+  <section class="card" id="osn">
+    <div class="section-head">
+      <div>
+        <h2>4) เชื่อมกับการเตรียมสอบ สอวน. คอมพิวเตอร์</h2>
+        <p class="small">โจทย์คอมพิวเตอร์มักไม่ได้ถามสูตรตรง ๆ แต่ถามการตัดสินใจเชิงตรรกะเกี่ยวกับจำนวนเต็ม</p>
+      </div>
+      <span class="tag">Computational Thinking</span>
+    </div>
+    <div class="grid two">
+      <div class="note">
+        <b>1. ตรวจว่าเป็น Perfect Square หรือไม่</b>
+        <p>จำนวนเต็มบวก <span class="formula">n</span> เป็น perfect square ถ้า <span class="formula">√n</span> เป็นจำนวนเต็ม</p>
+        <div class="formula-box formula">n = p₁ᵉ¹p₂ᵉ²... เป็น perfect square ⇔ เลขชี้กำลังทุกตัวเป็นเลขคู่</div>
+      </div>
+      <div class="note">
+        <b>2. ใช้ floor square root</b>
+        <p><span class="formula">⌊√n⌋</span> คือจำนวนเต็มมากที่สุดที่ยกกำลังสองแล้วไม่เกิน <span class="formula">n</span></p>
+        <div class="formula-box formula">k = ⌊√n⌋ ⇔ k² ≤ n &lt; (k+1)²</div>
+      </div>
+    </div>
+    <div class="warn">
+      <b>เทคนิคสำหรับโจทย์แข่งขัน</b>
+      <p>จำนวน perfect square ตั้งแต่ <span class="formula">1</span> ถึง <span class="formula">N</span> มีทั้งหมด <span class="formula">⌊√N⌋</span> จำนวน เพราะคือ <span class="formula">1², 2², 3², ..., ⌊√N⌋²</span></p>
+    </div>
+  </section>
+
+  <section class="card" id="practice">
+    <div class="section-head">
+      <div>
+        <h2>5) แบบฝึกหัดเสริมทักษะ</h2>
+        <p class="small">พิมพ์คำตอบแล้วกด Check หรือเลือกตัวเลือกที่ถูกต้อง ระบบจะตรวจทันที</p>
+      </div>
+      <span class="tag">Interactive Practice</span>
+    </div>
+    <div class="tabs no-print">
+      <button class="tab active" onclick="openTab('setA', this)">A: Concept</button>
+      <button class="tab" onclick="openTab('setB', this)">B: Simplify</button>
+      <button class="tab" onclick="openTab('setC', this)">C: × ÷</button>
+      <button class="tab" onclick="openTab('setD', this)">D: Powers</button>
+      <button class="tab" onclick="openTab('setE', this)">E: OSN Logic</button>
+    </div>
+
+    <div id="setA" class="tab-panel active exercise-set"></div>
+    <div id="setB" class="tab-panel exercise-set"></div>
+    <div id="setC" class="tab-panel exercise-set"></div>
+    <div id="setD" class="tab-panel exercise-set"></div>
+    <div id="setE" class="tab-panel exercise-set"></div>
+
+    <div class="answer-line no-print" style="margin-top:20px">
+      <button class="btn teal" onclick="checkAllVisible()">Check visible set</button>
+      <button class="btn" onclick="showSolutionsVisible()">Show solutions</button>
+      <button class="btn" onclick="resetAll()">Reset all</button>
+    </div>
+  </section>
+
+  <section class="card" id="quiz">
+    <div class="section-head">
+      <div>
+        <h2>6) Mini Quiz Generator</h2>
+        <p class="small">สุ่มโจทย์สั้นเพื่อทบทวนก่อนสอบ เหมาะสำหรับฝึกซ้ำ 5–10 นาที</p>
+      </div>
+      <span class="tag">Random Drill</span>
+    </div>
+    <div class="quiz-box">
+      <div id="quizQuestion" class="q-text"><b>กด Start Quiz เพื่อเริ่มสุ่มโจทย์</b></div>
+      <div id="quizOptions" class="quiz-options"></div>
+      <div class="answer-line no-print">
+        <button class="btn primary" onclick="startQuiz()">Start Quiz</button>
+        <button class="btn teal" onclick="checkQuiz()">Check</button>
+        <button class="btn" onclick="nextQuiz()">Next</button>
+      </div>
+      <div id="quizFeedback" class="feedback"></div>
+      <div id="quizScore" class="small">Score: 0/0</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Quick Summary สำหรับนักเรียน</h2>
+    <div class="summary">
+      <ol>
+        <li><span class="formula">√a</span> คือจำนวนไม่ติดลบที่ยกกำลังสองแล้วได้ <span class="formula">a</span></li>
+        <li><span class="formula">√a × √b = √ab</span> ใช้ได้เมื่อ <span class="formula">a,b ≥ 0</span></li>
+        <li><span class="formula">√a ÷ √b = √(a/b)</span> ใช้ได้เมื่อ <span class="formula">b &gt; 0</span></li>
+        <li><span class="formula">(√a)² = a</span> แต่ <span class="formula">√a² = |a|</span></li>
+        <li>Perfect square มีตัวประกอบเฉพาะที่เลขชี้กำลังเป็นเลขคู่ทั้งหมด</li>
+        <li>จำนวน perfect squares ตั้งแต่ 1 ถึง <span class="formula">N</span> มี <span class="formula">⌊√N⌋</span> จำนวน</li>
+      </ol>
+    </div>
+    <p class="footer-note">Designed for classroom use • Single-file HTML • Print-ready</p>
+  </section>
+</div>
+
+<script>
+const $ = (sel, root=document) => root.querySelector(sel);
+const $$ = (sel, root=document) => Array.from(root.querySelectorAll(sel));
+
+function norm(s){
+  return String(s || '')
+    .toLowerCase()
+    .replaceAll(' ','')
+    .replaceAll('×','*')
+    .replaceAll('−','-')
+    .replaceAll('÷','/')
+    .replaceAll('√','sqrt')
+    .replaceAll('|','abs')
+    .replace(/\(([^()]*)\)/g,'$1')
+    .trim();
+}
+function accepted(input, answers){
+  const n = norm(input);
+  return answers.some(a => norm(a) === n);
+}
+
+const squareGrid = $('#squareGrid');
+for(let i=1;i<=16;i++){
+  const div=document.createElement('div');
+  div.className='mini-card';
+  div.innerHTML=`<div class="num formula">${i}² = ${i*i}</div><div class="label">√${i*i} = ${i}</div>`;
+  squareGrid.appendChild(div);
+}
+
+const sets = {
+  setA: [
+    {type:'mc', skill:'Concept', q:'√64 มีค่าเท่าไร?', choices:['-8','8','±8','32'], ans:'8', sol:'√64 หมายถึงรากที่สองหลัก จึงตอบ 8 ไม่ใช่ ±8'},
+    {type:'mc', skill:'Concept', q:'ข้อใดเป็น perfect square?', choices:['72','81','98','120'], ans:'81', sol:'81 = 9² จึงเป็น perfect square'},
+    {type:'mc', skill:'Concept', q:'√0 มีค่าเท่าไร?', choices:['ไม่มีค่า','0','1','ไม่สามารถกำหนดได้'], ans:'0', sol:'เพราะ 0² = 0 และ √0 = 0'},
+    {type:'mc', skill:'Concept', q:'จำนวนใดอยู่ระหว่าง √50?', choices:['6 และ 7','7 และ 8','8 และ 9','49 และ 64'], ans:'7 และ 8', sol:'7² = 49 และ 8² = 64 ดังนั้น √50 อยู่ระหว่าง 7 และ 8'},
+    {type:'mc', skill:'Concept', q:'ถ้า √n = 13 แล้ว n มีค่าเท่าไร?', choices:['26','39','169','196'], ans:'169', sol:'n = 13² = 169'}
+  ],
+  setB: [
+    {type:'input', skill:'Simplify', q:'จัดรูป √48 ให้ง่ายที่สุด', ans:['4√3','4sqrt3','4sqrt(3)'], sol:'√48 = √(16×3) = 4√3'},
+    {type:'input', skill:'Simplify', q:'จัดรูป √72 ให้ง่ายที่สุด', ans:['6√2','6sqrt2','6sqrt(2)'], sol:'√72 = √(36×2) = 6√2'},
+    {type:'input', skill:'Simplify', q:'จัดรูป √125 ให้ง่ายที่สุด', ans:['5√5','5sqrt5','5sqrt(5)'], sol:'√125 = √(25×5) = 5√5'},
+    {type:'input', skill:'Simplify', q:'จัดรูป √200 ให้ง่ายที่สุด', ans:['10√2','10sqrt2','10sqrt(2)'], sol:'√200 = √(100×2) = 10√2'},
+    {type:'input', skill:'Simplify', q:'จัดรูป √288 ให้ง่ายที่สุด', ans:['12√2','12sqrt2','12sqrt(2)'], sol:'√288 = √(144×2) = 12√2'},
+    {type:'input', skill:'Simplify', q:'คำนวณ √(18/50)', ans:['3/5','0.6'], sol:'√(18/50) = √(9/25) = 3/5'},
+    {type:'input', skill:'Simplify', q:'คำนวณ √0.49', ans:['0.7','7/10'], sol:'0.49 = 49/100 ดังนั้น √0.49 = 7/10 = 0.7'},
+    {type:'input', skill:'Simplify', q:'คำนวณ √(7²)', ans:['7'], sol:'√(7²) = |7| = 7'}
+  ],
+  setC: [
+    {type:'input', skill:'Multiply', q:'คำนวณ √12 × √3', ans:['6'], sol:'√12×√3 = √36 = 6'},
+    {type:'input', skill:'Multiply', q:'คำนวณ √5 × √20', ans:['10'], sol:'√5×√20 = √100 = 10'},
+    {type:'input', skill:'Divide', q:'คำนวณ √75 ÷ √3', ans:['5'], sol:'√75÷√3 = √25 = 5'},
+    {type:'input', skill:'Multiply', q:'คำนวณ √8 × √18', ans:['12'], sol:'√8×√18 = √144 = 12'},
+    {type:'input', skill:'Divide', q:'คำนวณ √50 ÷ √2', ans:['5'], sol:'√50÷√2 = √25 = 5'},
+    {type:'input', skill:'Multiply', q:'คำนวณ (2√3)(5√12)', ans:['60'], sol:'(2√3)(5√12) = 10√36 = 60'},
+    {type:'input', skill:'Multiply', q:'คำนวณ √45 × √20', ans:['30'], sol:'√45×√20 = √900 = 30'},
+    {type:'input', skill:'Divide', q:'คำนวณ √98 ÷ √2', ans:['7'], sol:'√98÷√2 = √49 = 7'}
+  ],
+  setD: [
+    {type:'input', skill:'Power', q:'คำนวณ √((-7)²)', ans:['7'], sol:'√((-7)²) = |-7| = 7'},
+    {type:'input', skill:'Absolute Value', q:'ถ้า x < 0 แล้ว √x² เท่ากับอะไร?', ans:['-x'], sol:'เพราะ √x² = |x| และเมื่อ x < 0 จะได้ |x| = -x'},
+    {type:'input', skill:'Power', q:'คำนวณ (√6)²', ans:['6'], sol:'(√6)² = 6'},
+    {type:'input', skill:'Power', q:'คำนวณ √(3⁴)', ans:['9'], sol:'3⁴ = 81 ดังนั้น √81 = 9'},
+    {type:'input', skill:'Absolute Value', q:'จัดรูป √(a²b²)', ans:['|ab|','abs(ab)','absoluteab'], sol:'√(a²b²) = √((ab)²) = |ab|'},
+    {type:'input', skill:'Variable', q:'ถ้า x ≥ 0 จัดรูป √(81x²)', ans:['9x'], sol:'√(81x²) = 9|x| และเมื่อ x ≥ 0 จะได้ 9x'}
+  ],
+  setE: [
+    {type:'input', skill:'Counting', q:'มี perfect squares กี่จำนวนตั้งแต่ 1 ถึง 1000?', ans:['31'], sol:'จำนวนคือ ⌊√1000⌋ = 31 เพราะ 31² = 961 และ 32² = 1024'},
+    {type:'input', skill:'Factorization', q:'หาจำนวนเต็มบวก k ที่น้อยที่สุดทำให้ 72k เป็น perfect square', ans:['2'], sol:'72 = 2³×3² ต้องเติม 2 อีกหนึ่งตัว จึงได้ k = 2'},
+    {type:'input', skill:'Floor sqrt', q:'จำนวนเต็มมากที่สุด n ที่ทำให้ n² ≤ 2026 คือเท่าไร?', ans:['45'], sol:'45² = 2025 และ 46² = 2116 ดังนั้น n = 45'},
+    {type:'mc', skill:'Check square', q:'98765 เป็น perfect square หรือไม่?', choices:['เป็น เพราะใกล้ 314²','ไม่เป็น เพราะ 314² < 98765 < 315²','เป็น เพราะลงท้ายด้วย 5','สรุปไม่ได้'], ans:'ไม่เป็น เพราะ 314² < 98765 < 315²', sol:'314² = 98596 และ 315² = 99225 จึงไม่มีจำนวนเต็มที่ยกกำลังสองได้ 98765'},
+    {type:'mc', skill:'Number Theory', q:'เงื่อนไขของ n ที่เป็น perfect square จาก prime factorization คือข้อใด?', choices:['เลขชี้กำลังทุกตัวเป็นเลขคี่','เลขชี้กำลังทุกตัวเป็นเลขคู่','ผลบวกเลขชี้กำลังเป็นเลขคู่','มีจำนวนเฉพาะอย่างน้อย 2 ตัว'], ans:'เลขชี้กำลังทุกตัวเป็นเลขคู่', sol:'perfect square ต้องมี exponent ของ prime ทุกตัวเป็นเลขคู่'},
+    {type:'input', skill:'Inequality', q:'มีจำนวนเต็ม x กี่จำนวนที่ทำให้ x² ≤ 144?', ans:['25'], sol:'x อยู่ตั้งแต่ -12 ถึง 12 รวมทั้งหมด 25 จำนวน'},
+    {type:'mc', skill:'Compare', q:'ข้อใดถูกต้อง?', choices:['√50 < 7','√50 = 7','√50 > 7','สรุปไม่ได้'], ans:'√50 > 7', sol:'เพราะ 7² = 49 < 50 ดังนั้น √50 > 7'},
+    {type:'input', skill:'Factorization', q:'ถ้า n = 2⁵×3²×5 จงหา m น้อยที่สุดที่ทำให้ nm เป็น perfect square', ans:['10'], sol:'เลขชี้กำลังที่เป็นคี่คือ 2⁵ และ 5¹ ต้องคูณด้วย 2×5 = 10'},
+    {type:'input', skill:'Floor sqrt', q:'⌊√(10⁸ - 1)⌋ มีค่าเท่าไร?', ans:['9999'], sol:'10⁸ - 1 = 99,999,999 และ 9999² < 10⁸ - 1 < 10000² ดังนั้นตอบ 9999'},
+    {type:'mc', skill:'Modulo', q:'perfect square เมื่อหารด้วย 4 ไม่มีทางเหลือเศษใด?', choices:['0 หรือ 1','2 หรือ 3','เฉพาะ 0','เฉพาะ 1'], ans:'2 หรือ 3', sol:'จำนวนเต็มใด ๆ เมื่อยกกำลังสองแล้วหาร 4 จะเหลือเศษได้แค่ 0 หรือ 1'}
+  ]
+};
+
+function renderQuestion(q, idx, setId){
+  const id = `${setId}-${idx}`;
+  let body = '';
+  if(q.type === 'mc'){
+    body = `<div class="choices">${q.choices.map((c,i)=>`<label><input type="radio" name="${id}" value="${escapeHtml(c)}"> <span>${c}</span></label>`).join('')}</div>
+      <div class="answer-line no-print"><button class="btn teal" onclick="checkQuestion('${setId}',${idx})">Check</button><button class="btn" onclick="showSolution('${id}')">Solution</button></div>`;
+  } else {
+    body = `<div class="answer-line"><input type="text" id="input-${id}" placeholder="พิมพ์คำตอบ เช่น 6√2 หรือ 6sqrt2"><button class="btn teal no-print" onclick="checkQuestion('${setId}',${idx})">Check</button><button class="btn no-print" onclick="showSolution('${id}')">Solution</button></div>`;
+  }
+  return `<div class="q" data-qid="${id}" data-done="0">
+    <div class="q-head"><div class="q-title">ข้อ ${idx+1}</div><span class="skill">${q.skill}</span></div>
+    <div class="q-text formula">${q.q}</div>
+    ${body}
+    <div id="fb-${id}" class="feedback"></div>
+    <div id="sol-${id}" class="solution"><b>เฉลย:</b> <span class="formula">${q.sol}</span></div>
+  </div>`;
+}
+function escapeHtml(str){return String(str).replace(/[&<>"]/g, s => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[s]));}
+function renderSets(){
+  Object.keys(sets).forEach(setId => {
+    const el = document.getElementById(setId);
+    el.innerHTML = sets[setId].map((q,idx)=>renderQuestion(q,idx,setId)).join('');
+  });
+  updateProgress();
+}
+function openTab(id, btn){
+  $$('.tab-panel').forEach(p=>p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  $$('.tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+}
+function checkQuestion(setId, idx){
+  const q = sets[setId][idx];
+  const id = `${setId}-${idx}`;
+  let ok = false;
+  if(q.type === 'mc'){
+    const checked = $(`input[name="${id}"]:checked`);
+    ok = checked && checked.value === q.ans;
+  } else {
+    const value = $(`#input-${id}`).value;
+    ok = accepted(value, q.ans);
+  }
+  const fb = $(`#fb-${id}`);
+  const box = $(`[data-qid="${id}"]`);
+  if(ok){
+    fb.className='feedback ok';
+    fb.textContent='ถูกต้อง';
+    box.dataset.done='1';
+  } else {
+    fb.className='feedback no';
+    fb.textContent='ยังไม่ถูก ลองดู perfect square หรือเงื่อนไขของสูตรอีกครั้ง';
+  }
+  updateProgress();
+}
+function showSolution(id){
+  $(`#sol-${id}`).classList.toggle('show');
+}
+function activeSetId(){return $('.tab-panel.active')?.id || 'setA'}
+function checkAllVisible(){
+  const id = activeSetId();
+  sets[id].forEach((_,idx)=>checkQuestion(id,idx));
+}
+function showSolutionsVisible(){
+  const panel = document.getElementById(activeSetId());
+  $$('.solution', panel).forEach(s=>s.classList.add('show'));
+}
+function resetAll(){
+  $$('input[type="text"]').forEach(i=>i.value='');
+  $$('input[type="radio"]').forEach(i=>i.checked=false);
+  $$('.feedback').forEach(f=>{f.textContent='';f.className='feedback'});
+  $$('.solution').forEach(s=>s.classList.remove('show'));
+  $$('.q').forEach(q=>q.dataset.done='0');
+  quizCorrect=0;quizTotal=0;currentQuiz=null;
+  $('#quizFeedback').textContent='';$('#quizFeedback').className='feedback';
+  $('#quizScore').textContent='Score: 0/0';
+  $('#quizQuestion').innerHTML='<b>กด Start Quiz เพื่อเริ่มสุ่มโจทย์</b>';
+  $('#quizOptions').innerHTML='';
+  updateProgress();
+}
+function updateProgress(){
+  const qs = $$('.q');
+  const done = qs.filter(q=>q.dataset.done==='1').length;
+  const total = qs.length;
+  $('#progressText').textContent = `Progress: ${done}/${total}`;
+  $('#progressBar').style.width = total ? `${Math.round(done/total*100)}%` : '0%';
+}
+
+let quizPool = [];
+let currentQuiz = null;
+let quizCorrect = 0;
+let quizTotal = 0;
+function buildQuizPool(){
+  quizPool = [
+    {q:'√225 = ?', choices:['13','14','15','16'], ans:'15', sol:'15² = 225'},
+    {q:'√192 จัดรูปได้เป็นข้อใด?', choices:['4√12','8√3','6√2','12√2'], ans:'8√3', sol:'√192 = √(64×3) = 8√3'},
+    {q:'√18 × √8 = ?', choices:['6','8','10','12'], ans:'12', sol:'√144 = 12'},
+    {q:'√x² เท่ากับอะไรเสมอ?', choices:['x','-x','|x|','x²'], ans:'|x|', sol:'รากที่สองหลักไม่ติดลบ'},
+    {q:'มี perfect squares กี่จำนวนตั้งแต่ 1 ถึง 500?', choices:['21','22','23','24'], ans:'22', sol:'⌊√500⌋ = 22'},
+    {q:'k น้อยที่สุดที่ทำให้ 50k เป็น perfect square คือ?', choices:['2','5','10','50'], ans:'2', sol:'50 = 2×5² ต้องเติม 2'},
+    {q:'⌊√999⌋ = ?', choices:['30','31','32','33'], ans:'31', sol:'31²=961 และ 32²=1024'},
+    {q:'perfect square หารด้วย 4 เหลือเศษได้ข้อใด?', choices:['0 หรือ 1','1 หรือ 2','2 หรือ 3','ทุกเศษ'], ans:'0 หรือ 1', sol:'กำลังสองของจำนวนคู่เหลือ 0 ของจำนวนคี่เหลือ 1'}
+  ];
+}
+function startQuiz(){quizCorrect=0;quizTotal=0;buildQuizPool();nextQuiz();updateQuizScore();}
+function nextQuiz(){
+  if(!quizPool.length) buildQuizPool();
+  currentQuiz = quizPool[Math.floor(Math.random()*quizPool.length)];
+  $('#quizQuestion').innerHTML = `<b class="formula">${currentQuiz.q}</b>`;
+  $('#quizOptions').innerHTML = currentQuiz.choices.map((c,i)=>`<label><input type="radio" name="quiz" value="${escapeHtml(c)}"> ${c}</label>`).join('');
+  $('#quizFeedback').textContent='';
+  $('#quizFeedback').className='feedback';
+}
+function checkQuiz(){
+  if(!currentQuiz){startQuiz();return;}
+  const checked = $('input[name="quiz"]:checked');
+  if(!checked){
+    $('#quizFeedback').className='feedback no';
+    $('#quizFeedback').textContent='กรุณาเลือกคำตอบก่อน';
+    return;
+  }
+  quizTotal++;
+  if(checked.value === currentQuiz.ans){
+    quizCorrect++;
+    $('#quizFeedback').className='feedback ok';
+    $('#quizFeedback').textContent='ถูกต้อง — ' + currentQuiz.sol;
+  } else {
+    $('#quizFeedback').className='feedback no';
+    $('#quizFeedback').textContent='ยังไม่ถูก — ' + currentQuiz.sol;
+  }
+  updateQuizScore();
+}
+function updateQuizScore(){ $('#quizScore').textContent = `Score: ${quizCorrect}/${quizTotal}`; }
+
+renderSets();
+</script>
+</body>
+</html>
