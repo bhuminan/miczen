@@ -1,0 +1,615 @@
+<!doctype html>
+<html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>บทที่ 5 ค่าสัมบูรณ์ - OSN Math Computer Prep</title><style>
+:root{--navy:#1E3A5F;--teal:#0F766E;--orange:#F59E0B;--ink:#1F2937;--muted:#64748B;--bg:#F8FAFC;--card:#FFFFFF;--line:#D8E0EA;--blue:#EFF6FF;--green:#ECFDF5;--orangebg:#FFF7ED;--red:#B91C1C;--ok:#047857;}
+*{box-sizing:border-box} body{margin:0;font-family:'Noto Sans Thai','Noto Sans Thai UI','Inter',Arial,sans-serif;color:var(--ink);background:var(--bg);line-height:1.62} .layout{display:grid;grid-template-columns:300px minmax(0,1fr);min-height:100vh}.sidebar{position:sticky;top:0;height:100vh;overflow:auto;background:linear-gradient(180deg,var(--navy),#12304D);color:white;padding:26px 22px}.brand{font-weight:800;letter-spacing:.3px;color:#BFECE6;text-transform:uppercase;font-size:13px}.sidebar h1{font-size:26px;line-height:1.25;margin:18px 0 8px}.sidebar p{color:#D8E7F5;font-size:13px}.nav{display:grid;gap:6px;margin-top:18px}.nav a{color:#EBF7FF;text-decoration:none;border:1px solid rgba(255,255,255,.18);padding:9px 10px;border-radius:12px;font-size:13px}.nav a:hover{background:rgba(255,255,255,.12)}.progress{height:10px;background:rgba(255,255,255,.18);border-radius:999px;overflow:hidden;margin-top:14px}.bar{height:100%;width:0;background:var(--orange);transition:.25s}.main{max-width:1120px;padding:30px;margin:0 auto;width:100%}.hero{background:linear-gradient(135deg,var(--navy),var(--teal));color:white;border-radius:22px;padding:34px;box-shadow:0 16px 30px rgba(30,58,95,.16)}.hero h1{font-size:38px;line-height:1.18;margin:0 0 12px}.hero p{max-width:840px;color:#E8F7F5}.pillrow{display:flex;gap:8px;flex-wrap:wrap}.pill{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.28);border-radius:999px;padding:6px 10px;font-size:13px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0}section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;margin:20px 0;box-shadow:0 6px 18px rgba(15,23,42,.05)}h2{color:var(--navy);font-size:25px;margin:0 0 14px;border-bottom:3px solid #E2E8F0;padding-bottom:8px}h3{color:var(--teal);margin:16px 0 8px}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:18px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.formula{background:var(--blue);border-left:5px solid var(--navy);border-radius:14px;padding:14px}.formula .name{font-weight:800;color:var(--navy)}.math{font-family:'Noto Sans Thai','Cambria Math','Times New Roman',serif;font-size:18px;font-weight:800;margin:7px 0;color:#0F172A}.small{font-size:13px;color:var(--muted)}.note{background:var(--green);border-left:5px solid var(--teal);padding:13px;border-radius:13px}.warn{background:var(--orangebg);border-left:5px solid var(--orange);border-radius:13px;padding:12px}.example{background:#fff;border:1px solid var(--line);border-radius:16px;padding:16px;margin:12px 0}.example-title{font-weight:800;color:var(--navy);font-size:18px}.step{background:#F8FAFC;border-left:3px solid var(--teal);padding:8px 10px;margin:8px 0;border-radius:8px}.result{display:inline-block;background:var(--green);color:#065F46;border-radius:10px;padding:7px 10px;font-weight:800}.mini-table{width:100%;border-collapse:collapse;margin:10px 0;background:white;border-radius:12px;overflow:hidden}.mini-table th{background:#E0F2FE;color:#0F3B5F}.mini-table th,.mini-table td{border:1px solid #CBD5E1;padding:9px 10px;text-align:left}.qcard{border:1px solid var(--line);border-radius:16px;padding:16px;margin:12px 0;background:#fff}.qtop{display:flex;gap:10px;align-items:flex-start}.badge,.qid{display:inline-flex;align-items:center;justify-content:center;min-width:38px;background:var(--orange);color:#111827;border-radius:999px;padding:4px 8px;font-weight:900;font-size:13px}.answer-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.answer-row input{flex:1;min-width:240px;border:1px solid #CBD5E1;border-radius:12px;padding:10px 12px;font-family:inherit;font-size:15px}button{background:var(--teal);color:white;border:0;border-radius:12px;padding:10px 13px;font-family:inherit;font-weight:800;cursor:pointer}button:hover{filter:brightness(.95)}button.ghost{background:#E2E8F0;color:#0F172A}.hint,.solution{display:none;margin-top:10px;border-radius:12px;padding:11px 12px}.hint{background:#FFFBEB;border:1px solid #FDE68A}.solution{background:#F0FDF4;border:1px solid #BBF7D0}.feedback{font-weight:800;margin:8px 0 0}.feedback.ok{color:var(--ok)}.feedback.no{color:var(--red)}.quiz{background:var(--blue);border-radius:18px;padding:20px}.big{font-size:25px;font-weight:900;color:var(--navy);margin:8px 0 12px}.footer{text-align:center;color:var(--muted);font-size:12px;padding:28px 0}@media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{position:relative;height:auto}.main{padding:18px}.twocol,.grid{grid-template-columns:1fr}.hero h1{font-size:29px}}@media print{.sidebar,.toolbar,.interactive-only,button,.answer-row,.feedback,.hint,.solution{display:none!important}.layout{display:block}.main{max-width:none;padding:0}.hero,section{box-shadow:none;break-inside:avoid}.qcard{break-inside:avoid}.qcard input{display:none}}
+</style></head>
+<body><div class="layout"><aside class="sidebar"><div class="brand">OSN Computer Prep Math</div><h1>บทที่ 5<br>ค่าสัมบูรณ์</h1><p>ระยะห่างบนเส้นจำนวน สมการ อสมการ และ absolute difference ในโปรแกรม</p><div class="progress"><div class="bar"></div></div><p id="progressText">0 / 0 ข้อ</p><nav class="nav"><a href="#overview">ภาพรวม</a><a href="#vocab">คำศัพท์</a><a href="#rules">สูตรสำคัญ</a><a href="#examples">ตัวอย่าง</a><a href="#traps">จุดหลอก</a><a href="#programmer">คิดแบบโปรแกรมเมอร์</a><a href="#practice">แบบฝึกหัด</a><a href="#quiz">Mini Quiz</a><a href="#answers">เฉลย</a></nav></aside>
+<main class="main"><header class="hero" id="overview"><h1>ค่าสัมบูรณ์ (Absolute Value)</h1><p>บทนี้ทำให้ค่าสัมบูรณ์ไม่ใช่แค่ “เปลี่ยนลบเป็นบวก” แต่เป็นแนวคิดเรื่องระยะห่าง เงื่อนไข และการนับจำนวนเต็ม ซึ่งใช้จริงในโจทย์คณิตศาสตร์แข่งขันและการเขียนโปรแกรม</p><div class="pillrow"><span class="pill">ระดับ ม.ต้น</span><span class="pill">สอวน. คอม</span><span class="pill">สอบเข้า ม.4</span><span class="pill">Interactive + Printable</span></div></header>
+<div class="toolbar interactive-only"><button onclick="revealAll()">เปิด Hint/เฉลยทั้งหมด</button><button class="ghost" onclick="hideAll()">ซ่อน Hint/เฉลย</button><button class="ghost" onclick="window.print()">พิมพ์ / Save PDF</button></div>
+<section id="vocab"><h2>1. เป้าหมายและคำศัพท์สำคัญ</h2><div class="twocol"><div><h3>เป้าหมายการเรียนรู้</h3><ul><li>เข้าใจค่าสัมบูรณ์ในฐานะระยะห่างจาก 0</li><li>คำนวณนิพจน์ที่มีเครื่องหมาย | | ได้ถูกลำดับ</li><li>แก้สมการและอสมการค่าสัมบูรณ์พื้นฐานได้</li><li>นับจำนวนเต็มที่อยู่ในช่วงจากเงื่อนไขค่าสัมบูรณ์ได้</li><li>เชื่อม abs(a-b) กับแนวคิด absolute difference ในโปรแกรม</li></ul></div><div><h3>คำศัพท์ไทย-อังกฤษ</h3><table class="mini-table"><tr><th>ไทย</th><th>อังกฤษ</th></tr><tr><td>ค่าสัมบูรณ์</td><td>Absolute value</td></tr><tr><td>เส้นจำนวน</td><td>Number line</td></tr><tr><td>ระยะห่าง</td><td>Distance</td></tr><tr><td>สมการค่าสัมบูรณ์</td><td>Absolute value equation</td></tr><tr><td>อสมการค่าสัมบูรณ์</td><td>Absolute value inequality</td></tr><tr><td>ความต่างแบบไม่ติดลบ</td><td>Absolute difference</td></tr></table></div></div></section>
+<section id="rules"><h2>2. สูตรและกฎที่ต้องแม่น</h2><p class="note"><strong>หลักสำคัญ:</strong> ค่าสัมบูรณ์คือ “ระยะห่าง” ดังนั้นผลลัพธ์จึงไม่ติดลบเสมอ และสมการ/อสมการหลายข้อควรแปลเป็นภาพบนเส้นจำนวนก่อนเริ่มคำนวณ</p><div class="grid"><div class="formula"><div class="name">นิยามค่าสัมบูรณ์</div><div class="math">|a| = a เมื่อ a &gt;= 0 และ |a| = -a เมื่อ a &lt; 0</div><div class="small">มองเป็นระยะห่างจาก 0 บนเส้นจำนวน</div></div>
+<div class="formula"><div class="name">ผลลัพธ์ไม่ติดลบ</div><div class="math">|a| &gt;= 0 เสมอ</div><div class="small">ดังนั้น |x| = จำนวนลบ จะไม่มีคำตอบ</div></div>
+<div class="formula"><div class="name">สมมาตรของเครื่องหมาย</div><div class="math">|-a| = |a|</div><div class="small">จำนวนที่อยู่ซ้าย/ขวาของ 0 เท่ากัน มีค่าสัมบูรณ์เท่ากัน</div></div>
+<div class="formula"><div class="name">รากที่สองกับค่าสัมบูรณ์</div><div class="math">sqrt(a^2) = |a|</div><div class="small">สำคัญมากในบทกรณฑ์และสมการ</div></div>
+<div class="formula"><div class="name">ผลคูณและผลหาร</div><div class="math">|ab| = |a||b| และ |a/b| = |a|/|b| เมื่อ b != 0</div><div class="small">ใช้แยกค่าสัมบูรณ์ของพจน์คูณและหาร</div></div>
+<div class="formula"><div class="name">ระยะห่างของสองจำนวน</div><div class="math">ระยะห่างระหว่าง a และ b คือ |a-b|</div><div class="small">ใช้กับเส้นจำนวน โปรแกรม และโจทย์เปรียบเทียบ</div></div>
+<div class="formula"><div class="name">สมการพื้นฐาน</div><div class="math">|x-a| = r ให้ x = a-r หรือ x = a+r เมื่อ r &gt;= 0</div><div class="small">แปลว่า x อยู่ห่างจาก a เท่ากับ r</div></div>
+<div class="formula"><div class="name">อสมการพื้นฐาน</div><div class="math">|x-a| &lt;= r ให้ a-r &lt;= x &lt;= a+r เมื่อ r &gt;= 0</div><div class="small">แปลว่า x อยู่ในช่วงใกล้ a ไม่เกิน r</div></div></div></section>
+<section id="examples"><h2>3. ตัวอย่างพร้อมวิธีคิดทีละขั้น</h2><div class="example"><div class="example-title">ตัวอย่างที่ 1: คำนวณค่าสัมบูรณ์ซ้อน</div><p><strong>โจทย์:</strong> คำนวณ |4 - |2 - 9||</p><div class="step">ทำด้านในก่อน: |2 - 9| = |-7| = 7</div><div class="step">แทนกลับได้ |4 - 7|</div><div class="step">|4 - 7| = |-3| = 3</div><div class="result">คำตอบ: 3</div></div>
+<div class="example"><div class="example-title">ตัวอย่างที่ 2: สมการค่าสัมบูรณ์</div><p><strong>โจทย์:</strong> แก้สมการ |x - 5| = 3</p><div class="step">แปลว่า x อยู่ห่างจาก 5 เป็นระยะ 3</div><div class="step">กรณีขวา: x = 5 + 3 = 8</div><div class="step">กรณีซ้าย: x = 5 - 3 = 2</div><div class="result">คำตอบ: x = 2 หรือ 8</div></div>
+<div class="example"><div class="example-title">ตัวอย่างที่ 3: อสมการค่าสัมบูรณ์</div><p><strong>โจทย์:</strong> แก้อสมการ |x + 2| &lt;= 4</p><div class="step">เขียนเป็น |x - (-2)| &lt;= 4</div><div class="step">แปลว่า x อยู่ห่างจาก -2 ไม่เกิน 4</div><div class="step">-6 &lt;= x &lt;= 2</div><div class="result">คำตอบ: -6 &lt;= x &lt;= 2</div></div>
+<div class="example"><div class="example-title">ตัวอย่างที่ 4: คิดแบบโปรแกรมเมอร์</div><p><strong>โจทย์:</strong> นับจำนวนเต็ม x ที่ทำให้ abs(x-10) &lt;= 2</p><div class="step">เงื่อนไขคือ 10-2 &lt;= x &lt;= 10+2</div><div class="step">ดังนั้น 8 &lt;= x &lt;= 12</div><div class="step">จำนวนเต็มคือ 8,9,10,11,12</div><div class="result">คำตอบ: 5 ค่า</div></div></section>
+<section id="traps"><h2>4. จุดหลอกข้อสอบที่ต้องระวัง</h2><div class="grid"><div class="warn"><strong>|x| = 5 ไม่ได้มีคำตอบเดียว</strong><br>คำตอบคือ x = 5 หรือ x = -5 เพราะสองจุดห่างจาก 0 เท่ากัน</div><div class="warn"><strong>-|a| อาจติดลบได้</strong><br>เช่น -|-6| = -6 เพราะลบอยู่ข้างนอกเครื่องหมายค่าสัมบูรณ์</div><div class="warn"><strong>|a-b| = |b-a|</strong><br>ระยะห่างไม่สนทิศทาง จึงสลับลำดับได้</div><div class="warn"><strong>|x| = จำนวนลบ ไม่มีคำตอบ</strong><br>เพราะค่าสัมบูรณ์ไม่มีทางน้อยกว่า 0</div><div class="warn"><strong>อสมการ &lt; กับ &gt; คนละทิศทางของช่วง</strong><br>|x-a| &lt; r เป็นช่วงกลาง แต่ |x-a| &gt; r เป็นช่วงนอกสองด้าน</div><div class="warn"><strong>อย่าตัดเครื่องหมาย | | ทิ้งโดยไม่แยกกรณี</strong><br>นิพจน์ข้างในอาจบวกหรือลบ ต้องดูเงื่อนไข</div></div></section>
+<section id="programmer"><h2>5. มุมคิดแบบโปรแกรมเมอร์</h2><p>ในภาษาโปรแกรมส่วนใหญ่จะมีฟังก์ชัน <strong>abs()</strong> สำหรับหาค่าสัมบูรณ์ เช่น abs(-7)=7 และ abs(a-b) ใช้วัดระยะห่างระหว่างสองจำนวนโดยไม่สนว่าค่าใดมากกว่า</p><table class="mini-table"><tr><th>แนวคิดคณิตศาสตร์</th><th>เชื่อมกับคอมพิวเตอร์</th></tr><tr><td>|a-b|</td><td>absolute difference หรือความต่างแบบไม่ติดลบ</td></tr><tr><td>|x-target| <= r</td><td>ตรวจว่าค่า x อยู่ในช่วงที่ยอมรับได้หรือไม่</td></tr><tr><td>|x-y| == 0</td><td>ตรวจว่าสองค่ามีค่าเท่ากัน</td></tr><tr><td>นับจำนวนเต็มในช่วง</td><td>ใช้กับ loop และ condition</td></tr></table><div class="warn"><strong>สังเกต:</strong> เงื่อนไข abs(score-target) <= 5 มีความหมายว่า score อยู่ในช่วง target-5 ถึง target+5 ไม่ใช่แค่ score น้อยกว่า target</div></section>
+<section id="practice"><h2>6. แบบฝึกหัด Interactive</h2><p>พิมพ์คำตอบแล้วกดตรวจคำตอบ หากติดให้กด Hint ก่อนเปิดเฉลย เพื่อฝึกคิดเองทีละขั้น</p><section class="exercise-section" id="ex-easy"><h2>ระดับง่าย: ความหมายและการคำนวณค่าสัมบูรณ์</h2>
+
+            <div class="qcard" data-q="E1">
+              <div class="qtop"><span class="badge">E1</span><strong>คำนวณ |7|</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer E1" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="7">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: จำนวนบวก ค่าสัมบูรณ์เท่ากับตัวเดิม</div>
+              <div class="solution"><strong>เฉลย:</strong> |7| = 7</div>
+            </div>
+
+            <div class="qcard" data-q="E2">
+              <div class="qtop"><span class="badge">E2</span><strong>คำนวณ |-9|</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer E2" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="9">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: ค่าสัมบูรณ์คือระยะห่างจาก 0 จึงไม่ติดลบ</div>
+              <div class="solution"><strong>เฉลย:</strong> |-9| = 9</div>
+            </div>
+
+            <div class="qcard" data-q="E3">
+              <div class="qtop"><span class="badge">E3</span><strong>คำนวณ |0|</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer E3" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="0">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: 0 อยู่ห่างจาก 0 เป็นระยะ 0</div>
+              <div class="solution"><strong>เฉลย:</strong> |0| = 0</div>
+            </div>
+
+            <div class="qcard" data-q="E4">
+              <div class="qtop"><span class="badge">E4</span><strong>คำนวณ -|-6|</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer E4" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="-6">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: หารค่าในเครื่องหมาย | | ก่อน แล้วค่อยใส่ลบด้านหน้า</div>
+              <div class="solution"><strong>เฉลย:</strong> |-6| = 6 ดังนั้น -|-6| = -6</div>
+            </div>
+
+            <div class="qcard" data-q="E5">
+              <div class="qtop"><span class="badge">E5</span><strong>คำนวณ |3 - 8|</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer E5" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="5">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: คำนวณในวงเล็บก่อน</div>
+              <div class="solution"><strong>เฉลย:</strong> 3 - 8 = -5 ดังนั้น |3 - 8| = |-5| = 5</div>
+            </div>
+
+            <div class="qcard" data-q="E6">
+              <div class="qtop"><span class="badge">E6</span><strong>คำนวณ |8 - 3|</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer E6" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="5">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: ค่าสัมบูรณ์ของผลต่างคือระยะห่าง</div>
+              <div class="solution"><strong>เฉลย:</strong> |8 - 3| = |5| = 5</div>
+            </div>
+
+            <div class="qcard" data-q="E7">
+              <div class="qtop"><span class="badge">E7</span><strong>คำนวณ |-4| + |6|</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer E7" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="10">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: หาค่าสัมบูรณ์ทีละพจน์</div>
+              <div class="solution"><strong>เฉลย:</strong> |-4| + |6| = 4 + 6 = 10</div>
+            </div>
+
+            <div class="qcard" data-q="E8">
+              <div class="qtop"><span class="badge">E8</span><strong>คำนวณ |-12| - |-5|</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer E8" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="7">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: หาค่าสัมบูรณ์ก่อนลบ</div>
+              <div class="solution"><strong>เฉลย:</strong> |-12| - |-5| = 12 - 5 = 7</div>
+            </div>
+
+            <div class="qcard" data-q="E9">
+              <div class="qtop"><span class="badge">E9</span><strong>ระยะห่างระหว่าง -2 และ 5 บนเส้นจำนวนคือเท่าใด</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer E9" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="7">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: ระยะห่าง = |a-b|</div>
+              <div class="solution"><strong>เฉลย:</strong> ระยะห่าง = |5 - (-2)| = |7| = 7</div>
+            </div>
+
+            <div class="qcard" data-q="E10">
+              <div class="qtop"><span class="badge">E10</span><strong>ค่าของ sqrt((-13)^2) คือเท่าใด</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer E10" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="13">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: ใช้สูตร sqrt(a^2) = |a|</div>
+              <div class="solution"><strong>เฉลย:</strong> sqrt((-13)^2) = |-13| = 13</div>
+            </div>
+</section>
+<section class="exercise-section" id="ex-medium"><h2>ระดับปานกลาง: สมการค่าสัมบูรณ์และระยะบนเส้นจำนวน</h2>
+
+            <div class="qcard" data-q="M1">
+              <div class="qtop"><span class="badge">M1</span><strong>แก้สมการ |x| = 8 โดยตอบเป็นจำนวนจริงทั้งหมด</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer M1" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="±8|-8,8|8,-8|+-8">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: |x| = c ให้ x = c หรือ x = -c เมื่อ c &gt; 0</div>
+              <div class="solution"><strong>เฉลย:</strong> คำตอบคือ x = 8 หรือ x = -8</div>
+            </div>
+
+            <div class="qcard" data-q="M2">
+              <div class="qtop"><span class="badge">M2</span><strong>แก้สมการ |x| = 0</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer M2" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="0">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: มีเพียงจำนวนเดียวที่ห่างจาก 0 เป็น 0</div>
+              <div class="solution"><strong>เฉลย:</strong> คำตอบคือ x = 0</div>
+            </div>
+
+            <div class="qcard" data-q="M3">
+              <div class="qtop"><span class="badge">M3</span><strong>สมการ |x| = -3 มีคำตอบกี่คำตอบ</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer M3" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="0|ไม่มีคำตอบ">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: ค่าสัมบูรณ์ไม่มีทางติดลบ</div>
+              <div class="solution"><strong>เฉลย:</strong> |x| &gt;= 0 เสมอ จึงไม่มีคำตอบ</div>
+            </div>
+
+            <div class="qcard" data-q="M4">
+              <div class="qtop"><span class="badge">M4</span><strong>แก้สมการ |x - 4| = 6</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer M4" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="-2,10|10,-2|{-2,10}|x=-2,10">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: ระยะห่างจาก 4 เท่ากับ 6</div>
+              <div class="solution"><strong>เฉลย:</strong> x - 4 = 6 หรือ x - 4 = -6 จึงได้ x = 10 หรือ x = -2</div>
+            </div>
+
+            <div class="qcard" data-q="M5">
+              <div class="qtop"><span class="badge">M5</span><strong>แก้สมการ |2x - 1| = 7</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer M5" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="-3,4|4,-3|{-3,4}">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: แยกเป็น 2x-1 = 7 หรือ 2x-1 = -7</div>
+              <div class="solution"><strong>เฉลย:</strong> 2x - 1 = 7 ได้ x = 4 และ 2x - 1 = -7 ได้ x = -3</div>
+            </div>
+
+            <div class="qcard" data-q="M6">
+              <div class="qtop"><span class="badge">M6</span><strong>แก้สมการ |3x + 2| = 11</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer M6" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="-13/3,3|3,-13/3|{-13/3,3}">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: แยกสองกรณี</div>
+              <div class="solution"><strong>เฉลย:</strong> 3x+2=11 ได้ x=3 และ 3x+2=-11 ได้ x=-13/3</div>
+            </div>
+
+            <div class="qcard" data-q="M7">
+              <div class="qtop"><span class="badge">M7</span><strong>หาค่า x ที่เป็นจำนวนเต็มทั้งหมดซึ่งทำให้ |x - 2| &lt;= 3</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer M7" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="-1,0,1,2,3,4,5|-1ถึง5|-1 to 5">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: แปลว่า x อยู่ห่างจาก 2 ไม่เกิน 3</div>
+              <div class="solution"><strong>เฉลย:</strong> -3 &lt;= x-2 &lt;= 3 จึง -1 &lt;= x &lt;= 5 จำนวนเต็มคือ -1,0,1,2,3,4,5</div>
+            </div>
+
+            <div class="qcard" data-q="M8">
+              <div class="qtop"><span class="badge">M8</span><strong>มีจำนวนเต็ม x กี่จำนวนที่ทำให้ |x - 2| &lt;= 3</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer M8" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="7">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: จากข้อก่อน x ตั้งแต่ -1 ถึง 5</div>
+              <div class="solution"><strong>เฉลย:</strong> จำนวนเต็มตั้งแต่ -1 ถึง 5 มี 5 - (-1) + 1 = 7 จำนวน</div>
+            </div>
+
+            <div class="qcard" data-q="M9">
+              <div class="qtop"><span class="badge">M9</span><strong>แก้อสมการ |x| &lt; 5 โดยตอบเป็นช่วง</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer M9" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="-5&lt;x&lt;5|(-5,5)|-5 &lt; x &lt; 5">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: ระยะห่างจาก 0 น้อยกว่า 5</div>
+              <div class="solution"><strong>เฉลย:</strong> |x| &lt; 5 เท่ากับ -5 &lt; x &lt; 5</div>
+            </div>
+
+            <div class="qcard" data-q="M10">
+              <div class="qtop"><span class="badge">M10</span><strong>แก้อสมการ |x - 1| &gt;= 4 โดยตอบเป็นช่วง</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer M10" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="x&lt;=-3หรือx&gt;=5|x&lt;=-3 or x&gt;=5|(-∞,-3]∪[5,∞)|x ≤ -3 หรือ x ≥ 5">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: ห่างจาก 1 ตั้งแต่ 4 ขึ้นไป</div>
+              <div class="solution"><strong>เฉลย:</strong> x-1 &lt;= -4 หรือ x-1 &gt;= 4 จึง x &lt;= -3 หรือ x &gt;= 5</div>
+            </div>
+</section>
+<section class="exercise-section" id="ex-hard"><h2>ระดับยาก: เงื่อนไขซ่อน การนับจำนวนเต็ม และพีชคณิต</h2>
+
+            <div class="qcard" data-q="H1">
+              <div class="qtop"><span class="badge">H1</span><strong>หาค่า |x - 3| + |x + 2| เมื่อ x = 1</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer H1" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="5">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: แทนค่า x ก่อน</div>
+              <div class="solution"><strong>เฉลย:</strong> |1-3| + |1+2| = |-2| + |3| = 2 + 3 = 5</div>
+            </div>
+
+            <div class="qcard" data-q="H2">
+              <div class="qtop"><span class="badge">H2</span><strong>หาค่า x ที่ทำให้ |x - 3| + |x + 2| มีค่าน้อยที่สุด และค่าต่ำสุดคือเท่าใด ตอบรูป xช่วง;ค่า</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer H2" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="-2&lt;=x&lt;=3;5|[-2,3];5|-2ถึง3;5">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: ผลรวมระยะจาก x ไปยัง 3 และ -2 น้อยที่สุดเมื่อ x อยู่ระหว่างสองจุด</div>
+              <div class="solution"><strong>เฉลย:</strong> สำหรับ x อยู่ในช่วง [-2,3] ผลรวมระยะไปยังปลายทั้งสองเท่ากับ 3 - (-2) = 5 ซึ่งเป็นค่าต่ำสุด</div>
+            </div>
+
+            <div class="qcard" data-q="H3">
+              <div class="qtop"><span class="badge">H3</span><strong>แก้สมการ |x - 1| = |2x + 3|</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer H3" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="-4,-2/3|-2/3,-4|{-4,-2/3}">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: ถ้า |A|=|B| แล้ว A=B หรือ A=-B</div>
+              <div class="solution"><strong>เฉลย:</strong> กรณี 1: x-1=2x+3 ได้ x=-4. กรณี 2: x-1=-(2x+3) ได้ 3x=-2 จึง x=-2/3</div>
+            </div>
+
+            <div class="qcard" data-q="H4">
+              <div class="qtop"><span class="badge">H4</span><strong>มีจำนวนเต็ม x กี่จำนวนที่ทำให้ |2x - 5| &lt; 11</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer H4" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="10">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: เปลี่ยนเป็นอสมการสองข้างแล้วนับจำนวนเต็ม</div>
+              <div class="solution"><strong>เฉลย:</strong> -11 &lt; 2x - 5 &lt; 11 จึง -6 &lt; 2x &lt; 16 หรือ -3 &lt; x &lt; 8 จำนวนเต็มคือ -2,-1,0,1,2,3,4,5,6,7 มี 10 จำนวน</div>
+            </div>
+
+            <div class="qcard" data-q="H5">
+              <div class="qtop"><span class="badge">H5</span><strong>แก้สมการ |x + 1| + |x - 4| = 5</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer H5" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="-1&lt;=x&lt;=4|[-1,4]|-1≤x≤4">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: ผลรวมระยะจาก x ไป -1 และ 4 เท่ากับระยะระหว่างสองจุด</div>
+              <div class="solution"><strong>เฉลย:</strong> ระยะระหว่าง -1 และ 4 คือ 5 ถ้า x อยู่ระหว่าง -1 ถึง 4 ผลรวมระยะเท่ากับ 5 พอดี คำตอบคือ -1 &lt;= x &lt;= 4</div>
+            </div>
+
+            <div class="qcard" data-q="H6">
+              <div class="qtop"><span class="badge">H6</span><strong>แก้สมการ |x + 1| + |x - 4| = 7</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer H6" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="-2,5|5,-2|{-2,5}">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: อยู่นอกช่วง [-1,4] เท่านั้นจึงเพิ่มระยะรวม</div>
+              <div class="solution"><strong>เฉลย:</strong> ถ้า x &lt; -1 จะได้ -(x+1) + (4-x) = 7 จึง -2x+3=7 ได้ x=-2. ถ้า x &gt; 4 จะได้ x+1+x-4=7 จึง 2x-3=7 ได้ x=5</div>
+            </div>
+
+            <div class="qcard" data-q="H7">
+              <div class="qtop"><span class="badge">H7</span><strong>หาจำนวนเต็ม x ทั้งหมดที่ทำให้ |x + 3| &lt; |x - 5|</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer H7" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="x&lt;1|จำนวนเต็มน้อยกว่า1|...,-2,-1,0">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: จุดที่อยู่ใกล้ -3 มากกว่า 5 จะอยู่ด้านซ้ายของจุดกึ่งกลาง</div>
+              <div class="solution"><strong>เฉลย:</strong> เปรียบเทียบระยะถึง -3 และ 5 จุดกึ่งกลางคือ 1 ดังนั้น |x+3| &lt; |x-5| เมื่อ x &lt; 1</div>
+            </div>
+
+            <div class="qcard" data-q="H8">
+              <div class="qtop"><span class="badge">H8</span><strong>หาค่ามากที่สุดของ |x - 2| เมื่อ x เป็นจำนวนเต็มและ -3 &lt;= x &lt;= 7</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer H8" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="5">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: ค่าสูงสุดเกิดที่ปลายช่วงซึ่งห่างจาก 2 มากที่สุด</div>
+              <div class="solution"><strong>เฉลย:</strong> ตรวจปลายช่วง: |-3-2|=5 และ |7-2|=5 ดังนั้นค่าสูงสุดคือ 5</div>
+            </div>
+</section>
+<section class="exercise-section" id="ex-posn"><h2>แนว สอวน. คอม: absolute difference, condition และการนับ</h2>
+
+            <div class="qcard" data-q="P1">
+              <div class="qtop"><span class="badge">P1</span><strong>ในโปรแกรม abs(a-b) ใช้วัดอะไรระหว่าง a และ b</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer P1" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="ระยะห่าง|distance|ความต่างแบบไม่ติดลบ">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: ผลลัพธ์ไม่มีเครื่องหมายลบ</div>
+              <div class="solution"><strong>เฉลย:</strong> abs(a-b) คือระยะห่างหรือความต่างแบบไม่สนทิศทางระหว่าง a และ b</div>
+            </div>
+
+            <div class="qcard" data-q="P2">
+              <div class="qtop"><span class="badge">P2</span><strong>ถ้า a = -7 และ b = 4 ค่า abs(a-b) เท่ากับเท่าใด</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer P2" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="11">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: คำนวณ a-b ก่อน</div>
+              <div class="solution"><strong>เฉลย:</strong> a-b = -7-4 = -11 ดังนั้น abs(a-b)=11</div>
+            </div>
+
+            <div class="qcard" data-q="P3">
+              <div class="qtop"><span class="badge">P3</span><strong>มีจำนวนเต็ม x ตั้งแต่ 1 ถึง 20 กี่จำนวนที่ทำให้ abs(x-10) &lt;= 3</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer P3" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="7">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: x ต้องอยู่ในช่วงใกล้ 10 ไม่เกิน 3</div>
+              <div class="solution"><strong>เฉลย:</strong> 7 &lt;= x &lt;= 13 มีจำนวนเต็ม 7 จำนวน</div>
+            </div>
+
+            <div class="qcard" data-q="P4">
+              <div class="qtop"><span class="badge">P4</span><strong>เงื่อนไข abs(x-y) == 0 หมายความว่าอย่างไร</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer P4" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="x=y|เท่ากัน">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: ระยะห่างเป็นศูนย์เมื่อสองค่าตรงกัน</div>
+              <div class="solution"><strong>เฉลย:</strong> abs(x-y)=0 ก็ต่อเมื่อ x-y=0 ดังนั้น x=y</div>
+            </div>
+
+            <div class="qcard" data-q="P5">
+              <div class="qtop"><span class="badge">P5</span><strong>ถ้า loop ตรวจ i ตั้งแต่ -5 ถึง 5 และนับเมื่อ abs(i) &lt;= 2 จะนับได้กี่ค่า</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer P5" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="5">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: ค่าที่ผ่านคือ -2 ถึง 2</div>
+              <div class="solution"><strong>เฉลย:</strong> i = -2,-1,0,1,2 มี 5 ค่า</div>
+            </div>
+
+            <div class="qcard" data-q="P6">
+              <div class="qtop"><span class="badge">P6</span><strong>ถ้าใช้เงื่อนไข abs(score-target) &lt;= 5 โดย target = 80 คะแนน score ต่ำสุดและสูงสุดที่ผ่านคือเท่าใด ตอบ ต่ำสุด,สูงสุด</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer P6" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="75,85|75ถึง85|75-85">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: คะแนนต้องอยู่ห่างจาก 80 ไม่เกิน 5</div>
+              <div class="solution"><strong>เฉลย:</strong> 80-5 &lt;= score &lt;= 80+5 จึงผ่านตั้งแต่ 75 ถึง 85</div>
+            </div>
+</section>
+<section class="exercise-section" id="ex-tu"><h2>แนวสอบเข้า ม.4: คิดเร็วและระวังช้อยส์หลอก</h2>
+
+            <div class="qcard" data-q="T1">
+              <div class="qtop"><span class="badge">T1</span><strong>คำนวณ |2 - |5 - 9||</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer T1" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="2">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: ทำเครื่องหมายค่าสัมบูรณ์ด้านในก่อน</div>
+              <div class="solution"><strong>เฉลย:</strong> |5-9|=4 ดังนั้น |2-4|=|-2|=2</div>
+            </div>
+
+            <div class="qcard" data-q="T2">
+              <div class="qtop"><span class="badge">T2</span><strong>ถ้า |x - 6| = 2 แล้วผลบวกของคำตอบทั้งหมดเท่ากับเท่าใด</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer T2" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="12">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: คำตอบสมมาตรรอบ 6</div>
+              <div class="solution"><strong>เฉลย:</strong> x=8 หรือ x=4 ผลบวกคือ 12</div>
+            </div>
+
+            <div class="qcard" data-q="T3">
+              <div class="qtop"><span class="badge">T3</span><strong>มีจำนวนเต็ม x กี่จำนวนที่ทำให้ |x + 4| &lt;= 6</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer T3" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="13">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: แปลงเป็นช่วง</div>
+              <div class="solution"><strong>เฉลย:</strong> -6 &lt;= x+4 &lt;= 6 จึง -10 &lt;= x &lt;= 2 มี 13 จำนวน</div>
+            </div>
+
+            <div class="qcard" data-q="T4">
+              <div class="qtop"><span class="badge">T4</span><strong>แก้สมการ |3x - 2| = |x + 6|</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer T4" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="-1,4|4,-1|{-1,4}">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: ใช้ A=B หรือ A=-B</div>
+              <div class="solution"><strong>เฉลย:</strong> 3x-2 = x+6 ได้ x=4. และ 3x-2 = -(x+6) ได้ 4x=-4 จึง x=-1</div>
+            </div>
+
+            <div class="qcard" data-q="T5">
+              <div class="qtop"><span class="badge">T5</span><strong>ค่าต่ำสุดของ |x - 1| + |x - 9| เมื่อ x เป็นจำนวนจริง คือเท่าใด</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer T5" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="8">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: ผลรวมระยะถึง 1 และ 9 ต่ำสุดเท่ากับระยะระหว่าง 1 กับ 9</div>
+              <div class="solution"><strong>เฉลย:</strong> เมื่อ 1 &lt;= x &lt;= 9 ผลรวมระยะเท่ากับ 8 ดังนั้นค่าต่ำสุดคือ 8</div>
+            </div>
+
+            <div class="qcard" data-q="T6">
+              <div class="qtop"><span class="badge">T6</span><strong>ถ้า |x| = 5 และ |y| = 2 ค่ามากที่สุดของ |x-y| คือเท่าใด</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer T6" placeholder="พิมพ์คำตอบ เช่น 7 หรือ -5&lt;x&lt;5" data-answer="7">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSol(this)">เฉลย</button>
+              </div>
+              <p class="feedback"></p>
+              <div class="hint">คำใบ้: ให้ x และ y อยู่คนละทิศบนเส้นจำนวน</div>
+              <div class="solution"><strong>เฉลย:</strong> เลือก x=5, y=-2 หรือ x=-5, y=2 จะได้ |x-y|=7 ซึ่งมากที่สุด</div>
+            </div>
+</section></section>
+<section id="quiz"><h2>7. Mini Quiz สุ่มโจทย์สั้น</h2><div class="quiz"><p>กดสุ่มโจทย์เพื่อฝึกคิดเร็ว</p><div class="big" id="quizQ">|-15|</div><input id="quizA" placeholder="พิมพ์คำตอบ" style="padding:10px;border:1px solid #CBD5E1;border-radius:10px;font-family:inherit"><button onclick="checkQuiz()">ตรวจ</button><button class="ghost" onclick="newQuiz()">สุ่มใหม่</button><p id="quizFb" class="feedback"></p></div></section>
+<section id="answers"><h2>8. เฉลยท้ายบท</h2><p class="small">ในไฟล์ HTML สามารถกดเปิดเฉลยใต้แต่ละข้อได้ ส่วนด้านล่างเป็นเฉลยรวมแบบละเอียดเพื่อทบทวน</p><h3>ระดับง่าย: ความหมายและการคำนวณค่าสัมบูรณ์</h3>
+<div class="answer-key"><strong>E1. 7</strong><br>|7| = 7</div>
+<div class="answer-key"><strong>E2. 9</strong><br>|-9| = 9</div>
+<div class="answer-key"><strong>E3. 0</strong><br>|0| = 0</div>
+<div class="answer-key"><strong>E4. -6</strong><br>|-6| = 6 ดังนั้น -|-6| = -6</div>
+<div class="answer-key"><strong>E5. 5</strong><br>3 - 8 = -5 ดังนั้น |3 - 8| = |-5| = 5</div>
+<div class="answer-key"><strong>E6. 5</strong><br>|8 - 3| = |5| = 5</div>
+<div class="answer-key"><strong>E7. 10</strong><br>|-4| + |6| = 4 + 6 = 10</div>
+<div class="answer-key"><strong>E8. 7</strong><br>|-12| - |-5| = 12 - 5 = 7</div>
+<div class="answer-key"><strong>E9. 7</strong><br>ระยะห่าง = |5 - (-2)| = |7| = 7</div>
+<div class="answer-key"><strong>E10. 13</strong><br>sqrt((-13)^2) = |-13| = 13</div>
+<h3>ระดับปานกลาง: สมการค่าสัมบูรณ์และระยะบนเส้นจำนวน</h3>
+<div class="answer-key"><strong>M1. ±8</strong><br>คำตอบคือ x = 8 หรือ x = -8</div>
+<div class="answer-key"><strong>M2. 0</strong><br>คำตอบคือ x = 0</div>
+<div class="answer-key"><strong>M3. 0</strong><br>|x| &gt;= 0 เสมอ จึงไม่มีคำตอบ</div>
+<div class="answer-key"><strong>M4. -2,10</strong><br>x - 4 = 6 หรือ x - 4 = -6 จึงได้ x = 10 หรือ x = -2</div>
+<div class="answer-key"><strong>M5. -3,4</strong><br>2x - 1 = 7 ได้ x = 4 และ 2x - 1 = -7 ได้ x = -3</div>
+<div class="answer-key"><strong>M6. -13/3,3</strong><br>3x+2=11 ได้ x=3 และ 3x+2=-11 ได้ x=-13/3</div>
+<div class="answer-key"><strong>M7. -1,0,1,2,3,4,5</strong><br>-3 &lt;= x-2 &lt;= 3 จึง -1 &lt;= x &lt;= 5 จำนวนเต็มคือ -1,0,1,2,3,4,5</div>
+<div class="answer-key"><strong>M8. 7</strong><br>จำนวนเต็มตั้งแต่ -1 ถึง 5 มี 5 - (-1) + 1 = 7 จำนวน</div>
+<div class="answer-key"><strong>M9. -5&lt;x&lt;5</strong><br>|x| &lt; 5 เท่ากับ -5 &lt; x &lt; 5</div>
+<div class="answer-key"><strong>M10. x&lt;=-3หรือx&gt;=5</strong><br>x-1 &lt;= -4 หรือ x-1 &gt;= 4 จึง x &lt;= -3 หรือ x &gt;= 5</div>
+<h3>ระดับยาก: เงื่อนไขซ่อน การนับจำนวนเต็ม และพีชคณิต</h3>
+<div class="answer-key"><strong>H1. 5</strong><br>|1-3| + |1+2| = |-2| + |3| = 2 + 3 = 5</div>
+<div class="answer-key"><strong>H2. -2&lt;=x&lt;=3;5</strong><br>สำหรับ x อยู่ในช่วง [-2,3] ผลรวมระยะไปยังปลายทั้งสองเท่ากับ 3 - (-2) = 5 ซึ่งเป็นค่าต่ำสุด</div>
+<div class="answer-key"><strong>H3. -4,-2/3</strong><br>กรณี 1: x-1=2x+3 ได้ x=-4. กรณี 2: x-1=-(2x+3) ได้ 3x=-2 จึง x=-2/3</div>
+<div class="answer-key"><strong>H4. 10</strong><br>-11 &lt; 2x - 5 &lt; 11 จึง -6 &lt; 2x &lt; 16 หรือ -3 &lt; x &lt; 8 จำนวนเต็มคือ -2,-1,0,1,2,3,4,5,6,7 มี 10 จำนวน</div>
+<div class="answer-key"><strong>H5. -1&lt;=x&lt;=4</strong><br>ระยะระหว่าง -1 และ 4 คือ 5 ถ้า x อยู่ระหว่าง -1 ถึง 4 ผลรวมระยะเท่ากับ 5 พอดี คำตอบคือ -1 &lt;= x &lt;= 4</div>
+<div class="answer-key"><strong>H6. -2,5</strong><br>ถ้า x &lt; -1 จะได้ -(x+1) + (4-x) = 7 จึง -2x+3=7 ได้ x=-2. ถ้า x &gt; 4 จะได้ x+1+x-4=7 จึง 2x-3=7 ได้ x=5</div>
+<div class="answer-key"><strong>H7. x&lt;1</strong><br>เปรียบเทียบระยะถึง -3 และ 5 จุดกึ่งกลางคือ 1 ดังนั้น |x+3| &lt; |x-5| เมื่อ x &lt; 1</div>
+<div class="answer-key"><strong>H8. 5</strong><br>ตรวจปลายช่วง: |-3-2|=5 และ |7-2|=5 ดังนั้นค่าสูงสุดคือ 5</div>
+<h3>แนว สอวน. คอม: absolute difference, condition และการนับ</h3>
+<div class="answer-key"><strong>P1. ระยะห่าง</strong><br>abs(a-b) คือระยะห่างหรือความต่างแบบไม่สนทิศทางระหว่าง a และ b</div>
+<div class="answer-key"><strong>P2. 11</strong><br>a-b = -7-4 = -11 ดังนั้น abs(a-b)=11</div>
+<div class="answer-key"><strong>P3. 7</strong><br>7 &lt;= x &lt;= 13 มีจำนวนเต็ม 7 จำนวน</div>
+<div class="answer-key"><strong>P4. x=y</strong><br>abs(x-y)=0 ก็ต่อเมื่อ x-y=0 ดังนั้น x=y</div>
+<div class="answer-key"><strong>P5. 5</strong><br>i = -2,-1,0,1,2 มี 5 ค่า</div>
+<div class="answer-key"><strong>P6. 75,85</strong><br>80-5 &lt;= score &lt;= 80+5 จึงผ่านตั้งแต่ 75 ถึง 85</div>
+<h3>แนวสอบเข้า ม.4: คิดเร็วและระวังช้อยส์หลอก</h3>
+<div class="answer-key"><strong>T1. 2</strong><br>|5-9|=4 ดังนั้น |2-4|=|-2|=2</div>
+<div class="answer-key"><strong>T2. 12</strong><br>x=8 หรือ x=4 ผลบวกคือ 12</div>
+<div class="answer-key"><strong>T3. 13</strong><br>-6 &lt;= x+4 &lt;= 6 จึง -10 &lt;= x &lt;= 2 มี 13 จำนวน</div>
+<div class="answer-key"><strong>T4. -1,4</strong><br>3x-2 = x+6 ได้ x=4. และ 3x-2 = -(x+6) ได้ 4x=-4 จึง x=-1</div>
+<div class="answer-key"><strong>T5. 8</strong><br>เมื่อ 1 &lt;= x &lt;= 9 ผลรวมระยะเท่ากับ 8 ดังนั้นค่าต่ำสุดคือ 8</div>
+<div class="answer-key"><strong>T6. 7</strong><br>เลือก x=5, y=-2 หรือ x=-5, y=2 จะได้ |x-y|=7 ซึ่งมากที่สุด</div></section>
+<div class="footer">OSN Computer Prep Math - Chapter 05 Absolute Value</div></main></div><script>
+function norm(s){return String(s||'').toLowerCase().replace(/\s+/g,'').replace(/−/g,'-').replace(/≤/g,'<=').replace(/≥/g,'>=').replace(/หรือ/g,'or').replace(/–/g,'-');}
+function accepted(input, ans){const got=norm(input); return String(ans).split('|').some(a=>norm(a)===got);}
+function checkOne(btn){const card=btn.closest('.qcard'); const inp=card.querySelector('input'); const fb=card.querySelector('.feedback'); if(accepted(inp.value, inp.dataset.answer)){fb.textContent='ถูกต้อง'; fb.className='feedback ok'; card.dataset.done='1';}else{fb.textContent='ยังไม่ถูก ลองกด Hint หรือเช็กเครื่องหมายอีกครั้ง'; fb.className='feedback no';} updateProgress();}
+function toggleHint(btn){const el=btn.closest('.qcard').querySelector('.hint'); el.style.display=el.style.display==='block'?'none':'block';}
+function toggleSol(btn){const el=btn.closest('.qcard').querySelector('.solution'); el.style.display=el.style.display==='block'?'none':'block';}
+function revealAll(){document.querySelectorAll('.hint,.solution').forEach(e=>e.style.display='block');}
+function hideAll(){document.querySelectorAll('.hint,.solution').forEach(e=>e.style.display='none');}
+function updateProgress(){const cards=[...document.querySelectorAll('.qcard')]; const done=cards.filter(c=>c.dataset.done==='1').length; const pct=cards.length?Math.round(done/cards.length*100):0; document.querySelector('.bar').style.width=pct+'%'; document.getElementById('progressText').textContent=done+' / '+cards.length+' ข้อ';}
+const quizPool=[['|-15|','15'],['|4-10|','6'],['-|8|','-8'],['sqrt((-6)^2)','6'],['|x|=4 มีคำตอบกี่คำตอบ','2'],['abs(-3-5)','8'],['|x-2|<=1 จำนวนเต็ม x มีกี่ค่า','3'],['ระยะห่างระหว่าง -4 และ 7','11']];
+let currentQuiz=quizPool[0];
+function newQuiz(){currentQuiz=quizPool[Math.floor(Math.random()*quizPool.length)]; document.getElementById('quizQ').textContent=currentQuiz[0]; document.getElementById('quizA').value=''; document.getElementById('quizFb').textContent='';}
+function checkQuiz(){const got=norm(document.getElementById('quizA').value); const ans=norm(currentQuiz[1]); const fb=document.getElementById('quizFb'); if(got===ans){fb.textContent='ถูกต้อง'; fb.className='feedback ok';} else {fb.textContent='ยังไม่ถูก คำตอบคือ '+currentQuiz[1]; fb.className='feedback no';}}
+window.addEventListener('load',()=>{updateProgress(); newQuiz();});
+</script></body></html>

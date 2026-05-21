@@ -1,0 +1,652 @@
+<!doctype html>
+<html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>บทที่ 3 เลขยกกำลัง - OSN Math Computer Prep</title><style>
+:root{
+  --blue:#1E3A5F; --teal:#0F766E; --orange:#F59E0B; --bg:#F8FAFC; --ink:#1F2937;
+  --muted:#64748B; --line:#D8E0EA; --card:#FFFFFF; --softblue:#EFF6FF; --softteal:#ECFDF5; --softorange:#FFF7ED;
+}
+*{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans Thai","Sarabun",Tahoma,Arial,sans-serif;line-height:1.65}
+a{color:var(--teal);text-decoration:none}.layout{display:grid;grid-template-columns:280px 1fr;min-height:100vh}.sidebar{position:sticky;top:0;height:100vh;overflow:auto;padding:24px 20px;background:#0f253f;color:white}.brand{font-size:14px;color:#BFE9E2;text-transform:uppercase;letter-spacing:.08em}.sidebar h1{font-size:24px;line-height:1.25;margin:8px 0 6px}.sidebar p{color:#D7E3F0;font-size:14px}.nav a{display:block;color:#E5F1FF;padding:9px 10px;border-radius:10px;margin:2px 0;font-size:14px}.nav a:hover{background:rgba(255,255,255,.11)}.main{max-width:1060px;margin:auto;padding:32px}.hero{background:linear-gradient(135deg,#1E3A5F,#0F766E);color:white;border-radius:24px;padding:32px;box-shadow:0 18px 45px rgba(15,23,42,.16)}.hero h1{font-size:34px;line-height:1.25;margin:0 0 8px}.hero p{max-width:850px;color:#EAF6FF}.pillrow{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}.pill{background:rgba(255,255,255,.15);padding:6px 12px;border-radius:999px;font-size:13px}.toolbar{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}.toolbar button, .answer-row button, .quiz button{border:0;background:var(--blue);color:white;border-radius:10px;padding:9px 13px;cursor:pointer;font-family:inherit}.toolbar .ghost,.answer-row .ghost{background:#E6EEF7;color:var(--blue)}section{background:var(--card);border:1px solid var(--line);border-radius:20px;margin:22px 0;padding:24px;box-shadow:0 6px 20px rgba(15,23,42,.04)}h2{font-size:24px;color:var(--blue);margin:0 0 14px}h3{font-size:18px;color:var(--teal);margin:18px 0 8px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.formula{border-left:5px solid var(--teal);background:var(--softblue);border-radius:14px;padding:14px}.formula .name{font-weight:700;color:var(--blue)}.math{font-family:"Noto Sans",Arial,sans-serif;font-weight:700;font-size:18px;margin:6px 0;color:#0f172a}.note{background:var(--softteal);border-left:5px solid var(--teal);padding:13px 16px;border-radius:12px}.warn{background:var(--softorange);border-left:5px solid var(--orange);padding:13px 16px;border-radius:12px}.example{background:#FBFDFF;border:1px solid #DCE8F5;border-radius:16px;padding:16px;margin:14px 0}.example-title{font-weight:800;color:var(--blue)}.step{margin:6px 0;padding-left:14px;border-left:3px solid #DFE7F1}.result{display:inline-block;margin-top:8px;background:#ECFDF5;color:#065F46;font-weight:800;padding:5px 10px;border-radius:8px}.qcard{border:1px solid var(--line);border-radius:16px;padding:16px;margin:14px 0;background:#FEFEFF}.qtop{display:flex;gap:10px;align-items:flex-start}.badge{background:var(--orange);color:#111827;font-weight:800;border-radius:9px;padding:2px 8px;min-width:38px;text-align:center}.answer-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.answer-row input{flex:1;min-width:220px;border:1px solid #CBD5E1;border-radius:10px;padding:10px 12px;font-family:inherit;font-size:15px}.feedback{font-weight:700;margin:8px 0 0}.ok{color:#047857}.no{color:#B91C1C}.hidden{display:none}.hint,.solution{margin-top:10px;padding:10px 12px;border-radius:12px}.hint{background:#FFFBEB}.solution{background:#ECFDF5}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:14px}.mini-table{width:100%;border-collapse:collapse;margin:12px 0}.mini-table th,.mini-table td{border:1px solid var(--line);padding:9px;text-align:left}.mini-table th{background:#F1F5F9;color:var(--blue)}.quiz{background:#F8FAFC;border:1px dashed #94A3B8;border-radius:16px;padding:16px}.quiz .big{font-size:26px;font-weight:800;color:var(--blue);margin:6px 0}.progress{height:10px;background:#E2E8F0;border-radius:999px;overflow:hidden}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--orange));transition:.3s}.small{font-size:13px;color:var(--muted)}.footer{color:#64748B;text-align:center;font-size:13px;padding:24px}
+@media(max-width:900px){.layout{display:block}.sidebar{position:relative;height:auto}.main{padding:18px}.grid,.twocol{grid-template-columns:1fr}.hero h1{font-size:28px}}
+@media print{.sidebar,.toolbar,.answer-row,.feedback,.hint,.solution,.interactive-only{display:none!important}body{background:white;font-size:11.5pt}.layout{display:block}.main{max-width:none;padding:0}.hero,section{box-shadow:none;break-inside:avoid}.hero{background:#fff;color:#111;border:2px solid #1E3A5F}.hero p{color:#111}.pill{border:1px solid #CBD5E1;color:#111}.qcard{break-inside:avoid}.grid{grid-template-columns:1fr 1fr}.footer{display:none}}
+</style></head>
+<body><div class="layout"><aside class="sidebar"><div class="brand">OSN Computer Prep Math</div><h1>บทที่ 3<br>เลขยกกำลัง</h1><p>จากการคูณซ้ำ สู่การคิดแบบทวีคูณและ binary</p><div class="progress"><div class="bar"></div></div><p id="progressText">0 / 0 ข้อ</p><nav class="nav"><a href="#overview">ภาพรวม</a><a href="#vocab">คำศัพท์</a><a href="#rules">สูตรสำคัญ</a><a href="#examples">ตัวอย่าง</a><a href="#traps">จุดหลอก</a><a href="#programmer">คิดแบบโปรแกรมเมอร์</a><a href="#practice">แบบฝึกหัด</a><a href="#quiz">Mini Quiz</a><a href="#answers">เฉลย</a></nav></aside>
+<main class="main"><header class="hero" id="overview"><h1>เลขยกกำลัง (Exponents)</h1><p>บทนี้ทำให้นักเรียนเข้าใจว่าเลขยกกำลังไม่ใช่แค่สูตรจำ แต่เป็นภาษาของการเติบโตแบบทวีคูณ การลดรูปจำนวนขนาดใหญ่ การคิดแบบฐานสอง และการวิเคราะห์จำนวนรอบของขั้นตอนวิธีในคอมพิวเตอร์</p><div class="pillrow"><span class="pill">ระดับ ม.ต้น</span><span class="pill">สอวน. คอม</span><span class="pill">สอบเข้า ม.4</span><span class="pill">Interactive + Printable</span></div></header>
+<div class="toolbar interactive-only"><button onclick="revealAll()">เปิด Hint/เฉลยทั้งหมด</button><button class="ghost" onclick="hideAll()">ซ่อน Hint/เฉลย</button><button class="ghost" onclick="window.print()">พิมพ์ / Save PDF</button></div>
+<section id="vocab"><h2>1. เป้าหมายและคำศัพท์สำคัญ</h2><div class="twocol"><div><h3>เป้าหมายการเรียนรู้</h3><ul><li>เข้าใจความหมายของฐานและเลขชี้กำลัง</li><li>ใช้กฎเลขยกกำลังได้ถูกต้อง</li><li>ระวังความต่างระหว่าง (-a)^n และ -a^n</li><li>เชื่อมเลขยกกำลังกับ pattern, binary, loop และ modulo</li></ul></div><div><h3>คำศัพท์ไทย-อังกฤษ</h3><table class="mini-table"><tr><th>ไทย</th><th>อังกฤษ</th></tr><tr><td>ฐาน</td><td>Base</td></tr><tr><td>เลขชี้กำลัง</td><td>Exponent</td></tr><tr><td>กำลังสอง</td><td>Square</td></tr><tr><td>กำลังสาม</td><td>Cube</td></tr><tr><td>เลขชี้กำลังลบ</td><td>Negative exponent</td></tr><tr><td>รูปมาตรฐานวิทยาศาสตร์</td><td>Scientific notation</td></tr></table></div></div></section>
+<section id="rules"><h2>2. สูตรและกฎที่ต้องแม่น</h2><p class="note">หลักจำสั้น ๆ: <strong>คูณ = บวกชี้กำลัง, หาร = ลบชี้กำลัง, ซ้อน = คูณชี้กำลัง</strong> แต่ต้องเป็นฐานเดียวกันหรืออยู่ในรูปที่แปลงฐานได้ก่อน</p><div class="grid"><div class="formula"><div class="name">ความหมายพื้นฐาน</div><div class="math">a^n = a x a x ... x a (ทั้งหมด n ตัว)</div><div class="small">a คือฐาน (base), n คือเลขชี้กำลัง (exponent)</div></div>
+<div class="formula"><div class="name">คูณฐานเดียวกัน</div><div class="math">a^m x a^n = a^(m+n)</div><div class="small">ฐานเหมือนกัน คูณกัน -&gt; บวกเลขชี้กำลัง</div></div>
+<div class="formula"><div class="name">หารฐานเดียวกัน</div><div class="math">a^m / a^n = a^(m-n), a != 0</div><div class="small">ฐานเหมือนกัน หารกัน -&gt; ลบเลขชี้กำลัง</div></div>
+<div class="formula"><div class="name">กำลังซ้อนกำลัง</div><div class="math">(a^m)^n = a^(mn)</div><div class="small">เลขชี้กำลังซ้อนกัน -&gt; คูณเลขชี้กำลัง</div></div>
+<div class="formula"><div class="name">กระจายกำลัง</div><div class="math">(ab)^n = a^n b^n และ (a/b)^n = a^n/b^n</div><div class="small">ยกกำลังให้ทุกตัวในวงเล็บ</div></div>
+<div class="formula"><div class="name">กำลังศูนย์</div><div class="math">a^0 = 1, เมื่อ a != 0</div><div class="small">ห้ามใช้กับ 0^0 ในระดับนี้ ให้ถือว่าไม่กำหนด</div></div>
+<div class="formula"><div class="name">กำลังลบ</div><div class="math">a^-n = 1/a^n, เมื่อ a != 0</div><div class="small">เลขชี้กำลังลบไม่ได้แปลว่าค่าติดลบ</div></div>
+<div class="formula"><div class="name">จำนวนลบยกกำลัง</div><div class="math">(-a)^even เป็นบวก, (-a)^odd เป็นลบ</div><div class="small">วงเล็บสำคัญมาก: (-3)^2 != -3^2</div></div></div></section>
+<section id="examples"><h2>3. ตัวอย่างพร้อมวิธีคิดทีละขั้น</h2><div class="example"><div class="example-title">ตัวอย่างที่ 1: ใช้กฎคูณและหารฐานเดียวกัน</div><p><strong>โจทย์:</strong> ลดรูป 2^7 x 2^3 / 2^4</p><div class="step">รวมด้านบนก่อน: 2^7 x 2^3 = 2^10</div><div class="step">หารด้วย 2^4 จึงได้ 2^(10-4) = 2^6</div><div class="step">2^6 = 64</div><div class="result">คำตอบ: 64</div></div>
+<div class="example"><div class="example-title">ตัวอย่างที่ 2: แปลงฐานก่อนคำนวณ</div><p><strong>โจทย์:</strong> คำนวณ 8^4 / 16^2</p><div class="step">8 = 2^3 ดังนั้น 8^4 = (2^3)^4 = 2^12</div><div class="step">16 = 2^4 ดังนั้น 16^2 = (2^4)^2 = 2^8</div><div class="step">2^12 / 2^8 = 2^4 = 16</div><div class="result">คำตอบ: 16</div></div>
+<div class="example"><div class="example-title">ตัวอย่างที่ 3: เครื่องหมายลบกับวงเล็บ</div><p><strong>โจทย์:</strong> เปรียบเทียบ (-4)^2 และ -4^2</p><div class="step">(-4)^2 = (-4)(-4) = 16</div><div class="step">-4^2 = -(4^2) = -16</div><div class="step">ดังนั้นสองค่านี้ไม่เท่ากัน</div><div class="result">คำตอบ: (-4)^2 = 16 แต่ -4^2 = -16</div></div>
+<div class="example"><div class="example-title">ตัวอย่างที่ 4: แนวคิดคอมพิวเตอร์</div><p><strong>โจทย์:</strong> หาค่า k น้อยที่สุดที่ทำให้ 2^k &gt;= 500</p><div class="step">2^8 = 256 ยังไม่ถึง 500</div><div class="step">2^9 = 512 ถึง 500 แล้ว</div><div class="step">ดังนั้น k = 9</div><div class="result">คำตอบ: 9</div></div></section>
+<section id="traps"><h2>4. จุดหลอกข้อสอบที่ต้องระวัง</h2><div class="grid"><div class="warn"><strong>a^0 = 1 ใช้ได้เมื่อ a != 0</strong><br>0^0 ไม่ควรสรุปว่าเท่ากับ 1 ในบริบท ม.ต้น</div><div class="warn"><strong>เลขชี้กำลังลบไม่ใช่จำนวนลบ</strong><br>2^-3 = 1/8 ไม่ใช่ -8</div><div class="warn"><strong>วงเล็บเปลี่ยนคำตอบ</strong><br>(-3)^2 = 9 แต่ -3^2 = -9</div><div class="warn"><strong>ห้ามบวกเลขชี้กำลังเมื่อฐานต่างกัน</strong><br>2^3 x 3^3 = (2x3)^3 = 6^3 แต่ 2^3 x 3^4 รวมไม่ได้โดยตรง</div><div class="warn"><strong>อย่ากระจายกำลังข้ามการบวก</strong><br>(a+b)^2 ไม่เท่ากับ a^2 + b^2</div></div></section>
+<section id="programmer"><h2>5. มุมคิดแบบโปรแกรมเมอร์</h2><p>เลขยกกำลัง โดยเฉพาะฐาน 2 ปรากฏในคอมพิวเตอร์บ่อยมาก เพราะข้อมูลดิจิทัลใช้ระบบฐานสอง เช่น 2^10 = 1024 ซึ่งใกล้กับ 1,000 จึงเห็นหน่วยอย่าง KB, MB, GB ในบริบทคอมพิวเตอร์</p><table class="mini-table"><tr><th>แนวคิดคณิตศาสตร์</th><th>เชื่อมกับคอมพิวเตอร์</th></tr><tr><td>2^n</td><td>ขนาดข้อมูล การแบ่งครึ่ง binary search</td></tr><tr><td>เลขชี้กำลังลบ</td><td>ส่วนกลับ ความน่าจะเป็นเล็ก ๆ</td></tr><tr><td>เลขหลักหน่วยเป็นคาบ</td><td>modular arithmetic และ pattern</td></tr><tr><td>หาค่า k ที่ 2^k เกิน n</td><td>จำนวนรอบของ loop ที่หารครึ่งซ้ำ ๆ</td></tr></table><div class="warn"><strong>สังเกต:</strong> ถ้าโจทย์ถามจำนวนรอบที่หารครึ่งซ้ำ ๆ มักเกี่ยวกับกำลังของ 2 และค่า log แบบไม่ต้องใช้เครื่องคิดเลข</div></section>
+<section id="practice"><h2>6. แบบฝึกหัด Interactive</h2><p>พิมพ์คำตอบแล้วกดตรวจคำตอบ หากติดให้กด Hint ก่อนเปิดเฉลย เพื่อฝึกคิดเองทีละขั้น</p><section class="exercise-section" id="ex-easy"><h2>ระดับง่าย: เช็กความเข้าใจพื้นฐาน</h2>
+
+            <div class="qcard" data-q="E1">
+              <div class="qtop"><span class="badge">E1</span><strong>คำนวณ 2^5</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer E1" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="32">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> 2^5 หมายถึง 2 คูณกัน 5 ตัว</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 2^5 = 2 x 2 x 2 x 2 x 2 = 32</div>
+            </div>
+
+            <div class="qcard" data-q="E2">
+              <div class="qtop"><span class="badge">E2</span><strong>คำนวณ 5^0</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer E2" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="1">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> จำนวนที่ไม่เป็นศูนย์ ยกกำลัง 0 ได้ 1</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 5^0 = 1 เพราะ a^0 = 1 เมื่อ a != 0</div>
+            </div>
+
+            <div class="qcard" data-q="E3">
+              <div class="qtop"><span class="badge">E3</span><strong>เขียน 10^-3 เป็นเศษส่วนอย่างง่าย</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer E3" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="1/1000|0.001">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> เลขชี้กำลังลบให้กลับเป็นส่วนกลับ</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 10^-3 = 1/10^3 = 1/1000 = 0.001</div>
+            </div>
+
+            <div class="qcard" data-q="E4">
+              <div class="qtop"><span class="badge">E4</span><strong>คำนวณ (-3)^2</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer E4" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="9">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> วงเล็บทำให้ฐานคือ -3 ทั้งจำนวน</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> (-3)^2 = (-3)(-3) = 9</div>
+            </div>
+
+            <div class="qcard" data-q="E5">
+              <div class="qtop"><span class="badge">E5</span><strong>คำนวณ -3^2</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer E5" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="-9">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> ต้องยกกำลัง 3 ก่อน แล้วจึงใส่เครื่องหมายลบหน้า</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> -3^2 = -(3^2) = -9</div>
+            </div>
+
+            <div class="qcard" data-q="E6">
+              <div class="qtop"><span class="badge">E6</span><strong>คำนวณ 2^3 x 2^4</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer E6" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="128|2^7">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> ฐานเท่ากันและคูณกัน ให้บวกเลขชี้กำลัง</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 2^3 x 2^4 = 2^(3+4) = 2^7 = 128</div>
+            </div>
+
+            <div class="qcard" data-q="E7">
+              <div class="qtop"><span class="badge">E7</span><strong>คำนวณ 7^6 / 7^2</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer E7" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="2401|7^4">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> ฐานเท่ากันและหารกัน ให้ลบเลขชี้กำลัง</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 7^6 / 7^2 = 7^(6-2) = 7^4 = 2401</div>
+            </div>
+
+            <div class="qcard" data-q="E8">
+              <div class="qtop"><span class="badge">E8</span><strong>คำนวณ (3^2)^3</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer E8" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="729|3^6">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> กำลังซ้อนกำลัง ให้คูณเลขชี้กำลัง</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> (3^2)^3 = 3^(2x3) = 3^6 = 729</div>
+            </div>
+
+            <div class="qcard" data-q="E9">
+              <div class="qtop"><span class="badge">E9</span><strong>คำนวณ (2 x 5)^3</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer E9" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="1000">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> (ab)^n = a^n b^n หรือคิด 10^3 ก็ได้</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> (2 x 5)^3 = 10^3 = 1000</div>
+            </div>
+
+            <div class="qcard" data-q="E10">
+              <div class="qtop"><span class="badge">E10</span><strong>คำนวณ (6/2)^4</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer E10" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="81|3^4">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> ลดเศษส่วนในวงเล็บก่อน</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> (6/2)^4 = 3^4 = 81</div>
+            </div>
+
+            <div class="qcard" data-q="E11">
+              <div class="qtop"><span class="badge">E11</span><strong>เขียน 450000 ในรูป a x 10^n เมื่อ 1 &lt;= a &lt; 10</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer E11" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="4.5x10^5|4.5*10^5|4.5×10^5">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> เลื่อนจุดทศนิยมให้เหลือตัวหน้าอยู่ระหว่าง 1 ถึง 10</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 450000 = 4.5 x 100000 = 4.5 x 10^5</div>
+            </div>
+
+            <div class="qcard" data-q="E12">
+              <div class="qtop"><span class="badge">E12</span><strong>เขียน 0.00072 ในรูป a x 10^n เมื่อ 1 &lt;= a &lt; 10</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer E12" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="7.2x10^-4|7.2*10^-4|7.2×10^-4">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> จำนวนเล็กกว่า 1 จะได้เลขชี้กำลังติดลบ</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 0.00072 = 7.2 x 10^-4</div>
+            </div>
+</section>
+<section class="exercise-section" id="ex-medium"><h2>ระดับปานกลาง: ใช้กฎหลายตัวร่วมกัน</h2>
+
+            <div class="qcard" data-q="M1">
+              <div class="qtop"><span class="badge">M1</span><strong>ลดรูป x^3 x x^5 / x^2</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer M1" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="x^6|x6">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> รวมเลขชี้กำลังก่อน แล้วลบเลขชี้กำลังจากตัวส่วน</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> x^3 x x^5 / x^2 = x^(3+5-2) = x^6</div>
+            </div>
+
+            <div class="qcard" data-q="M2">
+              <div class="qtop"><span class="badge">M2</span><strong>ลดรูป (2a^3b)^2</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer M2" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="4a^6b^2|4a6b2">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> ยกกำลังให้ทุกตัวในวงเล็บ</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> (2a^3b)^2 = 2^2 a^(3x2) b^2 = 4a^6b^2</div>
+            </div>
+
+            <div class="qcard" data-q="M3">
+              <div class="qtop"><span class="badge">M3</span><strong>คำนวณ 3^8 / 9^2</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer M3" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="81|3^4">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> เปลี่ยน 9 เป็น 3^2 ก่อน</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 9^2 = (3^2)^2 = 3^4 ดังนั้น 3^8 / 9^2 = 3^8 / 3^4 = 3^4 = 81</div>
+            </div>
+
+            <div class="qcard" data-q="M4">
+              <div class="qtop"><span class="badge">M4</span><strong>คำนวณ 16^3 / 8^4</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer M4" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="1">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> เปลี่ยนเป็นฐาน 2 ทั้งหมด</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 16^3 = (2^4)^3 = 2^12 และ 8^4 = (2^3)^4 = 2^12 ดังนั้นคำตอบคือ 1</div>
+            </div>
+
+            <div class="qcard" data-q="M5">
+              <div class="qtop"><span class="badge">M5</span><strong>ลดรูป 5^n x 25 ให้อยู่ในรูปกำลังของ 5</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer M5" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="5^(n+2)|5^n+2|5^(2+n)">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> 25 = 5^2</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 5^n x 25 = 5^n x 5^2 = 5^(n+2)</div>
+            </div>
+
+            <div class="qcard" data-q="M6">
+              <div class="qtop"><span class="badge">M6</span><strong>หา n เมื่อ 2^n = 64</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer M6" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="6">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> 64 คือ 2 คูณตัวเองกี่ครั้ง</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 64 = 2^6 ดังนั้น n = 6</div>
+            </div>
+
+            <div class="qcard" data-q="M7">
+              <div class="qtop"><span class="badge">M7</span><strong>จำนวนใดมากกว่า: 3^4 หรือ 4^3</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer M7" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="3^4|81|3^4มากกว่า">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> คำนวณหรือเปรียบเทียบโดยตรง</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 3^4 = 81 และ 4^3 = 64 ดังนั้น 3^4 มากกว่า</div>
+            </div>
+
+            <div class="qcard" data-q="M8">
+              <div class="qtop"><span class="badge">M8</span><strong>คำนวณ (10^3)^2 / 10^4</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer M8" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="100|10^2">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> กำลังซ้อนกำลังก่อน แล้วหารฐานเดียวกัน</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> (10^3)^2 / 10^4 = 10^6 / 10^4 = 10^2 = 100</div>
+            </div>
+
+            <div class="qcard" data-q="M9">
+              <div class="qtop"><span class="badge">M9</span><strong>คำนวณ (-2)^5 + (-2)^4</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer M9" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="-16">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> กำลังคี่ของจำนวนลบเป็นลบ กำลังคู่เป็นบวก</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> (-2)^5 = -32 และ (-2)^4 = 16 ดังนั้นผลรวม = -16</div>
+            </div>
+
+            <div class="qcard" data-q="M10">
+              <div class="qtop"><span class="badge">M10</span><strong>ถ้า 2^a = 8 และ 3^b = 81 จงหา a + b</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer M10" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="7">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> เขียน 8 และ 81 เป็นกำลัง</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 8 = 2^3 จึง a = 3 และ 81 = 3^4 จึง b = 4 ดังนั้น a+b = 7</div>
+            </div>
+</section>
+<section class="exercise-section" id="ex-hard"><h2>ระดับยาก: สังเกตแพตเทิร์นและแปลงโจทย์</h2>
+
+            <div class="qcard" data-q="H1">
+              <div class="qtop"><span class="badge">H1</span><strong>หาเลขหลักหน่วยของ 7^2026</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer H1" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="9">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> เลขหลักหน่วยของ 7^n มีคาบ 4: 7, 9, 3, 1</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 2026 หาร 4 เหลือ 2 จึงใช้ตำแหน่งที่ 2 ของคาบ 7,9,3,1 คำตอบคือ 9</div>
+            </div>
+
+            <div class="qcard" data-q="H2">
+              <div class="qtop"><span class="badge">H2</span><strong>หาเลขหลักหน่วยของ 3^100 + 2^100</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer H2" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="7">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> ดูคาบเลขหลักหน่วยของ 3^n และ 2^n</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 3^100 มีหลักหน่วย 1 และ 2^100 มีหลักหน่วย 6 รวมได้ 7</div>
+            </div>
+
+            <div class="qcard" data-q="H3">
+              <div class="qtop"><span class="badge">H3</span><strong>หา x เมื่อ 2^(x+1) + 2^x = 24</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer H3" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="3">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> ดึง 2^x เป็นตัวร่วม</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 2^(x+1) + 2^x = 2x2^x + 2^x = 3x2^x = 24 จึง 2^x = 8 และ x = 3</div>
+            </div>
+
+            <div class="qcard" data-q="H4">
+              <div class="qtop"><span class="badge">H4</span><strong>ถ้า a = 2^5 x 3^2 และ b = 2^3 x 3^4 จงหา ห.ร.ม. ของ a และ b</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer H4" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="72|2^3x3^2|2^3*3^2">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> ห.ร.ม. ใช้เลขชี้กำลังที่น้อยกว่าในแต่ละฐานเฉพาะ</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> ห.ร.ม. = 2^min(5,3) x 3^min(2,4) = 2^3 x 3^2 = 8 x 9 = 72</div>
+            </div>
+
+            <div class="qcard" data-q="H5">
+              <div class="qtop"><span class="badge">H5</span><strong>ลดรูป ((x^-2 y^3)^2) / (x y^-1)</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer H5" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="y^7/x^5|x^-5y^7|y^7x^-5">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> ทำกำลังด้านบนก่อน แล้วหารด้วย x y^-1</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> (x^-2 y^3)^2 = x^-4 y^6 จากนั้นหารด้วย x y^-1 ได้ x^(-4-1) y^(6-(-1)) = x^-5 y^7 = y^7/x^5</div>
+            </div>
+
+            <div class="qcard" data-q="H6">
+              <div class="qtop"><span class="badge">H6</span><strong>หา n เมื่อ 4^n = 2^20</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer H6" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="10">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> เปลี่ยน 4 เป็น 2^2</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 4^n = (2^2)^n = 2^(2n) = 2^20 ดังนั้น 2n = 20 และ n = 10</div>
+            </div>
+
+            <div class="qcard" data-q="H7">
+              <div class="qtop"><span class="badge">H7</span><strong>จำนวน 2^10 มีค่ากี่หลัก</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer H7" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="4">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> คำนวณ 2^10 ก่อน</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 2^10 = 1024 จึงมี 4 หลัก</div>
+            </div>
+
+            <div class="qcard" data-q="H8">
+              <div class="qtop"><span class="badge">H8</span><strong>จงหา k มากที่สุดที่ทำให้ 2^k หาร 48! ลงตัว</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer H8" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="46">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> นับจำนวนตัวประกอบ 2 ใน 48!</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> k = floor(48/2)+floor(48/4)+floor(48/8)+floor(48/16)+floor(48/32) = 24+12+6+3+1 = 46</div>
+            </div>
+</section>
+<section class="exercise-section" id="ex-posn"><h2>แนว สอวน. คอม: เชื่อมกับการคิดแบบโปรแกรมเมอร์</h2>
+
+            <div class="qcard" data-q="P1">
+              <div class="qtop"><span class="badge">P1</span><strong>ให้ x = 1 แล้วทำซ้ำ 8 รอบ: x = x x 2 ค่าสุดท้ายของ x คือเท่าใด</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer P1" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="256|2^8">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> เริ่มจาก 1 แล้วคูณ 2 ทั้งหมด 8 ครั้ง</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> หลัง 8 รอบ ได้ x = 2^8 = 256</div>
+            </div>
+
+            <div class="qcard" data-q="P2">
+              <div class="qtop"><span class="badge">P2</span><strong>ข้อมูลเริ่มต้น 3 หน่วย และเพิ่มเป็นสองเท่าทุกวัน หลังผ่านไป 6 วันมีข้อมูลกี่หน่วย</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer P2" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="192">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> เพิ่มเป็นสองเท่า 6 ครั้ง จึงคูณด้วย 2^6</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 3 x 2^6 = 3 x 64 = 192</div>
+            </div>
+
+            <div class="qcard" data-q="P3">
+              <div class="qtop"><span class="badge">P3</span><strong>กำหนด n = 1000 แล้วทำซ้ำ while n &gt;= 2: n = n // 2 จะทำซ้ำกี่รอบ</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer P3" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="9">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> นับการหารครึ่งแบบปัดเศษลงจนเหลือ 1</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 1000 -&gt; 500 -&gt; 250 -&gt; 125 -&gt; 62 -&gt; 31 -&gt; 15 -&gt; 7 -&gt; 3 -&gt; 1 รวม 9 รอบ</div>
+            </div>
+
+            <div class="qcard" data-q="P4">
+              <div class="qtop"><span class="badge">P4</span><strong>หาค่า k น้อยที่สุดที่ทำให้ 2^k &gt; 1000</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer P4" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="10">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> เปรียบเทียบ 2^9 และ 2^10</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 2^9 = 512 ยังไม่เกิน 1000 แต่ 2^10 = 1024 เกิน 1000 ดังนั้น k = 10</div>
+            </div>
+
+            <div class="qcard" data-q="P5">
+              <div class="qtop"><span class="badge">P5</span><strong>หาเศษของ 2^2026 เมื่อหารด้วย 7</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer P5" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="2">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> ดูคาบของ 2^n mod 7: 2, 4, 1</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 2026 หาร 3 เหลือ 1 จึงเท่ากับตำแหน่งที่ 1 ของคาบ คือ 2</div>
+            </div>
+</section>
+<section class="exercise-section" id="ex-tu"><h2>แนวสอบเข้า ม.4: คิดเร็วและระวังช้อยส์หลอก</h2>
+
+            <div class="qcard" data-q="T1">
+              <div class="qtop"><span class="badge">T1</span><strong>จำนวนใดมากกว่า: 2^30 หรือ 3^20</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer T1" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="3^20">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> เขียนเป็นกำลังที่มีเลขชี้กำลังเท่ากัน</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 2^30 = (2^3)^10 = 8^10 และ 3^20 = (3^2)^10 = 9^10 ดังนั้น 3^20 มากกว่า</div>
+            </div>
+
+            <div class="qcard" data-q="T2">
+              <div class="qtop"><span class="badge">T2</span><strong>ถ้า x = 2^3 x 3^2 และ y = 2^5 x 3 จงหา ค.ร.น. ของ x และ y</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer T2" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="288|2^5x3^2|2^5*3^2">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> ค.ร.น. ใช้เลขชี้กำลังที่มากกว่าในแต่ละฐานเฉพาะ</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> ค.ร.น. = 2^max(3,5) x 3^max(2,1) = 2^5 x 3^2 = 32 x 9 = 288</div>
+            </div>
+
+            <div class="qcard" data-q="T3">
+              <div class="qtop"><span class="badge">T3</span><strong>ลดรูป (a^2 b^-3)^-2</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer T3" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="b^6/a^4|a^-4b^6|b^6a^-4">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> เลขชี้กำลังซ้อนให้คูณกัน</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> (a^2 b^-3)^-2 = a^-4 b^6 = b^6/a^4</div>
+            </div>
+
+            <div class="qcard" data-q="T4">
+              <div class="qtop"><span class="badge">T4</span><strong>แก้สมการ 9^x = 27^(x-1)</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer T4" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="3">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> เปลี่ยน 9 และ 27 เป็นฐาน 3</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> 9^x = 3^(2x) และ 27^(x-1) = 3^(3x-3) จึง 2x = 3x - 3 ได้ x = 3</div>
+            </div>
+
+            <div class="qcard" data-q="T5">
+              <div class="qtop"><span class="badge">T5</span><strong>ถ้า x = 1/2 จงหา x^-3 + x^-2</strong></div>
+              <div class="answer-row">
+                <input aria-label="answer T5" placeholder="พิมพ์คำตอบ เช่น 32 หรือ 2^5" data-answer="12">
+                <button type="button" onclick="checkOne(this)">ตรวจคำตอบ</button>
+                <button type="button" class="ghost" onclick="toggleHint(this)">Hint</button>
+                <button type="button" class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+              </div>
+              <p class="feedback" aria-live="polite"></p>
+              <div class="hint hidden"><strong>คำใบ้:</strong> เลขชี้กำลังลบคือส่วนกลับ</div>
+              <div class="solution hidden"><strong>เฉลย:</strong> x^-3 = (1/2)^-3 = 8 และ x^-2 = 4 ดังนั้นผลรวม = 12</div>
+            </div>
+</section></section>
+<section id="quiz"><h2>7. Mini Quiz สุ่มโจทย์สั้น</h2><div class="quiz"><p>กดสุ่มโจทย์เพื่อฝึกคิดเร็ว</p><div class="big" id="quizQ">2^8</div><input id="quizA" placeholder="พิมพ์คำตอบ" style="padding:10px;border:1px solid #CBD5E1;border-radius:10px;font-family:inherit"><button onclick="checkQuiz()">ตรวจ</button><button class="ghost" onclick="newQuiz()">สุ่มใหม่</button><p id="quizFb" class="feedback"></p></div></section>
+<section id="answers"><h2>8. เฉลยท้ายบท</h2><p class="small">ในไฟล์ HTML สามารถกดเปิดเฉลยใต้แต่ละข้อได้ ส่วนด้านล่างเป็นเฉลยรวมแบบย่อเพื่อทบทวน</p><h2>เฉลย: ระดับง่าย: เช็กความเข้าใจพื้นฐาน</h2>
+<div class="answer-key"><strong>E1.</strong> 2^5 = 2 x 2 x 2 x 2 x 2 = 32</div>
+<div class="answer-key"><strong>E2.</strong> 5^0 = 1 เพราะ a^0 = 1 เมื่อ a != 0</div>
+<div class="answer-key"><strong>E3.</strong> 10^-3 = 1/10^3 = 1/1000 = 0.001</div>
+<div class="answer-key"><strong>E4.</strong> (-3)^2 = (-3)(-3) = 9</div>
+<div class="answer-key"><strong>E5.</strong> -3^2 = -(3^2) = -9</div>
+<div class="answer-key"><strong>E6.</strong> 2^3 x 2^4 = 2^(3+4) = 2^7 = 128</div>
+<div class="answer-key"><strong>E7.</strong> 7^6 / 7^2 = 7^(6-2) = 7^4 = 2401</div>
+<div class="answer-key"><strong>E8.</strong> (3^2)^3 = 3^(2x3) = 3^6 = 729</div>
+<div class="answer-key"><strong>E9.</strong> (2 x 5)^3 = 10^3 = 1000</div>
+<div class="answer-key"><strong>E10.</strong> (6/2)^4 = 3^4 = 81</div>
+<div class="answer-key"><strong>E11.</strong> 450000 = 4.5 x 100000 = 4.5 x 10^5</div>
+<div class="answer-key"><strong>E12.</strong> 0.00072 = 7.2 x 10^-4</div>
+<h2>เฉลย: ระดับปานกลาง: ใช้กฎหลายตัวร่วมกัน</h2>
+<div class="answer-key"><strong>M1.</strong> x^3 x x^5 / x^2 = x^(3+5-2) = x^6</div>
+<div class="answer-key"><strong>M2.</strong> (2a^3b)^2 = 2^2 a^(3x2) b^2 = 4a^6b^2</div>
+<div class="answer-key"><strong>M3.</strong> 9^2 = (3^2)^2 = 3^4 ดังนั้น 3^8 / 9^2 = 3^8 / 3^4 = 3^4 = 81</div>
+<div class="answer-key"><strong>M4.</strong> 16^3 = (2^4)^3 = 2^12 และ 8^4 = (2^3)^4 = 2^12 ดังนั้นคำตอบคือ 1</div>
+<div class="answer-key"><strong>M5.</strong> 5^n x 25 = 5^n x 5^2 = 5^(n+2)</div>
+<div class="answer-key"><strong>M6.</strong> 64 = 2^6 ดังนั้น n = 6</div>
+<div class="answer-key"><strong>M7.</strong> 3^4 = 81 และ 4^3 = 64 ดังนั้น 3^4 มากกว่า</div>
+<div class="answer-key"><strong>M8.</strong> (10^3)^2 / 10^4 = 10^6 / 10^4 = 10^2 = 100</div>
+<div class="answer-key"><strong>M9.</strong> (-2)^5 = -32 และ (-2)^4 = 16 ดังนั้นผลรวม = -16</div>
+<div class="answer-key"><strong>M10.</strong> 8 = 2^3 จึง a = 3 และ 81 = 3^4 จึง b = 4 ดังนั้น a+b = 7</div>
+<h2>เฉลย: ระดับยาก: สังเกตแพตเทิร์นและแปลงโจทย์</h2>
+<div class="answer-key"><strong>H1.</strong> 2026 หาร 4 เหลือ 2 จึงใช้ตำแหน่งที่ 2 ของคาบ 7,9,3,1 คำตอบคือ 9</div>
+<div class="answer-key"><strong>H2.</strong> 3^100 มีหลักหน่วย 1 และ 2^100 มีหลักหน่วย 6 รวมได้ 7</div>
+<div class="answer-key"><strong>H3.</strong> 2^(x+1) + 2^x = 2x2^x + 2^x = 3x2^x = 24 จึง 2^x = 8 และ x = 3</div>
+<div class="answer-key"><strong>H4.</strong> ห.ร.ม. = 2^min(5,3) x 3^min(2,4) = 2^3 x 3^2 = 8 x 9 = 72</div>
+<div class="answer-key"><strong>H5.</strong> (x^-2 y^3)^2 = x^-4 y^6 จากนั้นหารด้วย x y^-1 ได้ x^(-4-1) y^(6-(-1)) = x^-5 y^7 = y^7/x^5</div>
+<div class="answer-key"><strong>H6.</strong> 4^n = (2^2)^n = 2^(2n) = 2^20 ดังนั้น 2n = 20 และ n = 10</div>
+<div class="answer-key"><strong>H7.</strong> 2^10 = 1024 จึงมี 4 หลัก</div>
+<div class="answer-key"><strong>H8.</strong> k = floor(48/2)+floor(48/4)+floor(48/8)+floor(48/16)+floor(48/32) = 24+12+6+3+1 = 46</div>
+<h2>เฉลย: แนว สอวน. คอม: เชื่อมกับการคิดแบบโปรแกรมเมอร์</h2>
+<div class="answer-key"><strong>P1.</strong> หลัง 8 รอบ ได้ x = 2^8 = 256</div>
+<div class="answer-key"><strong>P2.</strong> 3 x 2^6 = 3 x 64 = 192</div>
+<div class="answer-key"><strong>P3.</strong> 1000 -&gt; 500 -&gt; 250 -&gt; 125 -&gt; 62 -&gt; 31 -&gt; 15 -&gt; 7 -&gt; 3 -&gt; 1 รวม 9 รอบ</div>
+<div class="answer-key"><strong>P4.</strong> 2^9 = 512 ยังไม่เกิน 1000 แต่ 2^10 = 1024 เกิน 1000 ดังนั้น k = 10</div>
+<div class="answer-key"><strong>P5.</strong> 2026 หาร 3 เหลือ 1 จึงเท่ากับตำแหน่งที่ 1 ของคาบ คือ 2</div>
+<h2>เฉลย: แนวสอบเข้า ม.4: คิดเร็วและระวังช้อยส์หลอก</h2>
+<div class="answer-key"><strong>T1.</strong> 2^30 = (2^3)^10 = 8^10 และ 3^20 = (3^2)^10 = 9^10 ดังนั้น 3^20 มากกว่า</div>
+<div class="answer-key"><strong>T2.</strong> ค.ร.น. = 2^max(3,5) x 3^max(2,1) = 2^5 x 3^2 = 32 x 9 = 288</div>
+<div class="answer-key"><strong>T3.</strong> (a^2 b^-3)^-2 = a^-4 b^6 = b^6/a^4</div>
+<div class="answer-key"><strong>T4.</strong> 9^x = 3^(2x) และ 27^(x-1) = 3^(3x-3) จึง 2x = 3x - 3 ได้ x = 3</div>
+<div class="answer-key"><strong>T5.</strong> x^-3 = (1/2)^-3 = 8 และ x^-2 = 4 ดังนั้นผลรวม = 12</div></section>
+<div class="footer">OSN Computer Prep Math - Chapter 03 Exponents</div></main></div><script>
+function norm(s){
+  return (s||'').toLowerCase().replace(/\s+/g,'').replace(/×/g,'x').replace(/\*/g,'x').replace(/[()]/g,'').replace(/−/g,'-');
+}
+function checkOne(btn){
+  const card = btn.closest('.qcard');
+  const input = card.querySelector('input');
+  const fb = card.querySelector('.feedback');
+  const valid = input.dataset.answer.split('|').map(norm);
+  const got = norm(input.value);
+  if(!got){ fb.textContent = 'กรุณาพิมพ์คำตอบก่อน'; fb.className='feedback no'; return; }
+  if(valid.includes(got)) { fb.textContent = 'ถูกต้อง'; fb.className='feedback ok'; card.dataset.done='1'; }
+  else { fb.textContent = 'ยังไม่ถูก ลองดู Hint หรือทบทวนกฎเลขยกกำลัง'; fb.className='feedback no'; }
+  updateProgress();
+}
+function toggleHint(btn){ btn.closest('.qcard').querySelector('.hint').classList.toggle('hidden'); }
+function toggleSolution(btn){ btn.closest('.qcard').querySelector('.solution').classList.toggle('hidden'); }
+function revealAll(){ document.querySelectorAll('.solution,.hint').forEach(x=>x.classList.remove('hidden')); }
+function hideAll(){ document.querySelectorAll('.solution,.hint').forEach(x=>x.classList.add('hidden')); }
+function updateProgress(){
+  const total = document.querySelectorAll('.qcard').length;
+  const done = document.querySelectorAll('.qcard[data-done="1"]').length;
+  document.querySelector('.bar').style.width = (100*done/total)+'%';
+  document.querySelector('#progressText').textContent = done + ' / ' + total + ' ข้อ';
+}
+const quizBank = [
+  ['2^8','256'], ['3^5','243'], ['5^3','125'], ['10^-2','1/100'], ['(-4)^3','-64'],
+  ['2^6 x 2^2','256'], ['9^2 / 3^2','9'], ['(2^3)^2','64'], ['4^5 / 2^8','4'], ['เลขหลักหน่วยของ 2^20','6']
+];
+let currentQuiz = null;
+function newQuiz(){
+  currentQuiz = quizBank[Math.floor(Math.random()*quizBank.length)];
+  document.getElementById('quizQ').textContent = currentQuiz[0];
+  document.getElementById('quizA').value = '';
+  document.getElementById('quizFb').textContent = '';
+}
+function checkQuiz(){
+  if(!currentQuiz) newQuiz();
+  const got = norm(document.getElementById('quizA').value);
+  const ans = norm(currentQuiz[1]);
+  const fb = document.getElementById('quizFb');
+  if(got===ans){ fb.textContent='ถูกต้อง'; fb.className='feedback ok'; }
+  else{ fb.textContent='ยังไม่ถูก คำตอบคือ '+currentQuiz[1]; fb.className='feedback no'; }
+}
+window.addEventListener('load',()=>{ updateProgress(); newQuiz(); });
+</script></body></html>

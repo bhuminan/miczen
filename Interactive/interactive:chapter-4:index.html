@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+
+<html lang="th"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>บทที่ 4 Square Root และ Radical - OSN Math Computer Prep</title><style>
+:root{--blue:#1E3A5F;--teal:#0F766E;--orange:#F59E0B;--bg:#F8FAFC;--ink:#1F2937;--muted:#64748B;--line:#D8E0EA;--softblue:#EFF6FF;--softteal:#ECFDF5;--softorange:#FFF7ED;--white:#fff}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:'Noto Sans Thai','Sarabun','Inter',Arial,sans-serif;line-height:1.65}.layout{display:grid;grid-template-columns:300px 1fr;min-height:100vh}.sidebar{position:sticky;top:0;height:100vh;background:linear-gradient(160deg,var(--blue),#0B5460);color:white;padding:26px 22px;overflow:auto}.brand{font-weight:900;letter-spacing:.3px;color:#FDE68A}.sidebar h1{font-size:25px;line-height:1.25;margin:18px 0 8px}.sidebar p{color:#D8F3F0;font-size:14px}.nav a{display:block;color:white;text-decoration:none;padding:9px 10px;border-radius:12px;margin:3px 0;background:rgba(255,255,255,.08)}.nav a:hover{background:rgba(255,255,255,.18)}.main{max-width:1120px;padding:28px;margin:0 auto}.hero{background:linear-gradient(135deg,var(--blue),var(--teal));color:white;border-radius:24px;padding:34px;box-shadow:0 18px 38px rgba(15,23,42,.18);margin-bottom:22px}.hero h1{font-size:38px;line-height:1.2;margin:0 0 10px}.hero p{font-size:18px;color:#EAF6FF;max-width:900px}.pillrow{display:flex;gap:8px;flex-wrap:wrap}.pill{border:1px solid rgba(255,255,255,.45);border-radius:999px;padding:5px 11px;font-size:13px}section{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:24px;margin:18px 0;box-shadow:0 10px 28px rgba(15,23,42,.06)}h2{color:var(--blue);font-size:25px;margin:0 0 14px;border-bottom:3px solid #E2E8F0;padding-bottom:8px}h3{color:var(--teal);font-size:18px;margin:16px 0 8px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.twocol{display:grid;grid-template-columns:1fr 1fr;gap:18px}.formula{background:var(--softblue);border-left:5px solid var(--blue);padding:14px;border-radius:16px}.formula .name{font-weight:900;color:var(--blue)}.math{font-family:'Cambria Math','Times New Roman',serif;font-size:19px;font-weight:700;margin:5px 0;color:#111827}.note{background:var(--softteal);border-left:5px solid var(--teal);padding:14px;border-radius:16px}.warn{background:var(--softorange);border-left:5px solid var(--orange);padding:13px;border-radius:16px}.example{background:#FFF;border:1px solid #CBD5E1;border-radius:18px;padding:16px;margin:12px 0}.example-title{font-weight:900;color:var(--blue);font-size:18px}.step{border-left:3px solid #93C5FD;padding:6px 0 6px 12px;margin:6px 0;background:#F8FAFF}.result{font-weight:900;color:var(--teal);margin-top:8px}.mini-table{width:100%;border-collapse:collapse;font-size:14px}.mini-table th{background:var(--blue);color:white}.mini-table th,.mini-table td{border:1px solid #CBD5E1;padding:8px;text-align:left}.square-table td{text-align:center;font-family:'Cambria Math','Times New Roman',serif}.toolbar{display:flex;gap:8px;flex-wrap:wrap;position:sticky;top:10px;z-index:5;background:rgba(248,250,252,.86);backdrop-filter:blur(8px);padding:10px;border-radius:16px;border:1px solid #E2E8F0}.qcard{border:1px solid #CBD5E1;border-radius:18px;padding:16px;margin:12px 0;background:white}.qtop{display:flex;gap:10px;align-items:flex-start}.badge,.qid{background:var(--orange);color:#111827;font-weight:900;border-radius:9px;padding:2px 8px;white-space:nowrap}.answer-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}.answer-row input,.quiz input{flex:1;min-width:220px;padding:11px;border:1px solid #CBD5E1;border-radius:12px;font-family:inherit}button{border:0;background:var(--blue);color:white;padding:10px 13px;border-radius:12px;font-family:inherit;font-weight:800;cursor:pointer}button.ghost{background:#E2E8F0;color:#1E293B}button:hover{filter:brightness(1.05)}.hidden{display:none}.hint{background:var(--softteal);padding:10px;border-radius:12px;margin-top:10px}.solution{background:var(--softblue);padding:10px;border-radius:12px;margin-top:10px}.feedback{font-weight:800}.feedback.ok{color:#047857}.feedback.no{color:#B45309}.answer-key{border-left:5px solid var(--teal);background:#F8FAFC;padding:10px 12px;border-radius:14px;margin:8px 0}.quiz{background:linear-gradient(135deg,#F8FAFC,#ECFDF5);border:1px solid #CBD5E1;border-radius:18px;padding:18px}.big{font-size:30px;font-weight:900;color:var(--blue);margin:8px 0}.progress{height:10px;background:#E2E8F0;border-radius:999px;overflow:hidden}.bar{height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--orange));transition:.3s}.small{font-size:13px;color:var(--muted)}.footer{color:#64748B;text-align:center;font-size:13px;padding:24px}.print-questions{padding-left:22px}.print-questions li{margin:8px 0}.write-line{display:block;border-bottom:1px dotted #94A3B8;height:20px;margin-top:4px}
+@media(max-width:900px){.layout{display:block}.sidebar{position:relative;height:auto}.main{padding:18px}.grid,.twocol{grid-template-columns:1fr}.hero h1{font-size:28px}}
+@media print{.sidebar,.toolbar,.answer-row,.feedback,.hint,.solution,.interactive-only{display:none!important}body{background:white;font-size:11.5pt}.layout{display:block}.main{max-width:none;padding:0}.hero,section{box-shadow:none;break-inside:avoid}.hero{background:#fff;color:#111;border:2px solid #1E3A5F}.hero p{color:#111}.pill{border:1px solid #CBD5E1;color:#111}.qcard{break-inside:avoid}.grid{grid-template-columns:1fr 1fr}.footer{display:none}}
+</style></head>
+<body><div class="layout"><aside class="sidebar"><div class="brand">OSN Computer Prep Math</div><h1>บทที่ 4<br/>Square Root และ Radical</h1><p>จากกำลังสอง สู่การจัดรูปกรณฑ์และ integer square root</p><div class="progress"><div class="bar"></div></div><p id="progressText">0 / 0 ข้อ</p><nav class="nav"><a href="#overview">ภาพรวม</a><a href="#vocab">คำศัพท์</a><a href="#squares">กำลังสองสมบูรณ์</a><a href="#rules">สูตรสำคัญ</a><a href="#examples">ตัวอย่าง</a><a href="#traps">จุดหลอก</a><a href="#programmer">คิดแบบโปรแกรมเมอร์</a><a href="#practice">แบบฝึกหัด</a><a href="#quiz">Mini Quiz</a><a href="#answers">เฉลย</a></nav></aside>
+<main class="main"><header class="hero" id="overview"><h1>Square Root และ Radical</h1><p>บทนี้อธิบายรากที่สองอย่างเป็นระบบ ตั้งแต่ความหมายพื้นฐาน การจัดรูปกรณฑ์ การประมาณค่า ไปจนถึงแนวคิด floor square root ที่ใช้ในการเขียนโปรแกรมและโจทย์ สอวน. คอม</p><div class="pillrow"><span class="pill">ระดับ ม.ต้น</span><span class="pill">สอวน. คอม</span><span class="pill">สอบเข้า ม.4</span><span class="pill">Interactive + Printable</span></div></header>
+<div class="toolbar interactive-only"><button onclick="revealAll()">เปิด Hint/เฉลยทั้งหมด</button><button class="ghost" onclick="hideAll()">ซ่อน Hint/เฉลย</button><button class="ghost" onclick="window.print()">พิมพ์ / Save PDF</button></div>
+<section id="vocab"><h2>1. เป้าหมายและคำศัพท์สำคัญ</h2><div class="twocol"><div><h3>เป้าหมายการเรียนรู้</h3><ul><li>เข้าใจว่า √(a) คือรากที่สองหลักที่ไม่ติดลบ</li><li>จัดรูปกรณฑ์ได้อย่างถูกต้องและเป็นระบบ</li><li>บวก ลบ คูณ หารกรณฑ์พื้นฐานได้</li><li>เปรียบเทียบและประมาณค่ารากที่สองได้</li><li>ใช้แนวคิด floor square root กับโจทย์คอมพิวเตอร์ได้</li></ul></div><div><h3>คำศัพท์ไทย-อังกฤษ</h3><table class="mini-table"><tr><th>ไทย</th><th>อังกฤษ</th></tr><tr><td>รากที่สอง</td><td>Square root</td></tr><tr><td>กรณฑ์</td><td>Radical</td></tr><tr><td>เครื่องหมายราก</td><td>Radical sign</td></tr><tr><td>จำนวนกำลังสองสมบูรณ์</td><td>Perfect square</td></tr><tr><td>ค่าสัมบูรณ์</td><td>Absolute value</td></tr><tr><td>รากที่สองจำนวนเต็มปัดลง</td><td>Floor square root</td></tr></table></div></div></section>
+<section id="squares"><h2>2. ตารางกำลังสองสมบูรณ์ที่ควรจำ</h2><p class="note">นักเรียนควรจำกำลังสองตั้งแต่ 1^2 ถึง 30^2 ให้คล่อง เพราะใช้ในการจัดรูปกรณฑ์ การประมาณค่า และการหาค่า floor(√(n)) อย่างรวดเร็ว</p><table class="mini-table square-table"><tr><td>1^2 = 1</td><td>2^2 = 4</td><td>3^2 = 9</td><td>4^2 = 16</td><td>5^2 = 25</td></tr><tr><td>6^2 = 36</td><td>7^2 = 49</td><td>8^2 = 64</td><td>9^2 = 81</td><td>10^2 = 100</td></tr><tr><td>11^2 = 121</td><td>12^2 = 144</td><td>13^2 = 169</td><td>14^2 = 196</td><td>15^2 = 225</td></tr><tr><td>16^2 = 256</td><td>17^2 = 289</td><td>18^2 = 324</td><td>19^2 = 361</td><td>20^2 = 400</td></tr><tr><td>21^2 = 441</td><td>22^2 = 484</td><td>23^2 = 529</td><td>24^2 = 576</td><td>25^2 = 625</td></tr><tr><td>26^2 = 676</td><td>27^2 = 729</td><td>28^2 = 784</td><td>29^2 = 841</td><td>30^2 = 900</td></tr></table></section>
+<section id="rules"><h2>3. สูตรและกฎที่ต้องแม่น</h2><p class="note"><strong>หลักสำคัญ:</strong> √(a) ให้ค่าที่ไม่ติดลบเสมอ ส่วนสมการ x^2=a อาจมีสองคำตอบ คือ x=±√(a) เมื่อ a&gt;0</p><div class="grid"><div class="formula"><div class="name">ความหมายของรากที่สอง</div><div class="math">√(a) คือจำนวนไม่ติดลบที่ยกกำลังสองแล้วได้ a</div><div class="small">นิยามนี้ใช้เมื่อ a &gt;= 0 ในจำนวนจริง</div></div>
+<div class="formula"><div class="name">รากที่สองกับกำลังสอง</div><div class="math">(√(a))^2 = a, เมื่อ a &gt;= 0</div><div class="small">รากที่สองและกำลังสองหักล้างกันได้ภายใต้เงื่อนไข</div></div>
+<div class="formula"><div class="name">รากของกำลังสอง</div><div class="math">√(a^2) = |a|</div><div class="small">สำคัญมาก: ถ้า a เป็นลบ ผลลัพธ์ยังต้องไม่ติดลบ</div></div>
+<div class="formula"><div class="name">กฎการคูณ</div><div class="math">√(ab) = √(a)√(b), เมื่อ a,b &gt;= 0</div><div class="small">ใช้แยกตัวประกอบกำลังสองสมบูรณ์ออกนอกราก</div></div>
+<div class="formula"><div class="name">กฎการหาร</div><div class="math">√(a/b) = √(a)/√(b), เมื่อ a &gt;= 0, b &gt; 0</div><div class="small">ใช้กับเศษส่วนและการทำตัวส่วนให้ไม่มีราก</div></div>
+<div class="formula"><div class="name">การจัดรูปกรณฑ์</div><div class="math">√(k^2m) = k√(m), เมื่อ k &gt;= 0</div><div class="small">ดึงตัวประกอบที่เป็นกำลังสองสมบูรณ์ออกมา</div></div>
+<div class="formula"><div class="name">พจน์คล้ายของกรณฑ์</div><div class="math">a√(m)+b√(m)=(a+b)√(m)</div><div class="small">บวกลบได้เฉพาะเมื่อส่วนในรากเหมือนกันหลังจัดรูป</div></div>
+<div class="formula"><div class="name">การประมาณค่า</div><div class="math">ถ้า n^2 &lt;= a &lt; (n+1)^2 แล้ว floor(√(a)) = n</div><div class="small">เป็นพื้นฐานของ integer square root ในคอมพิวเตอร์</div></div></div></section>
+<section id="examples"><h2>4. ตัวอย่างพร้อมวิธีคิดทีละขั้น</h2><div class="example"><div class="example-title">ตัวอย่างที่ 1: จัดรูปกรณฑ์</div><p><strong>โจทย์:</strong> จัดรูป √(180)</p><div class="step">แยก 180 = 36 x 5</div><div class="step">√(180) = √(36 x 5)</div><div class="step">√(36)=6 ดังนั้นคำตอบคือ 6√(5)</div><div class="result">คำตอบ: 6√(5)</div></div>
+<div class="example"><div class="example-title">ตัวอย่างที่ 2: บวกพจน์กรณฑ์</div><p><strong>โจทย์:</strong> ลดรูป √(75) - √(27) + √(12)</p><div class="step">√(75)=5√(3)</div><div class="step">√(27)=3√(3)</div><div class="step">√(12)=2√(3)</div><div class="step">รวมสัมประสิทธิ์: 5 - 3 + 2 = 4</div><div class="result">คำตอบ: 4√(3)</div></div>
+<div class="example"><div class="example-title">ตัวอย่างที่ 3: ระวัง √(a^2)</div><p><strong>โจทย์:</strong> คำนวณ √((-11)^2)</p><div class="step">ใช้สูตร √(a^2)=|a|</div><div class="step">a=-11 จึงได้ |-11|</div><div class="step">ผลลัพธ์คือ 11 ไม่ใช่ -11</div><div class="result">คำตอบ: 11</div></div>
+<div class="example"><div class="example-title">ตัวอย่างที่ 4: Floor square root</div><p><strong>โจทย์:</strong> หา floor(√(500))</p><div class="step">22^2 = 484</div><div class="step">23^2 = 529</div><div class="step">ดังนั้น √(500) อยู่ระหว่าง 22 และ 23</div><div class="result">คำตอบ: 22</div></div></section>
+<section id="traps"><h2>5. จุดหลอกข้อสอบที่ต้องระวัง</h2><div class="grid"><div class="warn"><strong>√(a) ไม่ให้คำตอบติดลบ</strong><br/>√(81)=9 ไม่ใช่ ±9 แต่สมการ x^2=81 มีคำตอบ x=±9</div><div class="warn"><strong>√(a^2)=|a| ไม่ใช่ a เสมอ</strong><br/>ถ้า a=-5 จะได้ √((-5)^2)=5</div><div class="warn"><strong>บวกกรณฑ์ต้องเป็นพจน์คล้าย</strong><br/>√(2)+√(3) รวมเป็น √(5) ไม่ได้</div><div class="warn"><strong>ใช้กฎคูณ/หารได้เมื่อค่าข้างในรากไม่ติดลบในจำนวนจริง</strong><br/>ระดับ ม.ต้นควรระวังเงื่อนไข a,b &gt;= 0</div><div class="warn"><strong>การยกกำลังสองสมการอาจสร้างคำตอบเกิน</strong><br/>ต้องตรวจคำตอบกลับเสมอ โดยเฉพาะเมื่อมี √(...) = นิพจน์</div><div class="warn"><strong>การประมาณค่าอย่าปัดมั่ว</strong><br/>√(50) ประมาณ 7.07 เพราะอยู่ใกล้ 49 มากกว่า 64</div></div></section>
+<section id="programmer"><h2>6. มุมคิดแบบโปรแกรมเมอร์</h2><p>ในคอมพิวเตอร์ การหาค่า √(n) มักไม่ได้ต้องการค่าทศนิยมเสมอไป หลายโจทย์ต้องการ <strong>floor(√(n))</strong> หรือจำนวนเต็มมากที่สุดที่ยกกำลังสองแล้วไม่เกิน n เช่น ใช้ตรวจจำนวนเฉพาะ ตรวจตัวหาร และตรวจ perfect square</p><table class="mini-table"><tr><th>แนวคิดคณิตศาสตร์</th><th>เชื่อมกับคอมพิวเตอร์</th></tr><tr><td>floor(√(n))</td><td>ขอบเขตการวน loop ตรวจตัวหาร</td></tr><tr><td>n เป็น perfect square หรือไม่</td><td>ตรวจว่า k*k == n เมื่อ k=floor(√(n))</td></tr><tr><td>ช่วง n^2 &lt;= a &lt; (n+1)^2</td><td>ใช้ binary search หา integer square root</td></tr><tr><td>หลีกเลี่ยง float error</td><td>ใช้ integer arithmetic เมื่อความถูกต้องสำคัญ</td></tr></table><div class="warn"><strong>สังเกต:</strong> ถ้าต้องตรวจตัวหารของ n ไม่จำเป็นต้องวนถึง n ทั้งหมด วนถึง floor(√(n)) ก็พอ เพราะตัวหารมักมาเป็นคู่ เช่น 36 = 4 x 9</div></section>
+<section id="practice"><h2>7. แบบฝึกหัด Interactive</h2><p>พิมพ์คำตอบแล้วกดตรวจคำตอบ หากติดให้กด Hint ก่อนเปิดเฉลย เพื่อฝึกคิดเองทีละขั้น</p><section class="exercise-section" id="ex-easy"><h2>ระดับง่าย: เข้าใจรากที่สองและจำนวนกำลังสองสมบูรณ์</h2>
+<div class="qcard" data-q="E1">
+<div class="qtop"><span class="badge">E1</span><strong>คำนวณ √(49)</strong></div>
+<div class="answer-row">
+<input aria-label="answer E1" data-answer="7" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> 49 = 7^2</div>
+<div class="solution hidden"><strong>เฉลย:</strong> √(49) = 7 เพราะ 7^2 = 49</div>
+</div>
+<div class="qcard" data-q="E2">
+<div class="qtop"><span class="badge">E2</span><strong>คำนวณ √(0)</strong></div>
+<div class="answer-row">
+<input aria-label="answer E2" data-answer="0" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> 0^2 = 0</div>
+<div class="solution hidden"><strong>เฉลย:</strong> √(0) = 0</div>
+</div>
+<div class="qcard" data-q="E3">
+<div class="qtop"><span class="badge">E3</span><strong>คำนวณ √(121)</strong></div>
+<div class="answer-row">
+<input aria-label="answer E3" data-answer="11" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> 121 เป็นกำลังสองสมบูรณ์</div>
+<div class="solution hidden"><strong>เฉลย:</strong> √(121) = 11 เพราะ 11^2 = 121</div>
+</div>
+<div class="qcard" data-q="E4">
+<div class="qtop"><span class="badge">E4</span><strong>คำนวณ √(1/25)</strong></div>
+<div class="answer-row">
+<input aria-label="answer E4" data-answer="1/5|0.2" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> แยกรากที่สองของเศษและส่วนได้</div>
+<div class="solution hidden"><strong>เฉลย:</strong> √(1/25) = √(1)/√(25) = 1/5</div>
+</div>
+<div class="qcard" data-q="E5">
+<div class="qtop"><span class="badge">E5</span><strong>คำนวณ (√(6))^2</strong></div>
+<div class="answer-row">
+<input aria-label="answer E5" data-answer="6" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> ยกกำลังสองจะตัดกับรากที่สอง เมื่อค่าข้างในไม่ติดลบ</div>
+<div class="solution hidden"><strong>เฉลย:</strong> (√(6))^2 = 6</div>
+</div>
+<div class="qcard" data-q="E6">
+<div class="qtop"><span class="badge">E6</span><strong>คำนวณ √(9^2)</strong></div>
+<div class="answer-row">
+<input aria-label="answer E6" data-answer="9" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> √(a^2) = |a|</div>
+<div class="solution hidden"><strong>เฉลย:</strong> √(9^2) = |9| = 9</div>
+</div>
+<div class="qcard" data-q="E7">
+<div class="qtop"><span class="badge">E7</span><strong>คำนวณ √((-8)^2)</strong></div>
+<div class="answer-row">
+<input aria-label="answer E7" data-answer="8" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> ผลลัพธ์ของ sqrt ต้องไม่ติดลบ</div>
+<div class="solution hidden"><strong>เฉลย:</strong> √((-8)^2) = |-8| = 8</div>
+</div>
+<div class="qcard" data-q="E8">
+<div class="qtop"><span class="badge">E8</span><strong>จัดรูปอย่างง่าย √(12)</strong></div>
+<div class="answer-row">
+<input aria-label="answer E8" data-answer="2sqrt3|2√3|2 sqrt 3" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> แยก 12 = 4 x 3</div>
+<div class="solution hidden"><strong>เฉลย:</strong> √(12) = √(4 x 3) = 2√(3)</div>
+</div>
+<div class="qcard" data-q="E9">
+<div class="qtop"><span class="badge">E9</span><strong>จัดรูปอย่างง่าย √(75)</strong></div>
+<div class="answer-row">
+<input aria-label="answer E9" data-answer="5sqrt3|5√3|5 sqrt 3" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> แยก 75 = 25 x 3</div>
+<div class="solution hidden"><strong>เฉลย:</strong> √(75) = √(25 x 3) = 5√(3)</div>
+</div>
+<div class="qcard" data-q="E10">
+<div class="qtop"><span class="badge">E10</span><strong>√(50) อยู่ระหว่างจำนวนเต็มใด</strong></div>
+<div class="answer-row">
+<input aria-label="answer E10" data-answer="7และ8|7,8|7-8|between7and8" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> 49 &lt; 50 &lt; 64</div>
+<div class="solution hidden"><strong>เฉลย:</strong> เพราะ 7^2 = 49 และ 8^2 = 64 ดังนั้น √(50) อยู่ระหว่าง 7 และ 8</div>
+</div>
+<div class="qcard" data-q="E11">
+<div class="qtop"><span class="badge">E11</span><strong>เปรียบเทียบ √(15) กับ 4: ตอบ &gt;, &lt; หรือ =</strong></div>
+<div class="answer-row">
+<input aria-label="answer E11" data-answer="&lt;|น้อยกว่า" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> เทียบ 15 กับ 16</div>
+<div class="solution hidden"><strong>เฉลย:</strong> √(15) &lt; √(16) = 4 ดังนั้น √(15) &lt; 4</div>
+</div>
+<div class="qcard" data-q="E12">
+<div class="qtop"><span class="badge">E12</span><strong>คำนวณ √(144) + √(25)</strong></div>
+<div class="answer-row">
+<input aria-label="answer E12" data-answer="17" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> หารากของแต่ละจำนวนก่อน</div>
+<div class="solution hidden"><strong>เฉลย:</strong> √(144) + √(25) = 12 + 5 = 17</div>
+</div>
+</section>
+<section class="exercise-section" id="ex-medium"><h2>ระดับปานกลาง: จัดรูปกรณฑ์และใช้กฎร่วมกัน</h2>
+<div class="qcard" data-q="M1">
+<div class="qtop"><span class="badge">M1</span><strong>จัดรูปอย่างง่าย √(72)</strong></div>
+<div class="answer-row">
+<input aria-label="answer M1" data-answer="6sqrt2|6√2|6 sqrt 2" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> 72 = 36 x 2</div>
+<div class="solution hidden"><strong>เฉลย:</strong> √(72) = √(36 x 2) = 6√(2)</div>
+</div>
+<div class="qcard" data-q="M2">
+<div class="qtop"><span class="badge">M2</span><strong>จัดรูปอย่างง่าย √(200)</strong></div>
+<div class="answer-row">
+<input aria-label="answer M2" data-answer="10sqrt2|10√2|10 sqrt 2" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> 200 = 100 x 2</div>
+<div class="solution hidden"><strong>เฉลย:</strong> √(200) = 10√(2)</div>
+</div>
+<div class="qcard" data-q="M3">
+<div class="qtop"><span class="badge">M3</span><strong>ลดรูป √(48) + √(27)</strong></div>
+<div class="answer-row">
+<input aria-label="answer M3" data-answer="7sqrt3|7√3|7 sqrt 3" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> จัดรูปแต่ละพจน์ก่อน</div>
+<div class="solution hidden"><strong>เฉลย:</strong> √(48)=4√(3), √(27)=3√(3) ดังนั้นรวมได้ 7√(3)</div>
+</div>
+<div class="qcard" data-q="M4">
+<div class="qtop"><span class="badge">M4</span><strong>ลดรูป 3√(2) + 5√(2)</strong></div>
+<div class="answer-row">
+<input aria-label="answer M4" data-answer="8sqrt2|8√2|8 sqrt 2" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> เป็นพจน์คล้าย เพราะมี √(2) เหมือนกัน</div>
+<div class="solution hidden"><strong>เฉลย:</strong> 3√(2)+5√(2)=8√(2)</div>
+</div>
+<div class="qcard" data-q="M5">
+<div class="qtop"><span class="badge">M5</span><strong>คำนวณ √(18) x √(8)</strong></div>
+<div class="answer-row">
+<input aria-label="answer M5" data-answer="12" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> √(a)√(b)=√(ab)</div>
+<div class="solution hidden"><strong>เฉลย:</strong> √(18)√(8)=√(144)=12</div>
+</div>
+<div class="qcard" data-q="M6">
+<div class="qtop"><span class="badge">M6</span><strong>คำนวณ √(98) / √(2)</strong></div>
+<div class="answer-row">
+<input aria-label="answer M6" data-answer="7" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> รวมเป็น √(98/2)</div>
+<div class="solution hidden"><strong>เฉลย:</strong> √(98)/√(2)=√(49)=7</div>
+</div>
+<div class="qcard" data-q="M7">
+<div class="qtop"><span class="badge">M7</span><strong>ทำตัวส่วนให้ไม่มีราก: 1/√(5)</strong></div>
+<div class="answer-row">
+<input aria-label="answer M7" data-answer="sqrt5/5|√5/5|sqrt(5)/5" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> คูณบนและล่างด้วย √(5)</div>
+<div class="solution hidden"><strong>เฉลย:</strong> 1/√(5) x √(5)/√(5) = √(5)/5</div>
+</div>
+<div class="qcard" data-q="M8">
+<div class="qtop"><span class="badge">M8</span><strong>แก้สมการ x^2 = 81 โดย x เป็นจำนวนจริงทั้งหมด</strong></div>
+<div class="answer-row">
+<input aria-label="answer M8" data-answer="±9|-9,9|9,-9|+-9" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> มีสองคำตอบ เพราะทั้ง 9 และ -9 ยกกำลังสองได้ 81</div>
+<div class="solution hidden"><strong>เฉลย:</strong> x^2=81 ดังนั้น x=9 หรือ x=-9</div>
+</div>
+<div class="qcard" data-q="M9">
+<div class="qtop"><span class="badge">M9</span><strong>แก้สมการ √(x+5) = 4</strong></div>
+<div class="answer-row">
+<input aria-label="answer M9" data-answer="11" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> ยกกำลังสองทั้งสองข้าง</div>
+<div class="solution hidden"><strong>เฉลย:</strong> x+5=16 ดังนั้น x=11 และตรวจแล้วใช้ได้</div>
+</div>
+<div class="qcard" data-q="M10">
+<div class="qtop"><span class="badge">M10</span><strong>หา floor(√(123))</strong></div>
+<div class="answer-row">
+<input aria-label="answer M10" data-answer="11" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> 11^2=121 และ 12^2=144</div>
+<div class="solution hidden"><strong>เฉลย:</strong> √(123) อยู่ระหว่าง 11 และ 12 ดังนั้น floor(√(123)) = 11</div>
+</div>
+</section>
+<section class="exercise-section" id="ex-hard"><h2>ระดับยาก: สังเกตช่วง ค่าเต็ม และเงื่อนไขซ่อน</h2>
+<div class="qcard" data-q="H1">
+<div class="qtop"><span class="badge">H1</span><strong>หาจำนวนเต็ม n มากที่สุดที่ทำให้ n^2 &lt;= 2026</strong></div>
+<div class="answer-row">
+<input aria-label="answer H1" data-answer="45" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> ลองเทียบ 45^2 และ 46^2</div>
+<div class="solution hidden"><strong>เฉลย:</strong> 45^2=2025 &lt;=2026 แต่ 46^2=2116 &gt;2026 ดังนั้น n มากที่สุดคือ 45</div>
+</div>
+<div class="qcard" data-q="H2">
+<div class="qtop"><span class="badge">H2</span><strong>มีจำนวนเต็มบวก n กี่จำนวนที่ n &lt;= 200 และ √(n) เป็นจำนวนเต็ม</strong></div>
+<div class="answer-row">
+<input aria-label="answer H2" data-answer="14" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> n ต้องเป็นกำลังสองสมบูรณ์</div>
+<div class="solution hidden"><strong>เฉลย:</strong> n = 1^2 ถึง 14^2 เพราะ 14^2=196 และ 15^2=225 เกิน 200 จึงมี 14 จำนวน</div>
+</div>
+<div class="qcard" data-q="H3">
+<div class="qtop"><span class="badge">H3</span><strong>จัดรูป √(2^6 x 3^3)</strong></div>
+<div class="answer-row">
+<input aria-label="answer H3" data-answer="24sqrt3|24√3|24 sqrt 3" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> ดึงเลขชี้กำลังคู่หรือกำลังสองสมบูรณ์ออกนอกราก</div>
+<div class="solution hidden"><strong>เฉลย:</strong> √(2^6 x 3^3)=√((2^3)^2 x 3^2 x 3)=2^3 x 3 x √(3)=24√(3)</div>
+</div>
+<div class="qcard" data-q="H4">
+<div class="qtop"><span class="badge">H4</span><strong>ถ้า √(a) = 3√(5) และ a &gt;= 0 จงหา a</strong></div>
+<div class="answer-row">
+<input aria-label="answer H4" data-answer="45" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> ยกกำลังสองทั้งสองข้าง</div>
+<div class="solution hidden"><strong>เฉลย:</strong> a = (3√(5))^2 = 9 x 5 = 45</div>
+</div>
+<div class="qcard" data-q="H5">
+<div class="qtop"><span class="badge">H5</span><strong>เปรียบเทียบ √(99) + √(101) กับ 20: ตอบ &gt;, &lt; หรือ =</strong></div>
+<div class="answer-row">
+<input aria-label="answer H5" data-answer="&lt;|น้อยกว่า" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> ยกกำลังสองของผลบวกแล้วเทียบกับ 20^2</div>
+<div class="solution hidden"><strong>เฉลย:</strong> (√99+√101)^2 = 200 + 2√(9999) &lt; 200 + 2(100)=400 ดังนั้นผลบวก &lt;20</div>
+</div>
+<div class="qcard" data-q="H6">
+<div class="qtop"><span class="badge">H6</span><strong>แก้สมการ √(2x+1) = x - 1</strong></div>
+<div class="answer-row">
+<input aria-label="answer H6" data-answer="4" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> ต้องมี x-1 &gt;= 0 ก่อน แล้วค่อยยกกำลังสอง</div>
+<div class="solution hidden"><strong>เฉลย:</strong> เงื่อนไข x&gt;=1. ยกกำลังสองได้ 2x+1 = x^2-2x+1 จึง x^2-4x=0 ได้ x=0 หรือ 4 แต่ x=0 ไม่ผ่านเงื่อนไข คำตอบคือ 4</div>
+</div>
+<div class="qcard" data-q="H7">
+<div class="qtop"><span class="badge">H7</span><strong>มีจำนวนเต็ม x กี่จำนวนที่ 5 &lt;= √(x) &lt; 9</strong></div>
+<div class="answer-row">
+<input aria-label="answer H7" data-answer="56" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> ยกกำลังสองทั้งช่วง โดย x ต้องไม่ติดลบ</div>
+<div class="solution hidden"><strong>เฉลย:</strong> 25 &lt;= x &lt; 81 ดังนั้น x = 25 ถึง 80 มี 80-25+1 = 56 จำนวน</div>
+</div>
+<div class="qcard" data-q="H8">
+<div class="qtop"><span class="badge">H8</span><strong>หา m จำนวนเต็มบวกน้อยที่สุดที่ทำให้ 12m เป็นกำลังสองสมบูรณ์</strong></div>
+<div class="answer-row">
+<input aria-label="answer H8" data-answer="3" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> แยกตัวประกอบ 12 ก่อน</div>
+<div class="solution hidden"><strong>เฉลย:</strong> 12 = 2^2 x 3 ต้องเติม 3 อีกตัวเพื่อให้เลขชี้กำลังของ 3 เป็นคู่ จึง m=3 และ 12m=36</div>
+</div>
+</section>
+<section class="exercise-section" id="ex-posn"><h2>แนว สอวน. คอม: floor square root และการตรวจจำนวนกำลังสอง</h2>
+<div class="qcard" data-q="P1">
+<div class="qtop"><span class="badge">P1</span><strong>2025 เป็นกำลังสองสมบูรณ์หรือไม่ ตอบ yes/no</strong></div>
+<div class="answer-row">
+<input aria-label="answer P1" data-answer="yes|ใช่" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> ลองหาจำนวนเต็มที่ยกกำลังสองได้ 2025</div>
+<div class="solution hidden"><strong>เฉลย:</strong> 45^2=2025 ดังนั้นเป็นกำลังสองสมบูรณ์</div>
+</div>
+<div class="qcard" data-q="P2">
+<div class="qtop"><span class="badge">P2</span><strong>ถ้าใช้ loop เพิ่ม i ทีละ 1 จนกว่า i*i &gt; 80 แล้วตอบ i-1 จะได้ค่าเท่าใด</strong></div>
+<div class="answer-row">
+<input aria-label="answer P2" data-answer="8" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> กำลังสองที่ไม่เกิน 80 มากที่สุดคืออะไร</div>
+<div class="solution hidden"><strong>เฉลย:</strong> 8^2=64 &lt;=80 และ 9^2=81 &gt;80 จึงตอบ 8</div>
+</div>
+<div class="qcard" data-q="P3">
+<div class="qtop"><span class="badge">P3</span><strong>โปรแกรมนับ i = 1,2,3,... ขณะ i*i &lt;= 100 จะเข้ารอบ loop กี่ครั้ง</strong></div>
+<div class="answer-row">
+<input aria-label="answer P3" data-answer="10" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> ค่าที่ผ่านเงื่อนไขคือ 1 ถึง 10</div>
+<div class="solution hidden"><strong>เฉลย:</strong> 1^2 ถึง 10^2 ไม่เกิน 100 แต่ 11^2 เกิน 100 จึงเข้ารอบ 10 ครั้ง</div>
+</div>
+<div class="qcard" data-q="P4">
+<div class="qtop"><span class="badge">P4</span><strong>หา floor(√(123456))</strong></div>
+<div class="answer-row">
+<input aria-label="answer P4" data-answer="351" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> เทียบ 351^2 และ 352^2</div>
+<div class="solution hidden"><strong>เฉลย:</strong> 351^2=123201 และ 352^2=123904 ดังนั้น floor(√(123456))=351</div>
+</div>
+<div class="qcard" data-q="P5">
+<div class="qtop"><span class="badge">P5</span><strong>ถ้าตรวจตัวหารของ n = 36 โดยวน i จาก 1 ถึง floor(√(n)) ค่าสูงสุดของ i คือเท่าใด</strong></div>
+<div class="answer-row">
+<input aria-label="answer P5" data-answer="6" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> √(36) เป็นจำนวนเต็ม</div>
+<div class="solution hidden"><strong>เฉลย:</strong> floor(√(36))=6 จึงวนถึง i=6</div>
+</div>
+</section>
+<section class="exercise-section" id="ex-tu"><h2>แนวสอบเข้า ม.4: คิดเร็วและระวังช้อยส์หลอก</h2>
+<div class="qcard" data-q="T1">
+<div class="qtop"><span class="badge">T1</span><strong>ลดรูป √(20) + √(45) - √(5)</strong></div>
+<div class="answer-row">
+<input aria-label="answer T1" data-answer="4sqrt5|4√5|4 sqrt 5" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> จัดรูปทุกพจน์ให้เป็น √(5)</div>
+<div class="solution hidden"><strong>เฉลย:</strong> √20=2√5, √45=3√5 ดังนั้น 2√5+3√5-√5=4√5</div>
+</div>
+<div class="qcard" data-q="T2">
+<div class="qtop"><span class="badge">T2</span><strong>คำนวณ (√(3) + √(12))^2</strong></div>
+<div class="answer-row">
+<input aria-label="answer T2" data-answer="27" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> √(12)=2√(3)</div>
+<div class="solution hidden"><strong>เฉลย:</strong> √3+√12 = √3+2√3 = 3√3 ดังนั้นกำลังสองได้ 27</div>
+</div>
+<div class="qcard" data-q="T3">
+<div class="qtop"><span class="badge">T3</span><strong>เปรียบเทียบ √(5)+√(20) กับ √(45): ตอบ &gt;, &lt; หรือ =</strong></div>
+<div class="answer-row">
+<input aria-label="answer T3" data-answer="=|เท่ากับ" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> จัดรูปให้เป็น √(5)</div>
+<div class="solution hidden"><strong>เฉลย:</strong> √20=2√5 และ √45=3√5 ดังนั้นซ้าย = 3√5 เท่ากับขวา</div>
+</div>
+<div class="qcard" data-q="T4">
+<div class="qtop"><span class="badge">T4</span><strong>มีจำนวนเต็ม x กี่จำนวนที่ 2 &lt; √(x) &lt; 5</strong></div>
+<div class="answer-row">
+<input aria-label="answer T4" data-answer="20" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> ยกกำลังสองได้ 4 &lt; x &lt; 25</div>
+<div class="solution hidden"><strong>เฉลย:</strong> x เป็นจำนวนเต็มตั้งแต่ 5 ถึง 24 จึงมี 20 จำนวน</div>
+</div>
+<div class="qcard" data-q="T5">
+<div class="qtop"><span class="badge">T5</span><strong>ทำตัวส่วนให้ไม่มีรากและลดรูป: √(3)/(√(6)+√(3))</strong></div>
+<div class="answer-row">
+<input aria-label="answer T5" data-answer="sqrt2-1|√2-1|sqrt(2)-1" placeholder="พิมพ์คำตอบ เช่น 7 หรือ 2sqrt3"/>
+<button onclick="checkOne(this)" type="button">ตรวจคำตอบ</button>
+<button class="ghost" onclick="toggleHint(this)" type="button">Hint</button>
+<button class="ghost" onclick="toggleSolution(this)" type="button">เฉลย</button>
+</div>
+<p aria-live="polite" class="feedback"></p>
+<div class="hint hidden"><strong>คำใบ้:</strong> คูณด้วย conjugate คือ √(6)-√(3)</div>
+<div class="solution hidden"><strong>เฉลย:</strong> ได้ [√3(√6-√3)]/(6-3) = (√18-3)/3 = (3√2-3)/3 = √2-1</div>
+</div>
+</section></section>
+<section id="quiz"><h2>8. Mini Quiz สุ่มโจทย์สั้น</h2><div class="quiz"><p>กดสุ่มโจทย์เพื่อฝึกคิดเร็ว</p><div class="big" id="quizQ">√(64)</div><input id="quizA" placeholder="พิมพ์คำตอบ" style="padding:10px;border:1px solid #CBD5E1;border-radius:10px;font-family:inherit"/><button onclick="checkQuiz()">ตรวจ</button><button class="ghost" onclick="newQuiz()">สุ่มใหม่</button><p class="feedback" id="quizFb"></p></div></section>
+<section id="answers"><h2>9. เฉลยท้ายบท</h2><p class="small">ในไฟล์ HTML สามารถกดเปิดเฉลยใต้แต่ละข้อได้ ส่วนด้านล่างเป็นเฉลยรวมแบบย่อเพื่อทบทวน</p><h3>ระดับง่าย: เข้าใจรากที่สองและจำนวนกำลังสองสมบูรณ์</h3>
+<div class="answer-key"><span class="qid">E1</span> <strong>คำตอบ:</strong> 7<br/><span class="small">√(49) = 7 เพราะ 7^2 = 49</span></div>
+<div class="answer-key"><span class="qid">E2</span> <strong>คำตอบ:</strong> 0<br/><span class="small">√(0) = 0</span></div>
+<div class="answer-key"><span class="qid">E3</span> <strong>คำตอบ:</strong> 11<br/><span class="small">√(121) = 11 เพราะ 11^2 = 121</span></div>
+<div class="answer-key"><span class="qid">E4</span> <strong>คำตอบ:</strong> 1/5<br/><span class="small">√(1/25) = √(1)/√(25) = 1/5</span></div>
+<div class="answer-key"><span class="qid">E5</span> <strong>คำตอบ:</strong> 6<br/><span class="small">(√(6))^2 = 6</span></div>
+<div class="answer-key"><span class="qid">E6</span> <strong>คำตอบ:</strong> 9<br/><span class="small">√(9^2) = |9| = 9</span></div>
+<div class="answer-key"><span class="qid">E7</span> <strong>คำตอบ:</strong> 8<br/><span class="small">√((-8)^2) = |-8| = 8</span></div>
+<div class="answer-key"><span class="qid">E8</span> <strong>คำตอบ:</strong> 2√3<br/><span class="small">√(12) = √(4 x 3) = 2√(3)</span></div>
+<div class="answer-key"><span class="qid">E9</span> <strong>คำตอบ:</strong> 5√3<br/><span class="small">√(75) = √(25 x 3) = 5√(3)</span></div>
+<div class="answer-key"><span class="qid">E10</span> <strong>คำตอบ:</strong> 7และ8<br/><span class="small">เพราะ 7^2 = 49 และ 8^2 = 64 ดังนั้น √(50) อยู่ระหว่าง 7 และ 8</span></div>
+<div class="answer-key"><span class="qid">E11</span> <strong>คำตอบ:</strong> &lt;<br/><span class="small">√(15) &lt; √(16) = 4 ดังนั้น √(15) &lt; 4</span></div>
+<div class="answer-key"><span class="qid">E12</span> <strong>คำตอบ:</strong> 17<br/><span class="small">√(144) + √(25) = 12 + 5 = 17</span></div>
+<h3>ระดับปานกลาง: จัดรูปกรณฑ์และใช้กฎร่วมกัน</h3>
+<div class="answer-key"><span class="qid">M1</span> <strong>คำตอบ:</strong> 6√2<br/><span class="small">√(72) = √(36 x 2) = 6√(2)</span></div>
+<div class="answer-key"><span class="qid">M2</span> <strong>คำตอบ:</strong> 10√2<br/><span class="small">√(200) = 10√(2)</span></div>
+<div class="answer-key"><span class="qid">M3</span> <strong>คำตอบ:</strong> 7√3<br/><span class="small">√(48)=4√(3), √(27)=3√(3) ดังนั้นรวมได้ 7√(3)</span></div>
+<div class="answer-key"><span class="qid">M4</span> <strong>คำตอบ:</strong> 8√2<br/><span class="small">3√(2)+5√(2)=8√(2)</span></div>
+<div class="answer-key"><span class="qid">M5</span> <strong>คำตอบ:</strong> 12<br/><span class="small">√(18)√(8)=√(144)=12</span></div>
+<div class="answer-key"><span class="qid">M6</span> <strong>คำตอบ:</strong> 7<br/><span class="small">√(98)/√(2)=√(49)=7</span></div>
+<div class="answer-key"><span class="qid">M7</span> <strong>คำตอบ:</strong> √5/5<br/><span class="small">1/√(5) x √(5)/√(5) = √(5)/5</span></div>
+<div class="answer-key"><span class="qid">M8</span> <strong>คำตอบ:</strong> ±9<br/><span class="small">x^2=81 ดังนั้น x=9 หรือ x=-9</span></div>
+<div class="answer-key"><span class="qid">M9</span> <strong>คำตอบ:</strong> 11<br/><span class="small">x+5=16 ดังนั้น x=11 และตรวจแล้วใช้ได้</span></div>
+<div class="answer-key"><span class="qid">M10</span> <strong>คำตอบ:</strong> 11<br/><span class="small">√(123) อยู่ระหว่าง 11 และ 12 ดังนั้น floor(√(123)) = 11</span></div>
+<h3>ระดับยาก: สังเกตช่วง ค่าเต็ม และเงื่อนไขซ่อน</h3>
+<div class="answer-key"><span class="qid">H1</span> <strong>คำตอบ:</strong> 45<br/><span class="small">45^2=2025 &lt;=2026 แต่ 46^2=2116 &gt;2026 ดังนั้น n มากที่สุดคือ 45</span></div>
+<div class="answer-key"><span class="qid">H2</span> <strong>คำตอบ:</strong> 14<br/><span class="small">n = 1^2 ถึง 14^2 เพราะ 14^2=196 และ 15^2=225 เกิน 200 จึงมี 14 จำนวน</span></div>
+<div class="answer-key"><span class="qid">H3</span> <strong>คำตอบ:</strong> 24√3<br/><span class="small">√(2^6 x 3^3)=√((2^3)^2 x 3^2 x 3)=2^3 x 3 x √(3)=24√(3)</span></div>
+<div class="answer-key"><span class="qid">H4</span> <strong>คำตอบ:</strong> 45<br/><span class="small">a = (3√(5))^2 = 9 x 5 = 45</span></div>
+<div class="answer-key"><span class="qid">H5</span> <strong>คำตอบ:</strong> &lt;<br/><span class="small">(√99+√101)^2 = 200 + 2√(9999) &lt; 200 + 2(100)=400 ดังนั้นผลบวก &lt;20</span></div>
+<div class="answer-key"><span class="qid">H6</span> <strong>คำตอบ:</strong> 4<br/><span class="small">เงื่อนไข x&gt;=1. ยกกำลังสองได้ 2x+1 = x^2-2x+1 จึง x^2-4x=0 ได้ x=0 หรือ 4 แต่ x=0 ไม่ผ่านเงื่อนไข คำตอบคือ 4</span></div>
+<div class="answer-key"><span class="qid">H7</span> <strong>คำตอบ:</strong> 56<br/><span class="small">25 &lt;= x &lt; 81 ดังนั้น x = 25 ถึง 80 มี 80-25+1 = 56 จำนวน</span></div>
+<div class="answer-key"><span class="qid">H8</span> <strong>คำตอบ:</strong> 3<br/><span class="small">12 = 2^2 x 3 ต้องเติม 3 อีกตัวเพื่อให้เลขชี้กำลังของ 3 เป็นคู่ จึง m=3 และ 12m=36</span></div>
+<h3>แนว สอวน. คอม: floor square root และการตรวจจำนวนกำลังสอง</h3>
+<div class="answer-key"><span class="qid">P1</span> <strong>คำตอบ:</strong> yes<br/><span class="small">45^2=2025 ดังนั้นเป็นกำลังสองสมบูรณ์</span></div>
+<div class="answer-key"><span class="qid">P2</span> <strong>คำตอบ:</strong> 8<br/><span class="small">8^2=64 &lt;=80 และ 9^2=81 &gt;80 จึงตอบ 8</span></div>
+<div class="answer-key"><span class="qid">P3</span> <strong>คำตอบ:</strong> 10<br/><span class="small">1^2 ถึง 10^2 ไม่เกิน 100 แต่ 11^2 เกิน 100 จึงเข้ารอบ 10 ครั้ง</span></div>
+<div class="answer-key"><span class="qid">P4</span> <strong>คำตอบ:</strong> 351<br/><span class="small">351^2=123201 และ 352^2=123904 ดังนั้น floor(√(123456))=351</span></div>
+<div class="answer-key"><span class="qid">P5</span> <strong>คำตอบ:</strong> 6<br/><span class="small">floor(√(36))=6 จึงวนถึง i=6</span></div>
+<h3>แนวสอบเข้า ม.4: คิดเร็วและระวังช้อยส์หลอก</h3>
+<div class="answer-key"><span class="qid">T1</span> <strong>คำตอบ:</strong> 4√5<br/><span class="small">√20=2√5, √45=3√5 ดังนั้น 2√5+3√5-√5=4√5</span></div>
+<div class="answer-key"><span class="qid">T2</span> <strong>คำตอบ:</strong> 27<br/><span class="small">√3+√12 = √3+2√3 = 3√3 ดังนั้นกำลังสองได้ 27</span></div>
+<div class="answer-key"><span class="qid">T3</span> <strong>คำตอบ:</strong> =<br/><span class="small">√20=2√5 และ √45=3√5 ดังนั้นซ้าย = 3√5 เท่ากับขวา</span></div>
+<div class="answer-key"><span class="qid">T4</span> <strong>คำตอบ:</strong> 20<br/><span class="small">x เป็นจำนวนเต็มตั้งแต่ 5 ถึง 24 จึงมี 20 จำนวน</span></div>
+<div class="answer-key"><span class="qid">T5</span> <strong>คำตอบ:</strong> √2-1<br/><span class="small">ได้ [√3(√6-√3)]/(6-3) = (√18-3)/3 = (3√2-3)/3 = √2-1</span></div></section>
+<div class="footer">OSN Computer Prep Math - Chapter 04 Square Root and Radicals</div></main></div><script>
+function norm(s){
+  return (s||'').toLowerCase()
+    .replace(/\s+/g,'')
+    .replace(/×/g,'x').replace(/\*/g,'x')
+    .replace(/√/g,'sqrt')
+    .replace(/sqrt\(([^)]+)\)/g,'sqrt$1')
+    .replace(/[()]/g,'')
+    .replace(/−/g,'-')
+    .replace(/≤/g,'<=').replace(/≥/g,'>=')
+    .replace(/บวก/g,'+')
+    .replace(/และ/g,'and')
+    .replace(/,/g,',');
+}
+function checkOne(btn){
+  const card = btn.closest('.qcard');
+  const input = card.querySelector('input');
+  const fb = card.querySelector('.feedback');
+  const valid = input.dataset.answer.split('|').map(norm);
+  const got = norm(input.value);
+  if(!got){ fb.textContent = 'กรุณาพิมพ์คำตอบก่อน'; fb.className='feedback no'; return; }
+  if(valid.includes(got)) { fb.textContent = 'ถูกต้อง'; fb.className='feedback ok'; card.dataset.done='1'; }
+  else { fb.textContent = 'ยังไม่ถูก ลองดู Hint หรือทบทวนกฎรากที่สอง'; fb.className='feedback no'; }
+  updateProgress();
+}
+function toggleHint(btn){ btn.closest('.qcard').querySelector('.hint').classList.toggle('hidden'); }
+function toggleSolution(btn){ btn.closest('.qcard').querySelector('.solution').classList.toggle('hidden'); }
+function revealAll(){ document.querySelectorAll('.solution,.hint').forEach(x=>x.classList.remove('hidden')); }
+function hideAll(){ document.querySelectorAll('.solution,.hint').forEach(x=>x.classList.add('hidden')); }
+function updateProgress(){
+  const total = document.querySelectorAll('.qcard').length;
+  const done = document.querySelectorAll('.qcard[data-done="1"]').length;
+  const bar = document.querySelector('.bar');
+  if(bar) bar.style.width = (100*done/total)+'%';
+  const t = document.querySelector('#progressText');
+  if(t) t.textContent = done + ' / ' + total + ' ข้อ';
+}
+const quizBank = [
+  ['sqrt(64)','8'], ['sqrt(81)','9'], ['sqrt(125) จัดรูป','5sqrt5'], ['sqrt(18)+sqrt(8)','5sqrt2'], ['floor(sqrt(90))','9'],
+  ['sqrt((-12)^2)','12'], ['sqrt(50) อยู่ระหว่างจำนวนเต็มใด','7และ8'], ['จำนวนเต็ม n มากที่สุดที่ n^2 <= 1000','31'], ['sqrt(27) จัดรูป','3sqrt3'], ['1/sqrt(2) ทำตัวส่วนให้ไม่มีราก','sqrt2/2']
+];
+let currentQuiz = null;
+function newQuiz(){
+  currentQuiz = quizBank[Math.floor(Math.random()*quizBank.length)];
+  document.getElementById('quizQ').textContent = currentQuiz[0];
+  document.getElementById('quizA').value = '';
+  document.getElementById('quizFb').textContent = '';
+}
+function checkQuiz(){
+  if(!currentQuiz) newQuiz();
+  const got = norm(document.getElementById('quizA').value);
+  const ans = norm(currentQuiz[1]);
+  const fb = document.getElementById('quizFb');
+  if(got===ans){ fb.textContent='ถูกต้อง'; fb.className='feedback ok'; }
+  else{ fb.textContent='ยังไม่ถูก คำตอบคือ '+currentQuiz[1]; fb.className='feedback no'; }
+}
+window.addEventListener('load',()=>{ updateProgress(); newQuiz(); });
+</script></body></html>

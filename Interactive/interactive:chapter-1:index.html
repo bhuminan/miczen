@@ -1,0 +1,360 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>บทที่ 1 ระบบจำนวนและจำนวนจริง | Math for OSN Computer Prep</title>
+<style>
+:root {
+  --blue:#1E3A5F; --blue2:#274C77; --teal:#0F766E; --orange:#F59E0B;
+  --bg:#F8FAFC; --paper:#FFFFFF; --ink:#1F2937; --muted:#64748B;
+  --line:#E2E8F0; --soft-blue:#EFF6FF; --soft-teal:#ECFDF5; --soft-orange:#FFF7ED;
+  --danger:#B45309; --good:#047857;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--bg); color:var(--ink); font-family:"Noto Sans Thai","Sarabun","Noto Sans",Arial,sans-serif; line-height:1.72; }
+a { color:var(--teal); text-decoration:none; }
+.app { display:grid; grid-template-columns:280px 1fr; min-height:100vh; }
+aside { position:sticky; top:0; height:100vh; overflow:auto; padding:24px 18px; background:linear-gradient(180deg,var(--blue),#0F172A); color:white; }
+.brand { padding:8px 8px 20px; border-bottom:1px solid rgba(255,255,255,.14); margin-bottom:16px; }
+.brand .kicker { font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:#BFDBFE; }
+.brand h1 { margin:8px 0 4px; font-size:22px; line-height:1.25; }
+.brand p { margin:0; color:#CBD5E1; font-size:13px; }
+.nav a { display:block; padding:9px 10px; border-radius:12px; color:#E5E7EB; font-size:14px; margin:2px 0; }
+.nav a:hover { background:rgba(255,255,255,.12); color:#fff; }
+.sidebar-card { margin-top:18px; background:rgba(255,255,255,.09); border:1px solid rgba(255,255,255,.12); border-radius:18px; padding:14px; font-size:13px; color:#E2E8F0; }
+main { padding:34px 40px 70px; }
+.page { max-width:1040px; margin:0 auto; }
+.hero { background:radial-gradient(circle at top right,rgba(15,118,110,.16),transparent 35%),linear-gradient(135deg,#FFFFFF,#F8FAFC); border:1px solid var(--line); border-radius:28px; padding:34px; box-shadow:0 20px 50px rgba(15,23,42,.08); }
+.badge { display:inline-flex; align-items:center; gap:8px; background:var(--soft-teal); color:var(--teal); border:1px solid #A7F3D0; border-radius:999px; padding:5px 12px; font-size:13px; font-weight:700; }
+h1,h2,h3 { color:var(--blue); line-height:1.28; }
+h1 { font-size:34px; margin:14px 0 10px; }
+h2 { margin-top:34px; font-size:26px; padding-top:6px; }
+h3 { margin-top:24px; font-size:19px; }
+p { margin:10px 0; }
+.lead { font-size:18px; color:#334155; max-width:900px; }
+.grid { display:grid; gap:18px; }
+.grid.two { grid-template-columns:repeat(2,minmax(0,1fr)); }
+.grid.three { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.card { background:var(--paper); border:1px solid var(--line); border-radius:22px; padding:20px; box-shadow:0 10px 30px rgba(15,23,42,.045); }
+.card h3 { margin-top:0; }
+.callout { border-radius:18px; padding:18px 20px; margin:18px 0; border:1px solid var(--line); }
+.callout.blue { background:var(--soft-blue); border-left:6px solid var(--blue2); }
+.callout.teal { background:var(--soft-teal); border-left:6px solid var(--teal); }
+.callout.orange { background:var(--soft-orange); border-left:6px solid var(--orange); }
+.formula { background:#F8FAFC; border:1px solid var(--line); border-radius:16px; padding:14px 16px; margin:12px 0; text-align:center; font-family:"Noto Sans","Cambria Math","DejaVu Sans",serif; font-size:19px; color:#0F172A; }
+.eq { font-family:"Noto Sans","Cambria Math","DejaVu Sans",serif; white-space:nowrap; }
+table { width:100%; border-collapse:separate; border-spacing:0; margin:14px 0; overflow:hidden; border:1px solid var(--line); border-radius:16px; background:white; }
+th,td { padding:11px 13px; border-bottom:1px solid var(--line); vertical-align:top; }
+th { background:#F1F5F9; color:var(--blue); text-align:left; font-weight:800; }
+tr:last-child td { border-bottom:0; }
+ul,ol { padding-left:1.25em; }
+li { margin:6px 0; }
+.small { font-size:13px; color:var(--muted); }
+.pill { display:inline-block; border-radius:999px; padding:3px 10px; font-size:12px; font-weight:800; margin-right:6px; }
+.pill.easy { background:#DCFCE7; color:#166534; }
+.pill.medium { background:#FEF3C7; color:#92400E; }
+.pill.hard { background:#FEE2E2; color:#991B1B; }
+.pill.osn { background:#DBEAFE; color:#1D4ED8; }
+.pill.m4 { background:#EDE9FE; color:#6D28D9; }
+.worked { counter-reset:step; }
+.step { position:relative; padding-left:42px; margin:12px 0; }
+.step::before { counter-increment:step; content:counter(step); position:absolute; left:0; top:.1em; width:27px; height:27px; border-radius:50%; background:var(--teal); color:white; display:grid; place-items:center; font-weight:800; font-size:13px; }
+.exercise-filter { display:flex; flex-wrap:wrap; gap:8px; margin:14px 0 18px; }
+button,.btn { border:0; border-radius:12px; padding:9px 13px; background:var(--blue); color:#fff; font-weight:800; cursor:pointer; font-family:inherit; }
+button.secondary { background:#E2E8F0; color:#0F172A; }
+button.ghost { background:#fff; color:var(--blue); border:1px solid var(--line); }
+button:hover { filter:brightness(.96); }
+.quiz-card { margin:14px 0; padding:18px; border:1px solid var(--line); border-radius:18px; background:#fff; }
+.quiz-head { display:flex; justify-content:space-between; gap:12px; align-items:center; margin-bottom:10px; }
+.quiz-title { font-weight:800; color:var(--blue); }
+.option { display:block; border:1px solid var(--line); background:#F8FAFC; border-radius:12px; padding:9px 12px; margin:8px 0; cursor:pointer; }
+.option:hover { border-color:#93C5FD; }
+input.answer { width:100%; max-width:360px; border:1px solid var(--line); border-radius:12px; padding:10px 12px; font-size:16px; font-family:inherit; }
+.feedback { margin-top:10px; font-weight:800; }
+.feedback.ok { color:var(--good); }
+.feedback.no { color:#B91C1C; }
+.solution { display:none; margin-top:12px; background:#F8FAFC; border-left:5px solid var(--teal); border-radius:12px; padding:12px 14px; }
+.progress-wrap { position:sticky; top:0; z-index:5; background:rgba(248,250,252,.9); backdrop-filter:blur(8px); padding:9px 0 12px; margin:-8px 0 16px; }
+.progress-line { height:10px; background:#E2E8F0; border-radius:999px; overflow:hidden; }
+.progress-bar { height:100%; width:0%; background:linear-gradient(90deg,var(--teal),var(--orange)); transition:.25s; }
+.footer { margin-top:40px; padding:20px 0; border-top:1px solid var(--line); color:var(--muted); font-size:13px; }
+.print-only { display:none; }
+@media (max-width: 900px) {
+  .app { grid-template-columns:1fr; } aside { position:relative; height:auto; } main { padding:22px 16px 50px; }
+  .grid.two,.grid.three { grid-template-columns:1fr; }
+  h1 { font-size:28px; } .hero { padding:24px; }
+}
+@media print {
+  @page { size:A4; margin:12mm; }
+  body { background:white; font-size:10.8pt; line-height:1.55; }
+  .app { display:block; } aside,.controls,.exercise-filter,.progress-wrap,button,.no-print { display:none !important; }
+  main { padding:0; } .page { max-width:none; }
+  .hero,.card,.quiz-card,.callout { box-shadow:none; break-inside:avoid; }
+  h1 { font-size:24pt; } h2 { font-size:18pt; break-after:avoid; } h3 { font-size:13.5pt; break-after:avoid; }
+  .grid.two,.grid.three { grid-template-columns:1fr 1fr; }
+  .solution,.print-only { display:block !important; }
+  .option { padding:4px 8px; margin:4px 0; }
+  .quiz-card { break-inside:avoid; padding:12px; margin:9px 0; }
+  a::after { content:""; }
+}
+</style>
+</head>
+<body>
+<div class="app">
+<aside>
+  <div class="brand">
+    <div class="kicker">Math for OSN Computer Prep</div>
+    <h1>บทที่ 1<br>ระบบจำนวนและจำนวนจริง</h1>
+    <p>Number Systems & Real Numbers</p>
+  </div>
+  <nav class="nav">
+    <a href="#goals">เป้าหมายบทเรียน</a>
+    <a href="#map">แผนที่ของจำนวน</a>
+    <a href="#rules">กฎและข้อสังเกต</a>
+    <a href="#examples">ตัวอย่างวิธีคิด</a>
+    <a href="#programmer">คิดแบบโปรแกรมเมอร์</a>
+    <a href="#pitfalls">จุดหลอกข้อสอบ</a>
+    <a href="#exercises">แบบฝึกหัด Interactive</a>
+    <a href="#summary">สรุปท้ายบท</a>
+  </nav>
+  <div class="sidebar-card">
+    <strong>วิธีใช้</strong><br>
+    อ่านเนื้อหา → ทำแบบฝึกหัด → กดตรวจคำตอบ → เปิดเฉลยเมื่อจำเป็น<br><br>
+    <span class="small" style="color:#CBD5E1">ไฟล์นี้ออกแบบให้เปิดได้ใน Browser และพิมพ์เป็น PDF ได้</span>
+  </div>
+</aside>
+<main>
+<div class="page">
+<section class="hero">
+  <span class="badge">Chapter 1 / Foundation</span>
+  <h1>ระบบจำนวนและจำนวนจริง</h1>
+  <p class="lead">บทนี้คือฐานของคณิตศาสตร์ ม.ต้น และเป็นพื้นฐานสำคัญของการเขียนโปรแกรม เพราะคอมพิวเตอร์ต้องแยกชนิดของจำนวน เช่น จำนวนเต็ม ทศนิยม เศษเหลือ และค่าประมาณ ให้ถูกต้องก่อนนำไปคำนวณ</p>
+  <div class="grid three" style="margin-top:20px">
+    <div class="card"><h3>เป้าหมายหลัก</h3><p>แยกประเภทจำนวนได้ถูกต้อง เปรียบเทียบจำนวนได้ และเข้าใจว่า “จำนวนจริง” ครอบคลุมอะไรบ้าง</p></div>
+    <div class="card"><h3>เชื่อมกับ สอวน. คอม</h3><p>เข้าใจ integer, floating point, quotient, remainder, floor และ ceiling ในระดับพื้นฐาน</p></div>
+    <div class="card"><h3>แนวข้อสอบ</h3><p>ฝึกทั้งง่าย ปานกลาง ยาก พร้อมโจทย์แนวคิดแบบ สอวน. คอม และสอบเข้า ม.4</p></div>
+  </div>
+</section>
+
+<section id="goals">
+<h2>1. เป้าหมายการเรียนรู้</h2>
+<div class="callout teal">
+หลังเรียนจบบทนี้ นักเรียนควรทำได้ 5 เรื่อง: ระบุชนิดของจำนวน, แปลงเศษส่วน/ทศนิยม, เปรียบเทียบจำนวนบนเส้นจำนวน, ใช้ค่าสัมบูรณ์เป็นระยะทาง, และเชื่อมจำนวนกับการคิดแบบโปรแกรมเมอร์ได้
+</div>
+<table>
+<tr><th>สิ่งที่ต้องทำได้</th><th>ตัวอย่าง</th></tr>
+<tr><td>แยกประเภทจำนวน</td><td>รู้ว่า -5 เป็นจำนวนเต็มและตรรกยะ, √2 เป็นอตรรกยะ, 0.25 เป็นตรรกยะ</td></tr>
+<tr><td>เปรียบเทียบจำนวน</td><td>เรียง -2, -1/3, 0, 0.5 จากน้อยไปมากได้</td></tr>
+<tr><td>เข้าใจเส้นจำนวน</td><td>มองจำนวนเป็นตำแหน่ง และค่าสัมบูรณ์เป็นระยะทางจาก 0</td></tr>
+<tr><td>เข้าใจค่าประมาณ</td><td>รู้ว่า √2 ≈ 1.414 แต่ √2 ไม่เท่ากับ 1.414 จริง ๆ</td></tr>
+<tr><td>เชื่อมกับโปรแกรม</td><td>เข้าใจความต่างระหว่างจำนวนเต็มกับทศนิยม และระวังการเปรียบเทียบค่าทศนิยมในคอมพิวเตอร์</td></tr>
+</table>
+</section>
+
+<section id="map">
+<h2>2. แผนที่ของระบบจำนวน</h2>
+<p>จำนวนที่ใช้ในคณิตศาสตร์ ม.ต้น แบ่งเป็นกลุ่มใหญ่ได้ดังนี้</p>
+<div class="formula">N ⊂ W ⊂ Z ⊂ Q ⊂ R และ I ⊂ R แต่ I ∩ Q = ∅</div>
+<table>
+<tr><th>สัญลักษณ์</th><th>ชื่อไทย</th><th>ชื่ออังกฤษ</th><th>ตัวอย่าง</th><th>ข้อควรจำ</th></tr>
+<tr><td>N</td><td>จำนวนธรรมชาติ</td><td>Natural numbers</td><td>1, 2, 3, ...</td><td>บางตำราไม่นับ 0 เป็นจำนวนธรรมชาติ</td></tr>
+<tr><td>W</td><td>จำนวนนับรวมศูนย์</td><td>Whole numbers</td><td>0, 1, 2, 3, ...</td><td>เหมาะกับการนับจำนวนสิ่งของที่อาจไม่มีเลย</td></tr>
+<tr><td>Z</td><td>จำนวนเต็ม</td><td>Integers</td><td>..., -2, -1, 0, 1, 2, ...</td><td>ไม่มีเศษส่วนหรือทศนิยม</td></tr>
+<tr><td>Q</td><td>จำนวนตรรกยะ</td><td>Rational numbers</td><td>1/2, -7/3, 0.25, 0.333...</td><td>เขียนเป็น a/b ได้ โดย a,b เป็นจำนวนเต็ม และ b ≠ 0</td></tr>
+<tr><td>I</td><td>จำนวนอตรรกยะ</td><td>Irrational numbers</td><td>√2, √3, π</td><td>เขียนเป็นเศษส่วนของจำนวนเต็มไม่ได้</td></tr>
+<tr><td>R</td><td>จำนวนจริง</td><td>Real numbers</td><td>จำนวนทั้งหมดบนเส้นจำนวน</td><td>ประกอบด้วยจำนวนตรรกยะและอตรรกยะ</td></tr>
+</table>
+<div class="callout orange"><strong>ข้อสังเกตสำคัญ:</strong> จำนวนจริงทุกตัวอยู่บนเส้นจำนวน แต่ไม่ใช่จำนวนจริงทุกตัวจะเขียนเป็นเศษส่วนได้ เช่น √2 และ π</div>
+</section>
+
+<section id="rules">
+<h2>3. กฎและข้อสังเกตที่ต้องแม่น</h2>
+<div class="grid two">
+<div class="card">
+<h3>3.1 จำนวนตรรกยะ</h3>
+<div class="formula">Q = { a/b | a,b ∈ Z และ b ≠ 0 }</div>
+<p>ถ้าเขียนเป็นเศษส่วนของจำนวนเต็มได้ ถือเป็นจำนวนตรรกยะ เช่น 5 = 5/1, -0.75 = -3/4, 0.121212... = 12/99</p>
+</div>
+<div class="card">
+<h3>3.2 ทศนิยมกับจำนวนตรรกยะ</h3>
+<ul>
+<li>ทศนิยมสิ้นสุด เช่น 0.125 เป็นจำนวนตรรกยะ</li>
+<li>ทศนิยมซ้ำ เช่น 0.333... เป็นจำนวนตรรกยะ</li>
+<li>ทศนิยมไม่สิ้นสุดและไม่ซ้ำ เช่น 1.414213... ของ √2 เป็นจำนวนอตรรกยะ</li>
+</ul>
+</div>
+<div class="card">
+<h3>3.3 ค่าสัมบูรณ์</h3>
+<div class="formula">|x| = ระยะห่างของ x จาก 0 บนเส้นจำนวน</div>
+<p>ดังนั้น |5| = 5 และ |-5| = 5 เพราะระยะทางไม่ติดลบ</p>
+</div>
+<div class="card">
+<h3>3.4 การเปรียบเทียบจำนวน</h3>
+<p>ถ้าเทียบจำนวนหลายรูปแบบ ให้แปลงเป็นค่าประมาณที่อ่านง่าย หรือใช้เศษส่วนร่วมตัวส่วนเดียวกัน</p>
+<div class="formula">√2 ≈ 1.414, &nbsp; 3/2 = 1.5</div>
+</div>
+</div>
+
+<h3>3.5 ตารางปิดภายใต้การดำเนินการ</h3>
+<table>
+<tr><th>เซตจำนวน</th><th>บวก</th><th>ลบ</th><th>คูณ</th><th>หาร</th></tr>
+<tr><td>จำนวนเต็ม Z</td><td>ปิด</td><td>ปิด</td><td>ปิด</td><td>ไม่ปิด เช่น 1 ÷ 2 = 1/2</td></tr>
+<tr><td>จำนวนตรรกยะ Q</td><td>ปิด</td><td>ปิด</td><td>ปิด</td><td>ปิด ถ้าหารด้วยจำนวนที่ไม่ใช่ 0</td></tr>
+<tr><td>จำนวนจริง R</td><td>ปิด</td><td>ปิด</td><td>ปิด</td><td>ปิด ถ้าหารด้วยจำนวนที่ไม่ใช่ 0</td></tr>
+</table>
+</section>
+
+<section id="examples">
+<h2>4. ตัวอย่างวิธีคิดทีละขั้น</h2>
+<div class="card worked">
+<h3>ตัวอย่างที่ 1: แยกประเภทจำนวน</h3>
+<p><strong>โจทย์:</strong> จงระบุชนิดของจำนวนต่อไปนี้: -4, 0, 2/5, √5, 0.777...</p>
+<div class="step">-4 เป็นจำนวนเต็ม จึงเป็นจำนวนตรรกยะและจำนวนจริงด้วย</div>
+<div class="step">0 เป็นจำนวนเต็ม จึงเป็นจำนวนตรรกยะและจำนวนจริง</div>
+<div class="step">2/5 เขียนเป็นเศษส่วนของจำนวนเต็มได้ จึงเป็นจำนวนตรรกยะ</div>
+<div class="step">√5 ไม่สามารถเขียนเป็นเศษส่วนของจำนวนเต็มได้ จึงเป็นจำนวนอตรรกยะ</div>
+<div class="step">0.777... เป็นทศนิยมซ้ำ จึงเป็นจำนวนตรรกยะ</div>
+</div>
+
+<div class="card worked">
+<h3>ตัวอย่างที่ 2: เรียงจำนวน</h3>
+<p><strong>โจทย์:</strong> เรียง 1.4, √2, 3/2 จากน้อยไปมาก</p>
+<div class="step">แปลงค่าที่เทียบยาก: √2 ≈ 1.414</div>
+<div class="step">แปลงเศษส่วน: 3/2 = 1.5</div>
+<div class="step">เปรียบเทียบ: 1.4 < 1.414 < 1.5</div>
+<div class="step"><strong>ตอบ:</strong> 1.4 < √2 < 3/2</div>
+</div>
+
+<div class="card worked">
+<h3>ตัวอย่างที่ 3: ค่าสัมบูรณ์เป็นระยะทาง</h3>
+<p><strong>โจทย์:</strong> ถ้า |x - 3| < 2 จงหาช่วงของ x</p>
+<div class="step">|x - 3| หมายถึงระยะของ x จาก 3</div>
+<div class="step">ระยะน้อยกว่า 2 แปลว่า x อยู่ห่างจาก 3 ไม่เกินด้านซ้ายและขวา 2 หน่วย</div>
+<div class="step">เขียนเป็นอสมการได้ว่า -2 < x - 3 < 2</div>
+<div class="step">บวก 3 ทุกส่วน ได้ 1 < x < 5</div>
+</div>
+</section>
+
+<section id="programmer">
+<h2>5. มุมคิดแบบโปรแกรมเมอร์</h2>
+<div class="callout blue">
+ในการเขียนโปรแกรม จำนวนไม่ได้เป็นแค่ “ค่าทางคณิตศาสตร์” แต่ยังมีชนิดข้อมูล เช่น integer และ floating point ถ้าเลือกหรือเปรียบเทียบผิด โปรแกรมอาจให้ผลลัพธ์ผิดได้
+</div>
+<table>
+<tr><th>แนวคิดคณิตศาสตร์</th><th>แนวคิดในโปรแกรม</th><th>ตัวอย่าง</th></tr>
+<tr><td>จำนวนเต็ม</td><td>integer / int</td><td>จำนวนรอบของ loop, จำนวนคน, คะแนนเต็ม</td></tr>
+<tr><td>จำนวนทศนิยม</td><td>float / real number approximation</td><td>ระยะทาง, เวลา, ค่าเฉลี่ย</td></tr>
+<tr><td>ผลหารและเศษ</td><td>// และ %</td><td>17 // 5 = 3 และ 17 % 5 = 2</td></tr>
+<tr><td>ปัดลง</td><td>floor</td><td>floor(√50) = 7</td></tr>
+<tr><td>ปัดขึ้น</td><td>ceiling</td><td>ceil(√50) = 8</td></tr>
+</table>
+<div class="callout orange"><strong>ระวัง:</strong> ในคอมพิวเตอร์ 0.1 + 0.2 อาจไม่ได้เก็บเป็น 0.3 แบบตรงเป๊ะ เพราะทศนิยมบางจำนวนแทนในฐานสองได้เพียงค่าประมาณ จึงไม่ควรเปรียบเทียบ float ด้วย == โดยไม่กำหนดค่าคลาดเคลื่อน</div>
+</section>
+
+<section id="pitfalls">
+<h2>6. จุดหลอกข้อสอบที่พบบ่อย</h2>
+<div class="grid two">
+<div class="card"><h3>หลอกที่ 1: 0 เป็นจำนวนธรรมชาติหรือไม่</h3><p>ขึ้นกับนิยามของแต่ละตำรา แต่โดยปลอดภัยให้ถือว่า 0 เป็นจำนวนเต็มและจำนวนจริงแน่นอน หากข้อสอบไม่ระบุ อย่าตอบแบบเหมารวมเกินไป</p></div>
+<div class="card"><h3>หลอกที่ 2: อตรรกยะ + อตรรกยะ</h3><p>ไม่จำเป็นต้องเป็นอตรรกยะ เช่น √2 + (-√2) = 0 ซึ่งเป็นจำนวนตรรกยะ</p></div>
+<div class="card"><h3>หลอกที่ 3: การยกกำลังเมื่อ 0 < x < 1</h3><p>ถ้า 0 < x < 1 จะได้ x² < x < √x ซึ่งตรงข้ามกับความรู้สึกของหลายคน</p></div>
+<div class="card"><h3>หลอกที่ 4: เลขติดลบและกำลังสอง</h3><p>ถ้า a < b < 0 อาจได้ a² > b² เช่น -5 < -2 แต่ 25 > 4</p></div>
+</div>
+</section>
+
+<section id="exercises">
+<h2>7. แบบฝึกหัด Interactive</h2>
+<p>ทำจากระดับง่ายไปยาก กด <strong>ตรวจคำตอบ</strong> ก่อนเปิดเฉลย เพื่อให้รู้ว่าตนเองติดตรงไหน</p>
+<div class="progress-wrap no-print">
+  <div class="small">ความคืบหน้า: <span id="progressText">0/0</span></div>
+  <div class="progress-line"><div id="progressBar" class="progress-bar"></div></div>
+</div>
+<div class="exercise-filter no-print">
+  <button class="ghost" onclick="renderExercises('all')">ทั้งหมด</button>
+  <button class="ghost" onclick="renderExercises('Easy')">ง่าย</button>
+  <button class="ghost" onclick="renderExercises('Medium')">ปานกลาง</button>
+  <button class="ghost" onclick="renderExercises('Hard')">ยาก</button>
+  <button class="ghost" onclick="renderExercises('OSN')">แนว สอวน. คอม</button>
+  <button class="ghost" onclick="renderExercises('M4')">แนวสอบเข้า ม.4</button>
+</div>
+<div id="exerciseList"></div>
+</section>
+
+<section id="summary">
+<h2>8. สรุปท้ายบท</h2>
+<div class="callout teal">
+<ul>
+<li>จำนวนจริง R แบ่งเป็นจำนวนตรรกยะ Q และจำนวนอตรรกยะ I</li>
+<li>จำนวนตรรกยะคือจำนวนที่เขียนเป็น a/b ได้ โดย a,b เป็นจำนวนเต็ม และ b ≠ 0</li>
+<li>ทศนิยมสิ้นสุดและทศนิยมซ้ำเป็นจำนวนตรรกยะ</li>
+<li>ค่าสัมบูรณ์คือระยะห่างจาก 0 จึงไม่ติดลบ</li>
+<li>ในการเขียนโปรแกรม ต้องระวังชนิดข้อมูลจำนวนเต็มและทศนิยม โดยเฉพาะการหาร เศษเหลือ และค่าประมาณของ float</li>
+</ul>
+</div>
+<h3>สูตร/ข้อเท็จจริงที่ควรจำ</h3>
+<div class="formula">Z ⊂ Q ⊂ R, &nbsp;&nbsp; I ⊂ R, &nbsp;&nbsp; Q ∩ I = ∅</div>
+<div class="formula">จำนวนตรรกยะ = a/b โดย a,b ∈ Z และ b ≠ 0</div>
+<div class="formula">|x| ≥ 0 สำหรับจำนวนจริงทุกตัว x</div>
+<div class="formula">ถ้า 0 < x < 1 แล้ว x² < x < √x</div>
+</section>
+
+<div class="footer">
+  <strong>คู่มือคณิตศาสตร์เตรียมสอบ สอวน. คอมพิวเตอร์</strong> · บทที่ 1 ระบบจำนวนและจำนวนจริง · ออกแบบเป็น HTML interactive + PDF พร้อมพิมพ์
+</div>
+</div>
+</main>
+</div>
+<script>
+const EXERCISES = [{"id": "E1", "level": "Easy", "type": "mc", "prompt": "จำนวน 0 จัดอยู่ในเซตใดต่อไปนี้แน่นอนที่สุด", "options": ["จำนวนธรรมชาติเท่านั้น", "จำนวนเต็มและจำนวนจริง", "จำนวนอตรรกยะ", "ไม่ใช่จำนวนจริง"], "answer": "จำนวนเต็มและจำนวนจริง", "explanation": "0 เป็นจำนวนเต็ม (integer) และจำนวนเต็มทุกตัวเป็นจำนวนจริง แต่ในบางหลักสูตร 0 ไม่ถูกนับเป็นจำนวนธรรมชาติ จึงไม่ควรตอบว่าเป็นจำนวนธรรมชาติเท่านั้น"}, {"id": "E2", "level": "Easy", "type": "mc", "prompt": "จำนวน -7/3 เป็นจำนวนชนิดใด", "options": ["จำนวนเต็ม", "จำนวนตรรกยะ", "จำนวนอตรรกยะ", "จำนวนธรรมชาติ"], "answer": "จำนวนตรรกยะ", "explanation": "-7/3 เขียนได้ในรูป a/b โดย a,b เป็นจำนวนเต็มและ b ไม่เท่ากับ 0 จึงเป็นจำนวนตรรกยะ"}, {"id": "E3", "level": "Easy", "type": "mc", "prompt": "ข้อใดเป็นจำนวนอตรรกยะ", "options": ["0.25", "-8", "√2", "7/9"], "answer": "√2", "explanation": "√2 ไม่สามารถเขียนเป็นเศษส่วนของจำนวนเต็มได้ จึงเป็นจำนวนอตรรกยะ"}, {"id": "E4", "level": "Easy", "type": "mc", "prompt": "ทศนิยม 0.333... เท่ากับข้อใด", "options": ["1/2", "1/3", "3/10", "ไม่เป็นจำนวนตรรกยะ"], "answer": "1/3", "explanation": "ทศนิยมซ้ำ 0.333... = 1/3 และทศนิยมซ้ำทุกตัวเป็นจำนวนตรรกยะ"}, {"id": "E5", "level": "Easy", "type": "input", "prompt": "เรียงจำนวนจากน้อยไปมาก: -2, 0.5, -1/3, 0", "answer": ["-2,-1/3,0,0.5", "-2, -1/3, 0, 0.5"], "explanation": "-2 น้อยที่สุด จากนั้น -1/3 ประมาณ -0.333 แล้ว 0 และ 0.5 มากที่สุด"}, {"id": "E6", "level": "Easy", "type": "mc", "prompt": "ข้อใดถูกต้องเกี่ยวกับความสัมพันธ์ของเซตจำนวน", "options": ["Q ⊂ Z", "Z ⊂ Q", "I ⊂ Q", "R ⊂ Q"], "answer": "Z ⊂ Q", "explanation": "จำนวนเต็มทุกตัวเขียนเป็นเศษส่วนได้ เช่น 5 = 5/1 ดังนั้น Z เป็นสับเซตของ Q"}, {"id": "E7", "level": "Easy", "type": "input", "prompt": "ค่าของ | -12 | คือเท่าใด", "answer": ["12"], "explanation": "ค่าสัมบูรณ์หมายถึงระยะห่างจาก 0 บนเส้นจำนวน ดังนั้น | -12 | = 12"}, {"id": "E8", "level": "Easy", "type": "mc", "prompt": "ข้อใดเป็นทศนิยมสิ้นสุด", "options": ["1/3", "2/7", "3/8", "5/6"], "answer": "3/8", "explanation": "3/8 = 0.375 เป็นทศนิยมสิ้นสุด เพราะตัวส่วน 8 = 2^3 มีเฉพาะตัวประกอบเฉพาะ 2 หรือ 5"}, {"id": "E9", "level": "Medium", "type": "mc", "prompt": "ข้อใดเรียงจากน้อยไปมากถูกต้อง", "options": ["√2, 1.4, 3/2", "1.4, √2, 3/2", "3/2, √2, 1.4", "1.4, 3/2, √2"], "answer": "1.4, √2, 3/2", "explanation": "√2 ประมาณ 1.414 และ 3/2 = 1.5 ดังนั้น 1.4 < √2 < 1.5"}, {"id": "E10", "level": "Medium", "type": "mc", "prompt": "ถ้า a เป็นจำนวนตรรกยะที่ไม่เป็นศูนย์ และ b เป็นจำนวนอตรรกยะ ข้อใดรับประกันว่าเป็นจำนวนอตรรกยะเสมอ", "options": ["a × b", "b - b", "a/a", "a × 0"], "answer": "a × b", "explanation": "เมื่อ a เป็นตรรกยะที่ไม่เป็นศูนย์ และ b เป็นอตรรกยะ ผลคูณ ab ต้องเป็นอตรรกยะ มิฉะนั้น b = ab/a จะกลายเป็นตรรกยะ ซึ่งขัดแย้ง"}, {"id": "E11", "level": "Medium", "type": "mc", "prompt": "ข้อใดเป็นจริงเสมอ", "options": ["ผลบวกของจำนวนอตรรกยะสองจำนวนเป็นอตรรกยะเสมอ", "ผลคูณของจำนวนอตรรกยะสองจำนวนเป็นอตรรกยะเสมอ", "จำนวนเต็มทุกตัวเป็นจำนวนตรรกยะ", "จำนวนตรรกยะทุกตัวเป็นจำนวนเต็ม"], "answer": "จำนวนเต็มทุกตัวเป็นจำนวนตรรกยะ", "explanation": "จำนวนเต็ม n เขียนเป็น n/1 ได้ จึงเป็นจำนวนตรรกยะ ส่วนข้อความเกี่ยวกับอตรรกยะไม่จริงเสมอ เช่น √2 + (-√2)=0"}, {"id": "E12", "level": "Medium", "type": "input", "prompt": "ให้ x = 2.5 และ y = -3 ค่าของ |x - y| เท่ากับเท่าใด", "answer": ["5.5", "11/2"], "explanation": "x-y = 2.5 - (-3) = 5.5 ดังนั้น |x-y| = 5.5"}, {"id": "E13", "level": "Medium", "type": "mc", "prompt": "จำนวนใดอยู่ระหว่าง 1/3 และ 1/2", "options": ["0.2", "0.34", "0.6", "-0.4"], "answer": "0.34", "explanation": "1/3 ประมาณ 0.333... และ 1/2 = 0.5 ดังนั้น 0.34 อยู่ระหว่างสองจำนวนนี้"}, {"id": "E14", "level": "Medium", "type": "mc", "prompt": "ถ้า n เป็นจำนวนเต็ม ข้อใดเป็นจำนวนคู่เสมอ", "options": ["n+1", "2n+1", "n^2+n", "n^2+1"], "answer": "n^2+n", "explanation": "n^2+n = n(n+1) เป็นผลคูณของจำนวนเต็มติดกันสองจำนวน จึงต้องมีตัวหนึ่งเป็นจำนวนคู่"}, {"id": "E15", "level": "Medium", "type": "input", "prompt": "จำนวนเต็มทั้งหมดที่อยู่ในช่วง -2 < x ≤ 3 มีทั้งหมดกี่จำนวน", "answer": ["5"], "explanation": "จำนวนเต็มที่เป็นไปได้คือ -1, 0, 1, 2, 3 รวม 5 จำนวน"}, {"id": "E16", "level": "Medium", "type": "mc", "prompt": "ข้อใดเป็นตัวอย่างของจำนวนจริงที่ไม่ใช่จำนวนตรรกยะ", "options": ["-11/5", "0", "√9", "π"], "answer": "π", "explanation": "π เป็นจำนวนอตรรกยะ จึงเป็นจำนวนจริงแต่ไม่ใช่จำนวนตรรกยะ"}, {"id": "H1", "level": "Hard", "type": "mc", "prompt": "ข้อใดให้ผลลัพธ์เป็นจำนวนตรรกยะ แม้มีจำนวนอตรรกยะอยู่ในนิพจน์", "options": ["√2 + √2", "√2 × √8", "√3 + 1", "π - 1"], "answer": "√2 × √8", "explanation": "√2 × √8 = √16 = 4 เป็นจำนวนตรรกยะ"}, {"id": "H2", "level": "Hard", "type": "mc", "prompt": "ถ้า x เป็นจำนวนจริงและ |x-3| < 2 ข้อใดคือช่วงของ x", "options": ["1 < x < 5", "x < 1 หรือ x > 5", "-5 < x < -1", "x ≤ 1 หรือ x ≥ 5"], "answer": "1 < x < 5", "explanation": "|x-3| < 2 หมายถึงระยะของ x จาก 3 น้อยกว่า 2 ดังนั้น -2 < x-3 < 2 จึงได้ 1 < x < 5"}, {"id": "H3", "level": "Hard", "type": "input", "prompt": "ผลบวกของจำนวนเต็มทั้งหมดที่ทำให้ |x| ≤ 4 เป็นเท่าใด", "answer": ["0"], "explanation": "จำนวนเต็มคือ -4,-3,-2,-1,0,1,2,3,4 จับคู่บวกลบแล้วหักล้างกันหมด ผลบวกเป็น 0"}, {"id": "H4", "level": "Hard", "type": "mc", "prompt": "กำหนด a < b < 0 ข้อใดถูกต้องเสมอ", "options": ["a^2 < b^2", "a^2 > b^2", "1/a > 1/b", "|a| < |b|"], "answer": "a^2 > b^2", "explanation": "เมื่อ a และ b เป็นลบและ a < b เช่น -5 < -2 จะได้ |a| > |b| จึงมี a^2 > b^2"}, {"id": "H5", "level": "Hard", "type": "mc", "prompt": "ถ้า 0 < x < 1 ข้อใดเรียงถูกต้อง", "options": ["x^2 < x < √x", "√x < x < x^2", "x < x^2 < √x", "x^2 < √x < x"], "answer": "x^2 < x < √x", "explanation": "สำหรับ 0<x<1 การยกกำลังสองทำให้ค่าน้อยลง ส่วนการถอดรากที่สองทำให้ค่ามากขึ้น"}, {"id": "O1", "level": "OSN", "type": "input", "prompt": "ในภาษาโปรแกรม ถ้าใช้ integer division: 17 // 5 ได้ผลลัพธ์เท่าใด", "answer": ["3"], "explanation": "17 = 5×3 + 2 ดังนั้น quotient คือ 3 และ remainder คือ 2"}, {"id": "O2", "level": "OSN", "type": "input", "prompt": "17 mod 5 มีค่าเท่าใด", "answer": ["2"], "explanation": "17 หาร 5 ได้ผลหาร 3 เหลือเศษ 2 ดังนั้น 17 mod 5 = 2"}, {"id": "O3", "level": "OSN", "type": "mc", "prompt": "เหตุใดการเปรียบเทียบ 0.1 + 0.2 == 0.3 ในคอมพิวเตอร์จึงอาจให้ผลผิด", "options": ["เพราะ 0.1 ไม่ใช่จำนวนจริง", "เพราะ floating point เก็บค่าทศนิยมบางตัวแบบประมาณ", "เพราะ 0.3 เป็นจำนวนอตรรกยะ", "เพราะเครื่องคิดเลขห้ามบวกทศนิยม"], "answer": "เพราะ floating point เก็บค่าทศนิยมบางตัวแบบประมาณ", "explanation": "คอมพิวเตอร์มักเก็บจำนวนทศนิยมแบบฐานสอง ซึ่งค่าบางตัวเช่น 0.1 แทนได้ไม่ตรงเป๊ะ จึงควรเปรียบเทียบด้วยค่าคลาดเคลื่อนที่ยอมรับได้"}, {"id": "O4", "level": "OSN", "type": "mc", "prompt": "ถ้าต้องตรวจว่า n เป็นจำนวนคู่ในโปรแกรม ควรใช้เงื่อนไขใด", "options": ["n > 0", "n % 2 == 0", "n // 2 == 0", "n + 2 == 0"], "answer": "n % 2 == 0", "explanation": "จำนวนคู่คือจำนวนที่หารด้วย 2 แล้วเหลือเศษ 0 จึงใช้ n % 2 == 0"}, {"id": "O5", "level": "OSN", "type": "input", "prompt": "จำนวนเต็มบวกที่น้อยที่สุดซึ่งมากกว่า √50 คือเท่าใด", "answer": ["8"], "explanation": "√50 ประมาณ 7.07 ดังนั้นจำนวนเต็มบวกที่น้อยที่สุดที่มากกว่า √50 คือ 8 หรือ ceiling(√50)=8"}, {"id": "T1", "level": "M4", "type": "mc", "prompt": "ข้อใดมีค่ามากที่สุด", "options": ["√5", "2.2", "11/5", "2.25"], "answer": "2.25", "explanation": "√5 ประมาณ 2.236, 2.2 = 11/5 = 2.2 และ 2.25 มากที่สุด"}, {"id": "T2", "level": "M4", "type": "input", "prompt": "จำนวนเต็ม x ที่ทำให้ -3 ≤ x < 4 มีทั้งหมดกี่จำนวน", "answer": ["7"], "explanation": "x = -3,-2,-1,0,1,2,3 รวม 7 จำนวน"}, {"id": "T3", "level": "M4", "type": "mc", "prompt": "ถ้า a เป็นจำนวนจริงบวก ข้อใดถูกต้องเสมอ", "options": ["a^2 > a", "√a < a", "a + 1 > a", "1/a > a"], "answer": "a + 1 > a", "explanation": "เมื่อ a เป็นจำนวนจริงบวก การบวก 1 ทำให้ค่ามากขึ้นเสมอ ส่วนข้ออื่นขึ้นกับช่วงของ a"}, {"id": "T4", "level": "M4", "type": "input", "prompt": "ผลคูณของจำนวนเต็มตั้งแต่ -2 ถึง 3 เท่ากับเท่าใด", "answer": ["0"], "explanation": "ช่วงนี้มี 0 อยู่ด้วย ดังนั้นผลคูณทั้งหมดต้องเป็น 0"}, {"id": "T5", "level": "M4", "type": "mc", "prompt": "ข้อใดเป็นจริงเกี่ยวกับจำนวนจริงทุกจำนวน x", "options": ["x^2 ≥ 0", "x^2 > 0", "x > -x", "√x มีค่าเสมอในจำนวนจริง"], "answer": "x^2 ≥ 0", "explanation": "กำลังสองของจำนวนจริงใด ๆ ไม่ติดลบเสมอ และอาจเป็น 0 ได้เมื่อ x=0"}];
+const state = { answered: new Set(), correct: new Set(), filter:'all' };
+function levelClass(level) { return level==='Easy'?'easy':level==='Medium'?'medium':level==='Hard'?'hard':level==='OSN'?'osn':'m4'; }
+function normalize(s) { return String(s).trim().toLowerCase().replace(/\s+/g,'').replace(/，/g,',').replace(/−/g,'-'); }
+function accepted(ex, value) {
+  if (ex.type === 'mc') return value === ex.answer;
+  const v = normalize(value);
+  return ex.answer.map(normalize).includes(v);
+}
+function renderExercises(filter='all') {
+  state.filter = filter;
+  const list = document.getElementById('exerciseList');
+  const data = filter === 'all' ? EXERCISES : EXERCISES.filter(e => e.level === filter);
+  list.innerHTML = data.map(ex => `
+  <article class="quiz-card" id="q-${ex.id}">
+    <div class="quiz-head">
+      <div><span class="pill ${levelClass(ex.level)}">${ex.level}</span><span class="quiz-title">ข้อ ${ex.id}</span></div>
+      <button class="secondary no-print" onclick="toggleSolution('${ex.id}')">เปิด/ปิดเฉลย</button>
+    </div>
+    <p>${ex.prompt}</p>
+    ${ex.type === 'mc' ? ex.options.map((op,i)=>`<label class="option"><input type="radio" name="${ex.id}" value="${op}"> ${String.fromCharCode(65+i)}. ${op}</label>`).join('') : `<input class="answer" id="input-${ex.id}" placeholder="พิมพ์คำตอบ เช่น 12 หรือ -2,-1,0">`}
+    <div class="controls no-print" style="margin-top:10px">
+      <button onclick="checkAnswer('${ex.id}')">ตรวจคำตอบ</button>
+    </div>
+    <div class="feedback" id="fb-${ex.id}"></div>
+    <div class="solution" id="sol-${ex.id}"><strong>เฉลย:</strong> ${Array.isArray(ex.answer)?ex.answer[0]:ex.answer}<br><strong>วิธีคิด:</strong> ${ex.explanation}</div>
+  </article>`).join('');
+  updateProgress();
+}
+function getEx(id) { return EXERCISES.find(e => e.id === id); }
+function checkAnswer(id) {
+  const ex = getEx(id);
+  let val = '';
+  if (ex.type === 'mc') { const picked = document.querySelector(`input[name="${id}"]:checked`); val = picked ? picked.value : ''; }
+  else { val = document.getElementById(`input-${id}`).value; }
+  const fb = document.getElementById(`fb-${id}`);
+  state.answered.add(id);
+  if (val && accepted(ex,val)) { state.correct.add(id); fb.className='feedback ok'; fb.textContent='ถูกต้อง'; }
+  else { state.correct.delete(id); fb.className='feedback no'; fb.textContent='ยังไม่ถูก ลองดูคำใบ้จากโจทย์ หรือเปิดเฉลยเพื่อศึกษา'; }
+  updateProgress();
+}
+function toggleSolution(id) { const el = document.getElementById(`sol-${id}`); el.style.display = el.style.display === 'block' ? 'none' : 'block'; }
+function updateProgress() {
+  const total = EXERCISES.length;
+  const correct = state.correct.size;
+  document.getElementById('progressText').textContent = `${correct}/${total} ถูกต้อง`;
+  document.getElementById('progressBar').style.width = total ? `${Math.round(correct/total*100)}%` : '0%';
+}
+window.addEventListener('DOMContentLoaded', () => renderExercises('all'));
+</script>
+</body>
+</html>

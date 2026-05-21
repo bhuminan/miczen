@@ -1,0 +1,1001 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>OSN Math Ch02 - Fractions, Ratios & Percent</title>
+<style>
+:root {
+  --blue:#1E3A5F; --blue2:#254B77; --teal:#0F766E; --orange:#F59E0B;
+  --bg:#F8FAFC; --paper:#FFFFFF; --ink:#1F2937; --muted:#64748B;
+  --line:#D8E0EA; --soft-blue:#EFF6FF; --soft-teal:#ECFDF5; --soft-orange:#FFF7ED;
+  --red:#B91C1C; --green:#047857; --violet:#6D28D9;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; font-family:'Noto Sans Thai','Noto Sans Thai UI','Sarabun',Arial,sans-serif; color:var(--ink); background:linear-gradient(135deg,#F8FAFC,#EEF6FF); line-height:1.65; }
+.topbar { position:sticky; top:0; z-index:20; background:rgba(255,255,255,.92); backdrop-filter:blur(10px); border-bottom:1px solid var(--line); padding:10px 22px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+.brand { display:flex; gap:12px; align-items:center; font-weight:800; color:var(--blue); }
+.logo { width:36px; height:36px; border-radius:12px; background:linear-gradient(135deg,var(--blue),var(--teal)); display:grid; place-items:center; color:white; font-weight:900; }
+.top-actions { display:flex; gap:8px; flex-wrap:wrap; }
+button, .pill-link { border:0; padding:9px 12px; border-radius:12px; background:var(--blue); color:white; font-weight:700; cursor:pointer; text-decoration:none; font-family:inherit; }
+button:hover, .pill-link:hover { filter:brightness(.95); }
+button.ghost, .pill-link.ghost { background:#E2E8F0; color:var(--blue); }
+.lesson-shell { display:grid; grid-template-columns:260px minmax(0,1fr); gap:24px; max-width:1280px; margin:0 auto; padding:24px; }
+.sidebar { position:sticky; top:72px; height:calc(100vh - 90px); overflow:auto; background:rgba(255,255,255,.82); border:1px solid var(--line); border-radius:24px; padding:18px; box-shadow:0 12px 35px rgba(30,58,95,.08); }
+.sidebar h3 { margin:4px 0 12px; color:var(--blue); font-size:18px; }
+.sidebar a { display:block; padding:9px 10px; margin:4px 0; border-radius:12px; color:var(--ink); text-decoration:none; font-size:14px; }
+.sidebar a:hover { background:var(--soft-blue); color:var(--blue); }
+.progress-wrap { margin:14px 0 6px; }
+.progress-text { font-size:12px; color:var(--muted); margin-bottom:6px; }
+.progress-track { height:9px; background:#E5E7EB; border-radius:999px; overflow:hidden; }
+.progress-bar { height:100%; width:0%; background:linear-gradient(90deg,var(--teal),var(--orange)); transition:.25s; }
+main { min-width:0; }
+.hero { overflow:hidden; position:relative; padding:34px; border-radius:28px; background:linear-gradient(135deg,var(--blue),#0F766E); color:white; box-shadow:0 18px 50px rgba(30,58,95,.25); }
+.hero:after { content:'%'; position:absolute; right:28px; top:-42px; font-size:180px; opacity:.09; font-weight:900; }
+.hero h1 { margin:0 0 8px; font-size:34px; line-height:1.25; }
+.hero p { max-width:850px; margin:0; color:#E0F2FE; }
+.meta-row { display:flex; flex-wrap:wrap; gap:10px; margin-top:20px; }
+.meta { background:rgba(255,255,255,.16); border:1px solid rgba(255,255,255,.25); border-radius:999px; padding:7px 12px; font-size:14px; }
+.content-card { margin-top:22px; background:var(--paper); border:1px solid var(--line); border-radius:24px; padding:26px; box-shadow:0 12px 30px rgba(15,23,42,.06); }
+.section-kicker { color:var(--teal); text-transform:uppercase; letter-spacing:.08em; font-weight:900; font-size:12px; }
+h2 { color:var(--blue); margin:4px 0 14px; font-size:26px; line-height:1.3; }
+h3 { color:var(--blue2); margin:20px 0 8px; }
+h4 { margin:0 0 6px; color:var(--blue); }
+p { margin:8px 0; }
+.key-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.key-card { background:var(--soft-blue); border-left:5px solid var(--blue); border-radius:18px; padding:16px; }
+.key-card strong { color:var(--blue); }
+.formula-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+.formula-card { background:linear-gradient(180deg,#FFFFFF,var(--soft-blue)); border:1px solid #CFE1F6; border-radius:18px; padding:16px; break-inside:avoid; }
+.formula-text { margin:10px 0; padding:12px; background:white; border:1px dashed #B8C8DA; border-radius:14px; font-family:'DejaVu Sans Mono','Consolas',monospace; font-size:16px; color:var(--blue); font-weight:800; overflow:auto; }
+.note { background:var(--soft-teal); border-left:5px solid var(--teal); border-radius:18px; padding:15px 16px; }
+.warning { background:var(--soft-orange); border-left:5px solid var(--orange); border-radius:18px; padding:15px 16px; }
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.example { border:1px solid #CFE1F6; background:#FBFDFF; border-radius:18px; padding:16px; margin:12px 0; break-inside:avoid; }
+.example .tag { display:inline-block; background:var(--blue); color:white; border-radius:999px; padding:3px 10px; font-size:12px; font-weight:800; margin-bottom:8px; }
+.steps { counter-reset:step; list-style:none; padding-left:0; }
+.steps li { counter-increment:step; margin:8px 0; padding-left:34px; position:relative; }
+.steps li:before { content:counter(step); position:absolute; left:0; top:2px; width:24px; height:24px; border-radius:50%; background:var(--teal); color:white; display:grid; place-items:center; font-weight:800; font-size:12px; }
+table { width:100%; border-collapse:collapse; margin:12px 0; }
+th,td { border:1px solid var(--line); padding:10px; vertical-align:top; }
+th { background:var(--soft-blue); color:var(--blue); text-align:left; }
+.exercise-toolbar { display:flex; flex-wrap:wrap; gap:8px; margin:12px 0 16px; }
+.exercise-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; }
+.exercise-card { border:1px solid var(--line); border-radius:18px; padding:16px; background:white; break-inside:avoid; }
+.exercise-card.easy { border-top:5px solid var(--green); }
+.exercise-card.medium { border-top:5px solid var(--orange); }
+.exercise-card.hard { border-top:5px solid var(--red); }
+.exercise-card.osn { border-top:5px solid var(--violet); }
+.exercise-card.triam { border-top:5px solid var(--blue); }
+.ex-head { display:flex; gap:6px; flex-wrap:wrap; align-items:center; margin-bottom:8px; }
+.ex-id { background:var(--blue); color:white; font-weight:900; padding:3px 8px; border-radius:999px; }
+.ex-level,.ex-cat { background:#EEF2F7; color:var(--muted); font-size:12px; font-weight:800; padding:3px 8px; border-radius:999px; }
+.ex-q { font-weight:650; }
+.answer-controls { display:flex; gap:8px; flex-wrap:wrap; }
+.answer-controls input { flex:1; min-width:180px; padding:10px 12px; border:1px solid var(--line); border-radius:12px; font-family:inherit; }
+.feedback { min-height:28px; margin-top:8px; font-weight:800; }
+.feedback.ok { color:var(--green); }
+.feedback.no { color:var(--red); }
+.hint,.solution { display:none; margin-top:8px; padding:10px 12px; border-radius:14px; }
+.hint { background:var(--soft-orange); }
+.solution { background:var(--soft-teal); }
+.quiz-box { background:linear-gradient(135deg,#FFFFFF,#F0FDFA); border:1px solid #BFEDE4; border-radius:20px; padding:18px; }
+.quiz-q { font-size:20px; font-weight:900; color:var(--blue); }
+.quiz-answer { display:none; margin-top:10px; padding:12px; border-radius:14px; background:white; border:1px dashed var(--teal); }
+.print-only { display:none; }
+.footer-note { margin:24px 0; text-align:center; color:var(--muted); font-size:13px; }
+@media (max-width: 900px) {
+  .lesson-shell { grid-template-columns:1fr; padding:14px; }
+  .sidebar { position:relative; top:auto; height:auto; }
+  .key-grid,.formula-grid,.two-col,.exercise-grid { grid-template-columns:1fr; }
+  .hero h1 { font-size:26px; }
+}
+@page { size: B5; margin: 13mm 12mm 14mm 12mm; }
+@media print {
+  body { background:white; font-size:10.5pt; line-height:1.55; }
+  .topbar,.sidebar,.screen-only,.quiz-box .screen-only,.exercise-toolbar { display:none !important; }
+  .print-only { display:block !important; }
+  .lesson-shell { display:block; max-width:none; padding:0; }
+  .hero { color:white; border-radius:0; box-shadow:none; margin:0 0 12mm; padding:18mm 12mm; break-after:page; }
+  .hero h1 { font-size:24pt; }
+  .content-card { box-shadow:none; border:0; border-radius:0; padding:0; margin:0 0 10mm; break-inside:auto; }
+  h2 { font-size:17pt; margin-top:0; break-after:avoid; }
+  h3 { font-size:13pt; break-after:avoid; }
+  .key-grid,.formula-grid,.two-col,.exercise-grid { grid-template-columns:1fr; gap:6mm; }
+  .formula-card,.example,.exercise-card,.key-card,.note,.warning { break-inside:avoid; box-shadow:none; }
+  .exercise-card { margin-bottom:4mm; }
+  .print-line { margin-top:8mm; border-bottom:1px solid #94A3B8; height:8mm; color:#64748B; }
+  .page-break-before { break-before:page; }
+  .page-break-before-soft { break-before:auto; }
+  table.answer-key td, table.answer-key th { font-size:8.2pt; padding:5px; }
+  a { color:inherit; text-decoration:none; }
+}
+</style>
+</head>
+<body>
+<header class="topbar screen-only">
+  <div class="brand"><div class="logo">M2</div><div>OSN Math Prep - Chapter 02</div></div>
+  <div class="top-actions">
+    <button class="ghost" onclick="window.print()">พิมพ์ / Save PDF</button>
+    <button onclick="checkAll()">ตรวจทั้งหมด</button>
+    <button class="ghost" onclick="resetAll()">ล้างคำตอบ</button>
+  </div>
+</header>
+<div class="lesson-shell">
+  <aside class="sidebar screen-only">
+    <h3>สารบัญบทที่ 2</h3>
+    <a href="#overview">ภาพรวม</a>
+    <a href="#vocab">ศัพท์สำคัญ</a>
+    <a href="#rules">สูตรและกฎ</a>
+    <a href="#examples">ตัวอย่าง</a>
+    <a href="#traps">จุดหลอกข้อสอบ</a>
+    <a href="#programmer">คิดแบบโปรแกรมเมอร์</a>
+    <a href="#practice-easy">แบบฝึกหัดง่าย</a>
+    <a href="#practice-medium">แบบฝึกหัดปานกลาง</a>
+    <a href="#practice-hard">แบบฝึกหัดยาก</a>
+    <a href="#practice-osn">แนว สอวน. คอม</a>
+    <a href="#practice-triam">แนวสอบเข้า ม.4</a>
+    <a href="#quiz">Mini Quiz</a>
+    <a href="#answers">เฉลยท้ายบท</a>
+    <div class="progress-wrap">
+      <div class="progress-text"><span id="scoreText">ยังไม่ได้ตรวจคำตอบ</span></div>
+      <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+    </div>
+  </aside>
+  <main>
+    <section class="hero">
+      <div class="section-kicker" style="color:#BAE6FD">Chapter 02</div>
+      <h1>เศษส่วน อัตราส่วน และร้อยละ<br><span style="font-size:.72em">Fractions, Ratios & Percent</span></h1>
+      <p>บทนี้ฝึกการมองจำนวนในรูป “ส่วนของทั้งหมด” และ “ความสัมพันธ์ระหว่างปริมาณ” ซึ่งเป็นพื้นฐานสำคัญของโจทย์สอบเข้า ม.4 โจทย์ประยุกต์ และแนวคิดเชิงคอมพิวเตอร์ เช่น การหารเอาเศษ การคำนวณสัดส่วนข้อมูล และการเปลี่ยนค่าทีละรอบในโปรแกรม</p>
+      <div class="meta-row">
+        <span class="meta">ระดับ: ม.ต้น</span><span class="meta">เป้าหมาย: สอวน. คอม + สอบเข้า ม.4</span><span class="meta">แบบฝึกหัด: 41 ข้อ</span><span class="meta">มีเฉลยละเอียด</span>
+      </div>
+    </section>
+
+    <section id="overview" class="content-card">
+      <div class="section-kicker">Big Picture</div>
+      <h2>1. เรื่องนี้ต้องเข้าใจอะไร</h2>
+      <div class="key-grid">
+        <div class="key-card"><strong>เศษส่วน</strong><br>คือการเขียนจำนวนในรูป “ส่วนหนึ่งของทั้งหมด” หรือ “การหาร” เช่น 3/4 หมายถึง 3 ส่วนจากทั้งหมด 4 ส่วน</div>
+        <div class="key-card"><strong>อัตราส่วน</strong><br>คือการเปรียบเทียบปริมาณสองสิ่ง เช่น นักเรียนชาย:หญิง = 3:5 ไม่ได้บอกจำนวนจริงทันที แต่บอกความสัมพันธ์</div>
+        <div class="key-card"><strong>ร้อยละ</strong><br>คืออัตราส่วนที่มีฐานเป็น 100 เช่น 25% หมายถึง 25 จาก 100 หรือ 1/4</div>
+      </div>
+      <p class="note"><strong>แก่นของบทนี้:</strong> โจทย์ส่วนใหญ่ไม่ได้ยากเพราะสูตร แต่ยากเพราะอ่านผิดว่า “คิดจากฐานใด” เช่น ลด 20% จากราคาเดิม หรือจากราคาที่ลดแล้ว ฐานไม่เหมือนกัน ผลลัพธ์จึงไม่เหมือนกัน</p>
+    </section>
+
+    <section id="vocab" class="content-card">
+      <div class="section-kicker">Vocabulary</div>
+      <h2>2. คำศัพท์สำคัญ ไทย-อังกฤษ</h2>
+      <table><thead><tr><th>English</th><th>ไทย</th><th>ความหมายที่ควรจำ</th></tr></thead><tbody><tr><td>Fraction</td><td>เศษส่วน</td><td>จำนวนในรูป a/b โดย b ≠ 0</td></tr>
+<tr><td>Equivalent fraction</td><td>เศษส่วนที่เท่ากัน</td><td>เศษส่วนคนละรูปแต่ค่าเท่ากัน เช่น 2/4 = 1/2</td></tr>
+<tr><td>Ratio</td><td>อัตราส่วน</td><td>การเปรียบเทียบปริมาณสองจำนวน เช่น 3:5</td></tr>
+<tr><td>Proportion</td><td>สัดส่วน</td><td>สมการที่บอกว่าอัตราส่วนสองชุดเท่ากัน</td></tr>
+<tr><td>Percent</td><td>ร้อยละ</td><td>จำนวนต่อ 100 เช่น 35% = 35 ต่อ 100</td></tr>
+<tr><td>Unit rate</td><td>อัตราต่อหนึ่งหน่วย</td><td>เช่น 120 km / 2 h = 60 km/h</td></tr></tbody></table>
+    </section>
+
+    <section id="rules" class="content-card page-break-before-soft">
+      <div class="section-kicker">Rules</div>
+      <h2>3. สูตรและกฎที่ต้องแม่น</h2>
+      <div class="formula-grid">
+<div class="formula-card">
+  <h4>เศษส่วนเท่ากัน</h4>
+  <div class="formula-text">a/b = (a×k)/(b×k),  b ≠ 0, k ≠ 0</div>
+  <p>คูณหรือหารเศษและส่วนด้วยจำนวนเดียวกัน ค่าไม่เปลี่ยน</p>
+</div>
+
+<div class="formula-card">
+  <h4>การบวก/ลบเศษส่วน</h4>
+  <div class="formula-text">a/b ± c/d = (ad ± bc)/bd</div>
+  <p>ใช้ได้เมื่อ b,d ≠ 0 แต่ในงานจริงควรทำส่วนให้เท่ากันก่อน</p>
+</div>
+
+<div class="formula-card">
+  <h4>การคูณเศษส่วน</h4>
+  <div class="formula-text">(a/b)×(c/d) = ac/bd</div>
+  <p>ตัดทอนก่อนคูณช่วยลดความผิดพลาด</p>
+</div>
+
+<div class="formula-card">
+  <h4>การหารเศษส่วน</h4>
+  <div class="formula-text">(a/b)÷(c/d) = (a/b)×(d/c)</div>
+  <p>ตัวหารต้องไม่เป็นศูนย์ และ c ต้องไม่เท่ากับ 0</p>
+</div>
+
+<div class="formula-card">
+  <h4>อัตราส่วนและสัดส่วน</h4>
+  <div class="formula-text">a:b = c:d  ⇔  ad = bc</div>
+  <p>คูณไขว้ได้เมื่อทุกตัวที่เป็นตัวส่วนไม่เป็นศูนย์</p>
+</div>
+
+<div class="formula-card">
+  <h4>ร้อยละ</h4>
+  <div class="formula-text">p% = p/100</div>
+  <p>เช่น 12.5% = 12.5/100 = 1/8</p>
+</div>
+
+<div class="formula-card">
+  <h4>เพิ่ม/ลดร้อยละ</h4>
+  <div class="formula-text">ใหม่ = เดิม × (1 ± p/100)</div>
+  <p>เพิ่มใช้ + ลดใช้ - และต้องคูณทีละรอบ</p>
+</div></div>
+      <div class="warning" style="margin-top:14px"><strong>ข้อควรจำ:</strong> การเพิ่ม 20% แล้วลด 20% ไม่ได้กลับมาเท่าเดิม เพราะร้อยละรอบที่สองคิดจากฐานใหม่ ไม่ใช่ฐานเดิม</div>
+    </section>
+
+    <section id="examples" class="content-card page-break-before-soft">
+      <div class="section-kicker">Worked Examples</div>
+      <h2>4. ตัวอย่างพร้อมวิธีคิด</h2>
+      <div class="two-col">
+        <div class="example"><span class="tag">ตัวอย่าง 1: เศษส่วน</span>
+          <p><strong>คำนวณ</strong> 5/6 - 1/4</p>
+          <ol class="steps"><li>หาส่วนร่วม: 6 และ 4 มี ค.ร.น. = 12</li><li>เปลี่ยน 5/6 = 10/12 และ 1/4 = 3/12</li><li>ลบเศษได้ 10/12 - 3/12 = 7/12</li></ol>
+          <p><strong>ตอบ:</strong> 7/12</p>
+        </div>
+        <div class="example"><span class="tag">ตัวอย่าง 2: อัตราส่วน</span>
+          <p><strong>ชาย:หญิง = 4:5 ถ้าทั้งหมด 72 คน มีผู้หญิงกี่คน</strong></p>
+          <ol class="steps"><li>ทั้งหมดมี 4+5 = 9 ส่วน</li><li>9 ส่วน = 72 คน ดังนั้น 1 ส่วน = 8 คน</li><li>ผู้หญิง = 5 ส่วน = 5×8 = 40 คน</li></ol>
+          <p><strong>ตอบ:</strong> 40 คน</p>
+        </div>
+      </div>
+      <div class="example"><span class="tag">ตัวอย่าง 3: ร้อยละแบบย้อนกลับ</span>
+        <p><strong>เสื้อหลังลด 30% เหลือ 560 บาท ราคาเดิมคือเท่าใด</strong></p>
+        <ol class="steps"><li>ลด 30% หมายถึงเหลือ 70% ของราคาเดิม</li><li>ให้ราคาเดิมเป็น x จะได้ 0.70x = 560</li><li>x = 560/0.70 = 800</li></ol>
+        <p><strong>ตอบ:</strong> 800 บาท</p>
+      </div>
+    </section>
+
+    <section id="traps" class="content-card">
+      <div class="section-kicker">Exam Traps</div>
+      <h2>5. จุดหลอกข้อสอบที่พลาดบ่อย</h2>
+      <table>
+        <thead><tr><th>จุดหลอก</th><th>ตัวอย่าง</th><th>วิธีป้องกัน</th></tr></thead>
+        <tbody>
+          <tr><td>ฐานของร้อยละเปลี่ยน</td><td>เพิ่ม 20% แล้วลด 20%</td><td>ใช้ตัวคูณ 1.20×0.80 ไม่ใช่ 20-20</td></tr>
+          <tr><td>อัตราส่วนไม่ใช่จำนวนจริง</td><td>ชาย:หญิง = 2:3</td><td>ต้องรู้จำนวนรวม หรือจำนวนหนึ่งฝั่งก่อนจึงหาอีกฝั่งได้</td></tr>
+          <tr><td>หารเศษส่วนผิดทิศ</td><td>3/5 ÷ 2/7</td><td>กลับเฉพาะตัวหารเป็น 7/2 แล้วคูณ</td></tr>
+          <tr><td>คูณไขว้โดยไม่ดูเครื่องหมาย</td><td>เปรียบเทียบเศษส่วนติดลบ</td><td>ถ้ามีลบ ให้จัดรูปให้ส่วนเป็นบวกก่อน</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="programmer" class="content-card">
+      <div class="section-kicker">Programmer Thinking</div>
+      <h2>6. มุมคิดแบบโปรแกรมเมอร์</h2>
+      <p>เศษส่วนและร้อยละช่วยให้เข้าใจการคำนวณในโปรแกรม เช่น การหารเอาเศษ การทำงานกับจำนวนเต็ม และการคำนวณสัดส่วนข้อมูล</p>
+      <div class="two-col">
+        <div class="note"><strong>integer division</strong><br>ถ้า 17 ÷ 5 จะได้ quotient = 3 และ remainder = 2 เพราะ 17 = 5×3 + 2</div>
+        <div class="note"><strong>percent in data</strong><br>ถ้าข้อมูลผิด 12% จาก 500 รายการ จำนวนที่ผิดคือ 500×0.12 = 60 รายการ</div>
+      </div>
+      <p class="warning"><strong>เชื่อมกับ สอวน. คอม:</strong> การใช้ % ในโปรแกรมเป็นการหาเศษเหลือ ไม่ใช่เปอร์เซ็นต์ ส่วนเครื่องหมายเปอร์เซ็นต์ในคณิตศาสตร์หมายถึง “หารด้วย 100” ต้องแยกความหมายให้ชัด</p>
+    </section>
+
+    <section id="practice-easy" class="content-card page-break-before-soft">
+      <div class="section-kicker">Practice</div>
+      <h2>แบบฝึกหัดระดับง่าย</h2>
+      <div class="exercise-grid">
+    <article class="exercise-card easy" data-level="ง่าย" data-answer="[&quot;3/4&quot;]">
+      <div class="ex-head"><span class="ex-id">E1</span><span class="ex-level">ง่าย</span><span class="ex-cat">Fractions</span></div>
+      <p class="ex-q">จงทำเศษส่วน 18/24 ให้อยู่ในรูปอย่างต่ำ</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer E1" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> หา ห.ร.ม. ของ 18 และ 24 ก่อน</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> ห.ร.ม. ของ 18 และ 24 คือ 6 ดังนั้น 18/24 = (18÷6)/(24÷6) = 3/4</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card easy" data-level="ง่าย" data-answer="[&quot;&gt;&quot;, &quot;มากกว่า&quot;]">
+      <div class="ex-head"><span class="ex-id">E2</span><span class="ex-level">ง่าย</span><span class="ex-cat">Compare</span></div>
+      <p class="ex-q">เปรียบเทียบ 5/8 และ 3/5 โดยเติมเครื่องหมาย &gt;, &lt; หรือ =</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer E2" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> คูณไขว้: 5×5 เทียบกับ 3×8</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> 5/8 เทียบกับ 3/5: 5×5 = 25 และ 3×8 = 24 ดังนั้น 5/8 &gt; 3/5</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card easy" data-level="ง่าย" data-answer="[&quot;5/6&quot;]">
+      <div class="ex-head"><span class="ex-id">E3</span><span class="ex-level">ง่าย</span><span class="ex-cat">Operations</span></div>
+      <p class="ex-q">คำนวณ 2/3 + 1/6</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer E3" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> ทำส่วนให้เท่ากันเป็น 6</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> 2/3 = 4/6 ดังนั้น 4/6 + 1/6 = 5/6</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card easy" data-level="ง่าย" data-answer="[&quot;3/10&quot;]">
+      <div class="ex-head"><span class="ex-id">E4</span><span class="ex-level">ง่าย</span><span class="ex-cat">Operations</span></div>
+      <p class="ex-q">คำนวณ 7/10 - 2/5</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer E4" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> เปลี่ยน 2/5 เป็นส่วน 10</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> 2/5 = 4/10 ดังนั้น 7/10 - 4/10 = 3/10</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card easy" data-level="ง่าย" data-answer="[&quot;2/3&quot;]">
+      <div class="ex-head"><span class="ex-id">E5</span><span class="ex-level">ง่าย</span><span class="ex-cat">Operations</span></div>
+      <p class="ex-q">คำนวณ 3/4 × 8/9</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer E5" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> ตัดทอนก่อนคูณจะเร็วกว่า</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> 3/4 × 8/9 = (3×8)/(4×9). ตัด 8 กับ 4 เหลือ 2 และ 1; ตัด 3 กับ 9 เหลือ 1 และ 3 จึงได้ 2/3</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card easy" data-level="ง่าย" data-answer="[&quot;1/4&quot;]">
+      <div class="ex-head"><span class="ex-id">E6</span><span class="ex-level">ง่าย</span><span class="ex-cat">Operations</span></div>
+      <p class="ex-q">คำนวณ 5/6 ÷ 10/3</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer E6" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> หารด้วยเศษส่วน = คูณด้วยส่วนกลับ</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> 5/6 ÷ 10/3 = 5/6 × 3/10 = 15/60 = 1/4</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card easy" data-level="ง่าย" data-answer="[&quot;7/20&quot;]">
+      <div class="ex-head"><span class="ex-id">E7</span><span class="ex-level">ง่าย</span><span class="ex-cat">Percent</span></div>
+      <p class="ex-q">เขียน 35% เป็นเศษส่วนอย่างต่ำ</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer E7" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> 35% = 35/100</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> 35% = 35/100 = 7/20</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card easy" data-level="ง่าย" data-answer="[&quot;36&quot;]">
+      <div class="ex-head"><span class="ex-id">E8</span><span class="ex-level">ง่าย</span><span class="ex-cat">Percent</span></div>
+      <p class="ex-q">15% ของ 240 เท่ากับเท่าใด</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer E8" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> 15% = 15/100</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> 240 × 15/100 = 36</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card easy" data-level="ง่าย" data-answer="[&quot;2:3&quot;, &quot;2/3&quot;]">
+      <div class="ex-head"><span class="ex-id">E9</span><span class="ex-level">ง่าย</span><span class="ex-cat">Ratio</span></div>
+      <p class="ex-q">ทำอัตราส่วน 12:18 ให้อยู่ในรูปอย่างต่ำ</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer E9" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> หารทั้งสองจำนวนด้วย ห.ร.ม.</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> ห.ร.ม. ของ 12 และ 18 คือ 6 ดังนั้น 12:18 = 2:3</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card easy" data-level="ง่าย" data-answer="[&quot;16&quot;]">
+      <div class="ex-head"><span class="ex-id">E10</span><span class="ex-level">ง่าย</span><span class="ex-cat">Ratio</span></div>
+      <p class="ex-q">ถ้า a:b = 4:7 และ b = 28 แล้ว a เท่ากับเท่าใด</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer E10" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> 7 ส่วนมีค่า 28 ดังนั้น 1 ส่วนมีค่าเท่าใด</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> b = 7 ส่วน = 28 จึงได้ 1 ส่วน = 4 และ a = 4 ส่วน = 16</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article></div>
+    </section><section id="practice-medium" class="content-card page-break-before-soft">
+      <div class="section-kicker">Practice</div>
+      <h2>แบบฝึกหัดระดับปานกลาง</h2>
+      <div class="exercise-grid">
+    <article class="exercise-card medium" data-level="ปานกลาง" data-answer="[&quot;21/20&quot;, &quot;11/20&quot;, &quot;1+1/20&quot;]">
+      <div class="ex-head"><span class="ex-id">M1</span><span class="ex-level">ปานกลาง</span><span class="ex-cat">Operations</span></div>
+      <p class="ex-q">คำนวณ 2/5 + 3/4 - 1/10</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer M1" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> ใช้ส่วนร่วม 20</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> 2/5 = 8/20, 3/4 = 15/20, 1/10 = 2/20 จึงได้ (8+15-2)/20 = 21/20</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card medium" data-level="ปานกลาง" data-answer="[&quot;2/3&quot;]">
+      <div class="ex-head"><span class="ex-id">M2</span><span class="ex-level">ปานกลาง</span><span class="ex-cat">Operations</span></div>
+      <p class="ex-q">คำนวณ (3/7) ÷ (9/14)</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer M2" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> กลับเศษส่วนตัวหลังแล้วคูณ</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> (3/7) ÷ (9/14) = (3/7)×(14/9). ตัด 14 กับ 7 เหลือ 2 และ 1 จึงได้ 6/9 = 2/3</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card medium" data-level="ปานกลาง" data-answer="[&quot;15/2&quot;, &quot;7.5&quot;, &quot;71/2&quot;]">
+      <div class="ex-head"><span class="ex-id">M3</span><span class="ex-level">ปานกลาง</span><span class="ex-cat">Proportion</span></div>
+      <p class="ex-q">ถ้า x/12 = 5/8 แล้ว x เท่ากับเท่าใด</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer M3" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> คูณไขว้หรือคูณ 12 ทั้งสองข้าง</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> x = 12×5/8 = 60/8 = 15/2 = 7.5</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card medium" data-level="ปานกลาง" data-answer="[&quot;600&quot;]">
+      <div class="ex-head"><span class="ex-id">M4</span><span class="ex-level">ปานกลาง</span><span class="ex-cat">Percent</span></div>
+      <p class="ex-q">สินค้าราคา 750 บาท ลดราคา 20% เหลือราคากี่บาท</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer M4" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> เหลือ 80% ของราคาเดิม</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> ราคาหลังลด = 750×0.80 = 600 บาท</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card medium" data-level="ปานกลาง" data-answer="[&quot;0%&quot;, &quot;0&quot;, &quot;ไม่เปลี่ยน&quot;, &quot;เท่าเดิม&quot;]">
+      <div class="ex-head"><span class="ex-id">M5</span><span class="ex-level">ปานกลาง</span><span class="ex-cat">Percent</span></div>
+      <p class="ex-q">ราคาสินค้าเพิ่มขึ้น 25% แล้วลดลง 20% จากราคาที่เพิ่มแล้ว ราคาสุดท้ายเปลี่ยนจากเดิมกี่เปอร์เซ็นต์</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer M5" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> อย่าบวก 25-20 ตรง ๆ ให้คูณตัวคูณการเปลี่ยนแปลง</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> ตัวคูณรวม = 1.25×0.80 = 1.00 ดังนั้นราคาสุดท้ายเท่าเดิม หรือเปลี่ยน 0%</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card medium" data-level="ปานกลาง" data-answer="[&quot;24&quot;]">
+      <div class="ex-head"><span class="ex-id">M6</span><span class="ex-level">ปานกลาง</span><span class="ex-cat">Ratio</span></div>
+      <p class="ex-q">นักเรียนชาย:หญิง = 3:5 ถ้ามีนักเรียนทั้งหมด 64 คน มีนักเรียนชายกี่คน</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer M6" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> ทั้งหมดมี 3+5 = 8 ส่วน</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> 8 ส่วน = 64 คน จึงได้ 1 ส่วน = 8 คน นักเรียนชาย = 3 ส่วน = 24 คน</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card medium" data-level="ปานกลาง" data-answer="[&quot;10&quot;]">
+      <div class="ex-head"><span class="ex-id">M7</span><span class="ex-level">ปานกลาง</span><span class="ex-cat">Proportion</span></div>
+      <p class="ex-q">หาค่า n ถ้า 4/n = 10/25</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer M7" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> 10/25 ลดรูปเป็น 2/5</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> 10/25 = 2/5 ดังนั้น 4/n = 2/5 คูณไขว้ได้ 2n = 20 จึงได้ n = 10</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card medium" data-level="ปานกลาง" data-answer="[&quot;&lt;&quot;, &quot;น้อยกว่า&quot;]">
+      <div class="ex-head"><span class="ex-id">M8</span><span class="ex-level">ปานกลาง</span><span class="ex-cat">Compare</span></div>
+      <p class="ex-q">เปรียบเทียบ 11/17 และ 13/20 โดยเติมเครื่องหมาย &gt;, &lt; หรือ =</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer M8" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> คูณไขว้: 11×20 เทียบกับ 13×17</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> 11×20 = 220 และ 13×17 = 221 ดังนั้น 11/17 &lt; 13/20</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card medium" data-level="ปานกลาง" data-answer="[&quot;45&quot;]">
+      <div class="ex-head"><span class="ex-id">M9</span><span class="ex-level">ปานกลาง</span><span class="ex-cat">Percent</span></div>
+      <p class="ex-q">ถ้า 40% ของ x เท่ากับ 18 แล้ว x เท่ากับเท่าใด</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer M9" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> 0.40x = 18</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> 40% ของ x คือ 0.40x ดังนั้น 0.40x = 18 จึงได้ x = 18/0.40 = 45</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card medium" data-level="ปานกลาง" data-answer="[&quot;9/10&quot;]">
+      <div class="ex-head"><span class="ex-id">M10</span><span class="ex-level">ปานกลาง</span><span class="ex-cat">Operations</span></div>
+      <p class="ex-q">คำนวณ (15/22) × (33/25)</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer M10" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> ตัด 33 กับ 22 และตัด 15 กับ 25</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> 15/25 = 3/5 และ 33/22 = 3/2 ดังนั้นผลคูณ = (3/5)×(3/2)=9/10</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article></div>
+    </section><section id="practice-hard" class="content-card page-break-before-soft">
+      <div class="section-kicker">Practice</div>
+      <h2>แบบฝึกหัดระดับยาก</h2>
+      <div class="exercise-grid">
+    <article class="exercise-card hard" data-level="ยาก" data-answer="[&quot;1/2&quot;]">
+      <div class="ex-head"><span class="ex-id">H1</span><span class="ex-level">ยาก</span><span class="ex-cat">Applied</span></div>
+      <p class="ex-q">ถังน้ำมีน้ำอยู่ 2/3 ของถัง ใช้น้ำไป 1/4 ของปริมาณน้ำที่มีอยู่เดิม ตอนนี้เหลือน้ำกี่ส่วนของถัง</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer H1" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> ใช้ไป 1/4 ของ 2/3 ไม่ใช่ 1/4 ของถัง</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> น้ำที่ใช้ไป = (1/4)×(2/3)=1/6 ของถัง น้ำที่เหลือ = 2/3 - 1/6 = 4/6 - 1/6 = 3/6 = 1/2 ของถัง</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card hard" data-level="ยาก" data-answer="[&quot;28%&quot;, &quot;28&quot;]">
+      <div class="ex-head"><span class="ex-id">H2</span><span class="ex-level">ยาก</span><span class="ex-cat">Percent</span></div>
+      <p class="ex-q">ลดราคา 10% แล้วลดซ้ำอีก 20% เทียบเท่ากับลดครั้งเดียวกี่เปอร์เซ็นต์</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer H2" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> ราคาคงเหลือ = 90% × 80%</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> ตัวคูณคงเหลือ = 0.90×0.80 = 0.72 จึงเหลือ 72% ของราคาเดิม เท่ากับลด 28%</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card hard" data-level="ยาก" data-answer="[&quot;8:15&quot;, &quot;8/15&quot;]">
+      <div class="ex-head"><span class="ex-id">H3</span><span class="ex-level">ยาก</span><span class="ex-cat">Ratio</span></div>
+      <p class="ex-q">ถ้า A:B = 2:3 และ B:C = 4:5 จงหา A:C</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer H3" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> ทำค่า B ให้เท่ากันก่อน</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> A:B = 2:3 คูณด้วย 4 ได้ A:B = 8:12 และ B:C = 4:5 คูณด้วย 3 ได้ B:C = 12:15 ดังนั้น A:C = 8:15</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card hard" data-level="ยาก" data-answer="[&quot;6&quot;]">
+      <div class="ex-head"><span class="ex-id">H4</span><span class="ex-level">ยาก</span><span class="ex-cat">Number Theory</span></div>
+      <p class="ex-q">มีจำนวนเต็มบวก n ตั้งแต่ 1 ถึง 84 กี่จำนวนที่ทำให้ n/84 เมื่อลดรูปแล้วมีตัวส่วนเป็น 7</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer H4" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> เมื่อลดรูปแล้วตัวส่วน = 84 / ห.ร.ม.(n,84)</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> ต้องการ 84/ห.ร.ม.(n,84)=7 ดังนั้น ห.ร.ม.(n,84)=12 ให้ n=12k โดย 1≤k≤7 และต้องมี ห.ร.ม.(k,7)=1 ดังนั้น k = 1,2,3,4,5,6 รวม 6 ค่า</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card hard" data-level="ยาก" data-answer="[&quot;5&quot;]">
+      <div class="ex-head"><span class="ex-id">H5</span><span class="ex-level">ยาก</span><span class="ex-cat">Diophantine</span></div>
+      <p class="ex-q">จำนวนคู่บวก (a,b) ที่ a≤b และ 1/a + 1/b = 1/6 มีทั้งหมดกี่คู่</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer H5" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> จัดรูปเป็น (a-6)(b-6)=36</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> 1/a+1/b=1/6 ⇒ 6a+6b=ab ⇒ ab-6a-6b=0 ⇒ (a-6)(b-6)=36. คู่ตัวประกอบเมื่อ a≤b คือ (1,36),(2,18),(3,12),(4,9),(6,6) รวม 5 คู่</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card hard" data-level="ยาก" data-answer="[&quot;20&quot;, &quot;20%&quot;]">
+      <div class="ex-head"><span class="ex-id">H6</span><span class="ex-level">ยาก</span><span class="ex-cat">Percent</span></div>
+      <p class="ex-q">จำนวนหนึ่งเพิ่มขึ้น p% แล้วลดลง p% ได้ผลลัพธ์เป็น 96% ของจำนวนเดิม จงหา p</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer H6" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> ตัวคูณรวมคือ (1+p/100)(1-p/100)</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> (1+p/100)(1-p/100)=0.96 ⇒ 1-(p/100)^2=0.96 ⇒ (p/100)^2=0.04 ⇒ p=20</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card hard" data-level="ยาก" data-answer="[&quot;9/20&quot;]">
+      <div class="ex-head"><span class="ex-id">H7</span><span class="ex-level">ยาก</span><span class="ex-cat">Compare</span></div>
+      <p class="ex-q">หาเศษส่วนรูป k/20 ที่มีค่าน้อยที่สุดและอยู่ระหว่าง 2/5 กับ 3/5</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer H7" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> เขียน 2/5 และ 3/5 ให้มีส่วนเป็น 20</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> 2/5 = 8/20 และ 3/5 = 12/20 ต้องการ k/20 ที่อยู่ระหว่าง จึงมี k = 9,10,11 ค่าน้อยที่สุดคือ 9/20</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card hard" data-level="ยาก" data-answer="[&quot;3/8&quot;]">
+      <div class="ex-head"><span class="ex-id">H8</span><span class="ex-level">ยาก</span><span class="ex-cat">Percent</span></div>
+      <p class="ex-q">เขียน 37.5% เป็นเศษส่วนอย่างต่ำ</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer H8" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> 37.5% = 37.5/100 = 375/1000</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> 37.5% = 37.5/100 = 375/1000 = 3/8</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article></div>
+    </section><section id="practice-osn" class="content-card page-break-before-soft">
+      <div class="section-kicker">Practice</div>
+      <h2>แบบฝึกหัดระดับแนว สอวน. คอม</h2>
+      <div class="exercise-grid">
+    <article class="exercise-card osn" data-level="แนว สอวน. คอม" data-answer="[&quot;q=14,r=5&quot;, &quot;14,5&quot;, &quot;q14r5&quot;]">
+      <div class="ex-head"><span class="ex-id">O1</span><span class="ex-level">แนว สอวน. คอม</span><span class="ex-cat">Integer Division</span></div>
+      <p class="ex-q">ถ้า 173 = 12q + r โดย 0≤r&lt;12 จงหา q และ r</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer O1" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> นี่คือการหารแบบ quotient และ remainder</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> 173 ÷ 12 ได้ 14 เศษ 5 เพราะ 12×14 = 168 และ 173-168 = 5 ดังนั้น q=14, r=5</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card osn" data-level="แนว สอวน. คอม" data-answer="[&quot;81&quot;]">
+      <div class="ex-head"><span class="ex-id">O2</span><span class="ex-level">แนว สอวน. คอม</span><span class="ex-cat">Loop</span></div>
+      <p class="ex-q">โปรแกรมเริ่มจาก x = 256 แล้วทำซ้ำ 4 รอบ โดยแต่ละรอบ x = x × 3/4 หลังจบรอบที่ 4 ค่า x เท่ากับเท่าใด</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer O2" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> คูณด้วย (3/4)^4</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> x = 256×(3/4)^4 = 256×81/256 = 81</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card osn" data-level="แนว สอวน. คอม" data-answer="[&quot;68&quot;]">
+      <div class="ex-head"><span class="ex-id">O3</span><span class="ex-level">แนว สอวน. คอม</span><span class="ex-cat">Data Filter</span></div>
+      <p class="ex-q">มีข้อมูล 120 รายการ เป็นข้อมูลผิด 15% จากข้อมูลที่ถูกต้อง มี 2/3 รายการที่ผ่านเกณฑ์ จงหาจำนวนรายการที่ผ่านเกณฑ์</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer O3" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> ข้อมูลถูกต้องคือ 85% ของ 120</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> ข้อมูลถูกต้อง = 120×0.85 = 102 รายการ ผ่านเกณฑ์ = (2/3)×102 = 68 รายการ</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card osn" data-level="แนว สอวน. คอม" data-answer="[&quot;30&quot;]">
+      <div class="ex-head"><span class="ex-id">O4</span><span class="ex-level">แนว สอวน. คอม</span><span class="ex-cat">LCM</span></div>
+      <p class="ex-q">โปรแกรมตรวจเงื่อนไข n % 6 == 0 และ n % 10 == 0 จงหาค่า n บวกที่น้อยที่สุดที่ผ่านทั้งสองเงื่อนไข</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer O4" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> ต้องเป็นพหุคูณร่วมของ 6 และ 10</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> ต้องหา ค.ร.น. ของ 6 และ 10 ซึ่งเท่ากับ 30 ดังนั้น n บวกที่น้อยที่สุดคือ 30</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card osn" data-level="แนว สอวน. คอม" data-answer="[&quot;80&quot;]">
+      <div class="ex-head"><span class="ex-id">O5</span><span class="ex-level">แนว สอวน. คอม</span><span class="ex-cat">Reverse Calculation</span></div>
+      <p class="ex-q">ตัวแปรจำนวนหนึ่งถูกหารด้วย 2 แล้วเพิ่มขึ้น 25% ได้ผลลัพธ์เป็น 50 จงหาจำนวนเดิม</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer O5" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> ตั้งสมการ (x/2)×1.25 = 50</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> (x/2)×1.25 = 50 ⇒ x×0.625 = 50 ⇒ x = 80</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card osn" data-level="แนว สอวน. คอม" data-answer="[&quot;20&quot;]">
+      <div class="ex-head"><span class="ex-id">O6</span><span class="ex-level">แนว สอวน. คอม</span><span class="ex-cat">Number Theory</span></div>
+      <p class="ex-q">สำหรับ n = 1 ถึง 100 มี n กี่ค่าที่ทำให้ n/100 เมื่อลดรูปแล้วมีตัวส่วนเป็น 25</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer O6" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> ตัวส่วนหลังลดรูปคือ 100 / ห.ร.ม.(n,100)</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> ต้องการ 100/ห.ร.ม.(n,100)=25 ดังนั้น ห.ร.ม.(n,100)=4 ให้ n=4k โดย 1≤k≤25 และต้องมี ห.ร.ม.(k,25)=1 มี k ที่ไม่หารด้วย 5 ลงตัวจำนวน 20 ค่า</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article></div>
+    </section><section id="practice-triam" class="content-card page-break-before-soft">
+      <div class="section-kicker">Practice</div>
+      <h2>แบบฝึกหัดระดับแนวสอบเข้า ม.4</h2>
+      <div class="exercise-grid">
+    <article class="exercise-card triam" data-level="แนวสอบเข้า ม.4" data-answer="[&quot;15:14&quot;, &quot;15/14&quot;]">
+      <div class="ex-head"><span class="ex-id">T1</span><span class="ex-level">แนวสอบเข้า ม.4</span><span class="ex-cat">Ratio</span></div>
+      <p class="ex-q">ถ้า x:y = 5:8 และ y:z = 12:7 จงหา x:z</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer T1" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> ทำ y ให้เท่ากันเป็น 24</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> x:y = 5:8 คูณด้วย 3 ได้ 15:24 และ y:z = 12:7 คูณด้วย 2 ได้ 24:14 ดังนั้น x:z = 15:14</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card triam" data-level="แนวสอบเข้า ม.4" data-answer="[&quot;1000&quot;]">
+      <div class="ex-head"><span class="ex-id">T2</span><span class="ex-level">แนวสอบเข้า ม.4</span><span class="ex-cat">Reverse Percent</span></div>
+      <p class="ex-q">ราคาสินค้าหลังลด 20% แล้วบวกภาษี 7% เป็น 856 บาท ราคาเดิมก่อนลดคือกี่บาท</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer T2" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> ตัวคูณรวมคือ 0.80×1.07</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> ราคาสุดท้าย = ราคาเดิม×0.80×1.07 = ราคาเดิม×0.856 ดังนั้น ราคาเดิม = 856/0.856 = 1000 บาท</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card triam" data-level="แนวสอบเข้า ม.4" data-answer="[&quot;60&quot;]">
+      <div class="ex-head"><span class="ex-id">T3</span><span class="ex-level">แนวสอบเข้า ม.4</span><span class="ex-cat">Percent</span></div>
+      <p class="ex-q">ในห้องหนึ่งมีนักเรียนชาย 40% ของทั้งหมด นักเรียนชาย 25% ใส่แว่น และนักเรียนหญิง 1/3 ใส่แว่น ถ้ามีนักเรียนใส่แว่น 18 คน ห้องนี้มีนักเรียนทั้งหมดกี่คน</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer T3" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> ให้จำนวนนักเรียนทั้งหมดเป็น N</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> ชาย = 0.4N หญิง = 0.6N คนใส่แว่น = 0.25(0.4N)+(1/3)(0.6N)=0.1N+0.2N=0.3N. เมื่อ 0.3N=18 จึงได้ N=60</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card triam" data-level="แนวสอบเข้า ม.4" data-answer="[&quot;6:5&quot;, &quot;6/5&quot;]">
+      <div class="ex-head"><span class="ex-id">T4</span><span class="ex-level">แนวสอบเข้า ม.4</span><span class="ex-cat">Ratio</span></div>
+      <p class="ex-q">ถ้า 1/3 ของ A เท่ากับ 2/5 ของ B จงหา A:B</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer T4" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> เขียนเป็น A/3 = 2B/5 แล้วคูณไขว้</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> A/3 = 2B/5 ⇒ 5A = 6B ⇒ A/B = 6/5 ดังนั้น A:B = 6:5</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card triam" data-level="แนวสอบเข้า ม.4" data-answer="[&quot;1/10&quot;]">
+      <div class="ex-head"><span class="ex-id">T5</span><span class="ex-level">แนวสอบเข้า ม.4</span><span class="ex-cat">Telescoping</span></div>
+      <p class="ex-q">คำนวณ (1-1/2)(1-1/3)(1-1/4)…(1-1/10)</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer T5" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> แต่ละวงเล็บคือ (n-1)/n</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> (1/2)(2/3)(3/4)…(9/10) ตัดกันต่อเนื่อง เหลือ 1/10</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card triam" data-level="แนวสอบเข้า ม.4" data-answer="[&quot;7/8&quot;]">
+      <div class="ex-head"><span class="ex-id">T6</span><span class="ex-level">แนวสอบเข้า ม.4</span><span class="ex-cat">Work Rate</span></div>
+      <p class="ex-q">ท่อ A เติมน้ำเต็มถังใน 6 ชั่วโมง ท่อ B เติมเต็มถังใน 8 ชั่วโมง ถ้าเปิดพร้อมกัน 3 ชั่วโมง จะเติมน้ำได้กี่ส่วนของถัง</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer T6" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> อัตรารวมต่อชั่วโมง = 1/6 + 1/8</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> อัตรารวม = 1/6+1/8 = 4/24+3/24=7/24 ถังต่อชั่วโมง ใน 3 ชั่วโมงได้ 3×7/24 = 21/24 = 7/8 ถัง</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article>
+    <article class="exercise-card triam" data-level="แนวสอบเข้า ม.4" data-answer="[&quot;2:3&quot;, &quot;2/3&quot;]">
+      <div class="ex-head"><span class="ex-id">T7</span><span class="ex-level">แนวสอบเข้า ม.4</span><span class="ex-cat">Ratio</span></div>
+      <p class="ex-q">จำนวน A เพิ่มขึ้น 20% แล้วเท่ากับจำนวน B ที่ลดลง 20% จงหา A:B</p>
+      <div class="answer-controls screen-only">
+        <input aria-label="answer T7" placeholder="พิมพ์คำตอบ เช่น 3/4 หรือ 2:3" />
+        <button onclick="checkOne(this)">ตรวจคำตอบ</button>
+        <button class="ghost" onclick="toggleHint(this)">Hint</button>
+        <button class="ghost" onclick="toggleSolution(this)">เฉลย</button>
+      </div>
+      <div class="feedback screen-only" aria-live="polite"></div>
+      <div class="hint screen-only"><strong>Hint:</strong> ตั้ง 1.2A = 0.8B</div>
+      <div class="solution screen-only"><strong>เฉลย:</strong> 1.2A = 0.8B ⇒ A/B = 0.8/1.2 = 2/3 ดังนั้น A:B = 2:3</div>
+      <div class="print-line print-only">คำตอบ: ____________________________</div>
+    </article></div>
+    </section>
+
+    <section id="quiz" class="content-card page-break-before-soft">
+      <div class="section-kicker">Interactive</div>
+      <h2>7. Mini Quiz Generator</h2>
+      <div class="quiz-box">
+        <p>กดสุ่มโจทย์เพื่อฝึกคิดเร็ว ระบบจะสร้างโจทย์เศษส่วน/ร้อยละแบบสั้นให้ทันที</p>
+        <div class="quiz-q" id="quizQuestion">กดปุ่ม “สุ่มโจทย์” เพื่อเริ่ม</div>
+        <div class="answer-controls screen-only" style="margin-top:12px">
+          <button onclick="newQuiz()">สุ่มโจทย์</button>
+          <button class="ghost" onclick="showQuizAnswer()">ดูคำตอบ</button>
+        </div>
+        <div class="quiz-answer" id="quizAnswer"></div>
+      </div>
+    </section>
+
+    <section id="answers" class="content-card page-break-before">
+      <div class="section-kicker">Answer Key</div>
+      <h2>8. เฉลยท้ายบท</h2>
+      <p>เฉลยต่อไปนี้เน้นวิธีคิด ไม่ใช่เพียงคำตอบ เพื่อให้นักเรียนย้อนกลับไปตรวจว่าตนเองพลาดที่ขั้นใด</p>
+      <table class="answer-key"><thead><tr><th style="width:9%">ข้อ</th><th style="width:16%">คำตอบ</th><th>แนวเฉลย</th></tr></thead><tbody>
+    <tr><td>E1</td><td>3/4</td><td>ห.ร.ม. ของ 18 และ 24 คือ 6 ดังนั้น 18/24 = (18÷6)/(24÷6) = 3/4</td></tr>
+    <tr><td>E2</td><td>&gt;</td><td>5/8 เทียบกับ 3/5: 5×5 = 25 และ 3×8 = 24 ดังนั้น 5/8 &gt; 3/5</td></tr>
+    <tr><td>E3</td><td>5/6</td><td>2/3 = 4/6 ดังนั้น 4/6 + 1/6 = 5/6</td></tr>
+    <tr><td>E4</td><td>3/10</td><td>2/5 = 4/10 ดังนั้น 7/10 - 4/10 = 3/10</td></tr>
+    <tr><td>E5</td><td>2/3</td><td>3/4 × 8/9 = (3×8)/(4×9). ตัด 8 กับ 4 เหลือ 2 และ 1; ตัด 3 กับ 9 เหลือ 1 และ 3 จึงได้ 2/3</td></tr>
+    <tr><td>E6</td><td>1/4</td><td>5/6 ÷ 10/3 = 5/6 × 3/10 = 15/60 = 1/4</td></tr>
+    <tr><td>E7</td><td>7/20</td><td>35% = 35/100 = 7/20</td></tr>
+    <tr><td>E8</td><td>36</td><td>240 × 15/100 = 36</td></tr>
+    <tr><td>E9</td><td>2:3</td><td>ห.ร.ม. ของ 12 และ 18 คือ 6 ดังนั้น 12:18 = 2:3</td></tr>
+    <tr><td>E10</td><td>16</td><td>b = 7 ส่วน = 28 จึงได้ 1 ส่วน = 4 และ a = 4 ส่วน = 16</td></tr>
+    <tr><td>M1</td><td>21/20</td><td>2/5 = 8/20, 3/4 = 15/20, 1/10 = 2/20 จึงได้ (8+15-2)/20 = 21/20</td></tr>
+    <tr><td>M2</td><td>2/3</td><td>(3/7) ÷ (9/14) = (3/7)×(14/9). ตัด 14 กับ 7 เหลือ 2 และ 1 จึงได้ 6/9 = 2/3</td></tr>
+    <tr><td>M3</td><td>15/2</td><td>x = 12×5/8 = 60/8 = 15/2 = 7.5</td></tr>
+    <tr><td>M4</td><td>600</td><td>ราคาหลังลด = 750×0.80 = 600 บาท</td></tr>
+    <tr><td>M5</td><td>0%</td><td>ตัวคูณรวม = 1.25×0.80 = 1.00 ดังนั้นราคาสุดท้ายเท่าเดิม หรือเปลี่ยน 0%</td></tr>
+    <tr><td>M6</td><td>24</td><td>8 ส่วน = 64 คน จึงได้ 1 ส่วน = 8 คน นักเรียนชาย = 3 ส่วน = 24 คน</td></tr>
+    <tr><td>M7</td><td>10</td><td>10/25 = 2/5 ดังนั้น 4/n = 2/5 คูณไขว้ได้ 2n = 20 จึงได้ n = 10</td></tr>
+    <tr><td>M8</td><td>&lt;</td><td>11×20 = 220 และ 13×17 = 221 ดังนั้น 11/17 &lt; 13/20</td></tr>
+    <tr><td>M9</td><td>45</td><td>40% ของ x คือ 0.40x ดังนั้น 0.40x = 18 จึงได้ x = 18/0.40 = 45</td></tr>
+    <tr><td>M10</td><td>9/10</td><td>15/25 = 3/5 และ 33/22 = 3/2 ดังนั้นผลคูณ = (3/5)×(3/2)=9/10</td></tr>
+    <tr><td>H1</td><td>1/2</td><td>น้ำที่ใช้ไป = (1/4)×(2/3)=1/6 ของถัง น้ำที่เหลือ = 2/3 - 1/6 = 4/6 - 1/6 = 3/6 = 1/2 ของถัง</td></tr>
+    <tr><td>H2</td><td>28%</td><td>ตัวคูณคงเหลือ = 0.90×0.80 = 0.72 จึงเหลือ 72% ของราคาเดิม เท่ากับลด 28%</td></tr>
+    <tr><td>H3</td><td>8:15</td><td>A:B = 2:3 คูณด้วย 4 ได้ A:B = 8:12 และ B:C = 4:5 คูณด้วย 3 ได้ B:C = 12:15 ดังนั้น A:C = 8:15</td></tr>
+    <tr><td>H4</td><td>6</td><td>ต้องการ 84/ห.ร.ม.(n,84)=7 ดังนั้น ห.ร.ม.(n,84)=12 ให้ n=12k โดย 1≤k≤7 และต้องมี ห.ร.ม.(k,7)=1 ดังนั้น k = 1,2,3,4,5,6 รวม 6 ค่า</td></tr>
+    <tr><td>H5</td><td>5</td><td>1/a+1/b=1/6 ⇒ 6a+6b=ab ⇒ ab-6a-6b=0 ⇒ (a-6)(b-6)=36. คู่ตัวประกอบเมื่อ a≤b คือ (1,36),(2,18),(3,12),(4,9),(6,6) รวม 5 คู่</td></tr>
+    <tr><td>H6</td><td>20</td><td>(1+p/100)(1-p/100)=0.96 ⇒ 1-(p/100)^2=0.96 ⇒ (p/100)^2=0.04 ⇒ p=20</td></tr>
+    <tr><td>H7</td><td>9/20</td><td>2/5 = 8/20 และ 3/5 = 12/20 ต้องการ k/20 ที่อยู่ระหว่าง จึงมี k = 9,10,11 ค่าน้อยที่สุดคือ 9/20</td></tr>
+    <tr><td>H8</td><td>3/8</td><td>37.5% = 37.5/100 = 375/1000 = 3/8</td></tr>
+    <tr><td>O1</td><td>q=14,r=5</td><td>173 ÷ 12 ได้ 14 เศษ 5 เพราะ 12×14 = 168 และ 173-168 = 5 ดังนั้น q=14, r=5</td></tr>
+    <tr><td>O2</td><td>81</td><td>x = 256×(3/4)^4 = 256×81/256 = 81</td></tr>
+    <tr><td>O3</td><td>68</td><td>ข้อมูลถูกต้อง = 120×0.85 = 102 รายการ ผ่านเกณฑ์ = (2/3)×102 = 68 รายการ</td></tr>
+    <tr><td>O4</td><td>30</td><td>ต้องหา ค.ร.น. ของ 6 และ 10 ซึ่งเท่ากับ 30 ดังนั้น n บวกที่น้อยที่สุดคือ 30</td></tr>
+    <tr><td>O5</td><td>80</td><td>(x/2)×1.25 = 50 ⇒ x×0.625 = 50 ⇒ x = 80</td></tr>
+    <tr><td>O6</td><td>20</td><td>ต้องการ 100/ห.ร.ม.(n,100)=25 ดังนั้น ห.ร.ม.(n,100)=4 ให้ n=4k โดย 1≤k≤25 และต้องมี ห.ร.ม.(k,25)=1 มี k ที่ไม่หารด้วย 5 ลงตัวจำนวน 20 ค่า</td></tr>
+    <tr><td>T1</td><td>15:14</td><td>x:y = 5:8 คูณด้วย 3 ได้ 15:24 และ y:z = 12:7 คูณด้วย 2 ได้ 24:14 ดังนั้น x:z = 15:14</td></tr>
+    <tr><td>T2</td><td>1000</td><td>ราคาสุดท้าย = ราคาเดิม×0.80×1.07 = ราคาเดิม×0.856 ดังนั้น ราคาเดิม = 856/0.856 = 1000 บาท</td></tr>
+    <tr><td>T3</td><td>60</td><td>ชาย = 0.4N หญิง = 0.6N คนใส่แว่น = 0.25(0.4N)+(1/3)(0.6N)=0.1N+0.2N=0.3N. เมื่อ 0.3N=18 จึงได้ N=60</td></tr>
+    <tr><td>T4</td><td>6:5</td><td>A/3 = 2B/5 ⇒ 5A = 6B ⇒ A/B = 6/5 ดังนั้น A:B = 6:5</td></tr>
+    <tr><td>T5</td><td>1/10</td><td>(1/2)(2/3)(3/4)…(9/10) ตัดกันต่อเนื่อง เหลือ 1/10</td></tr>
+    <tr><td>T6</td><td>7/8</td><td>อัตรารวม = 1/6+1/8 = 4/24+3/24=7/24 ถังต่อชั่วโมง ใน 3 ชั่วโมงได้ 3×7/24 = 21/24 = 7/8 ถัง</td></tr>
+    <tr><td>T7</td><td>2:3</td><td>1.2A = 0.8B ⇒ A/B = 0.8/1.2 = 2/3 ดังนั้น A:B = 2:3</td></tr></tbody></table>
+    </section>
+
+    <div class="footer-note">OSN Computer Mathematics Prep - Chapter 02 | Fractions, Ratios & Percent</div>
+  </main>
+</div>
+<script>
+function norm(s) {
+  return (s || '').toString().trim().toLowerCase()
+    .replace(/\s+/g,'')
+    .replace(/：/g,':')
+    .replace(/％/g,'%')
+    .replace(/−/g,'-')
+    .replace(/,/g,',');
+}
+function checkOne(btn) {
+  const card = btn.closest('.exercise-card');
+  const input = card.querySelector('input');
+  const fb = card.querySelector('.feedback');
+  const accepts = JSON.parse(card.dataset.answer);
+  const val = norm(input.value);
+  const ok = accepts.includes(val);
+  fb.className = 'feedback screen-only ' + (ok ? 'ok' : 'no');
+  fb.textContent = ok ? 'ถูกต้อง' : 'ยังไม่ถูก ลองดู Hint แล้วคิดจากฐานของโจทย์อีกครั้ง';
+  card.dataset.checked = '1';
+  card.dataset.correct = ok ? '1' : '0';
+  updateProgress();
+}
+function checkAll() { document.querySelectorAll('.exercise-card button').forEach(b => { if(b.textContent.includes('ตรวจ')) checkOne(b); }); }
+function resetAll() {
+  document.querySelectorAll('.exercise-card').forEach(c => {
+    c.querySelector('input').value='';
+    const fb=c.querySelector('.feedback'); fb.textContent=''; fb.className='feedback screen-only';
+    c.dataset.checked='0'; c.dataset.correct='0';
+    c.querySelector('.hint').style.display='none'; c.querySelector('.solution').style.display='none';
+  });
+  updateProgress();
+}
+function toggleHint(btn) { const el=btn.closest('.exercise-card').querySelector('.hint'); el.style.display = el.style.display==='block' ? 'none' : 'block'; }
+function toggleSolution(btn) { const el=btn.closest('.exercise-card').querySelector('.solution'); el.style.display = el.style.display==='block' ? 'none' : 'block'; }
+function updateProgress() {
+  const cards=[...document.querySelectorAll('.exercise-card')];
+  const checked=cards.filter(c=>c.dataset.checked==='1').length;
+  const correct=cards.filter(c=>c.dataset.correct==='1').length;
+  const pct=cards.length? Math.round(correct/cards.length*100):0;
+  document.getElementById('progressBar').style.width=pct+'%';
+  document.getElementById('scoreText').textContent = checked ? `ถูก ${correct}/${cards.length} ข้อ` : 'ยังไม่ได้ตรวจคำตอบ';
+}
+const quizItems = [
+  {q:'คำนวณ 3/4 ของ 80', a:'60'},
+  {q:'เขียน 12.5% เป็นเศษส่วนอย่างต่ำ', a:'1/8'},
+  {q:'ลด 15% จาก 200 เหลือเท่าใด', a:'170'},
+  {q:'อัตราส่วน 21:35 ลดรูปได้เท่าใด', a:'3:5'},
+  {q:'5/6 - 1/3 เท่ากับเท่าใด', a:'1/2'},
+  {q:'เพิ่ม 10% แล้วเพิ่มอีก 10% รวมเพิ่มกี่เปอร์เซ็นต์', a:'21%'},
+  {q:'ถ้า 30% ของ x = 45 แล้ว x เท่ากับเท่าใด', a:'150'},
+  {q:'2/7 ÷ 4/21 เท่ากับเท่าใด', a:'3/2'}
+];
+let currentQuiz = null;
+function newQuiz() {
+  currentQuiz = quizItems[Math.floor(Math.random()*quizItems.length)];
+  document.getElementById('quizQuestion').textContent = currentQuiz.q;
+  const ans = document.getElementById('quizAnswer'); ans.style.display='none'; ans.textContent='';
+}
+function showQuizAnswer() {
+  if(!currentQuiz) newQuiz();
+  const ans = document.getElementById('quizAnswer');
+  ans.textContent = 'คำตอบ: ' + currentQuiz.a;
+  ans.style.display='block';
+}
+updateProgress();
+</script>
+</body>
+</html>
