@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Foundations of Numbers & Algebra | Course Index</title>
+  <meta name="description" content="Professional index page for 12 interactive HTML chapters and downloadable PDF documents in the Foundations of Numbers and Algebra series." />
+  <style>
+    :root {
+      /* Color theory: analogous blue-green base with complementary orange accent */
+      --navy-950: #0b1f33;
+      --navy-900: #123253;
+      --navy-800: #173f67;
+      --teal-700: #0f766e;
+      --teal-600: #0d9488;
+      --teal-100: #dff7f2;
+      --mint-50: #effcf8;
+      --orange-500: #f97316;
+      --orange-100: #ffedd5;
+      --slate-900: #172033;
+      --slate-700: #34445a;
+      --slate-500: #64748b;
+      --slate-200: #e2e8f0;
+      --slate-100: #f1f5f9;
+      --white: #ffffff;
+      --shadow: 0 18px 45px rgba(11, 31, 51, 0.12);
+      --shadow-soft: 0 10px 28px rgba(11, 31, 51, 0.08);
+      --radius-lg: 28px;
+      --radius-md: 18px;
+      --radius-sm: 12px;
+      --max-width: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Inter, "Noto Sans Thai", "Sarabun", "Segoe UI", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--slate-900);
+      background:
+        radial-gradient(circle at top left, rgba(13, 148, 136, 0.18), transparent 34rem),
+        radial-gradient(circle at top right, rgba(249, 115, 22, 0.14), transparent 28rem),
+        linear-gradient(180deg, #f8fafc 0%, #ffffff 42%, #f8fafc 100%);
+      min-height: 100vh;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .page-shell {
+      width: min(var(--max-width), calc(100% - 40px));
+      margin: 0 auto;
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      margin: 28px auto 30px;
+      padding: 44px;
+      border-radius: var(--radius-lg);
+      background:
+        linear-gradient(135deg, rgba(11, 31, 51, 0.98), rgba(18, 50, 83, 0.95) 56%, rgba(15, 118, 110, 0.92));
+      color: var(--white);
+      box-shadow: var(--shadow);
+    }
+
+    .hero::before,
+    .hero::after {
+      content: "";
+      position: absolute;
+      border-radius: 999px;
+      pointer-events: none;
+    }
+
+    .hero::before {
+      width: 340px;
+      height: 340px;
+      right: -110px;
+      top: -120px;
+      background: rgba(249, 115, 22, 0.22);
+    }
+
+    .hero::after {
+      width: 220px;
+      height: 220px;
+      right: 92px;
+      bottom: -118px;
+      background: rgba(13, 148, 136, 0.28);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 260px;
+      gap: 34px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      margin: 0 0 18px;
+      padding: 8px 14px;
+      border: 1px solid rgba(255, 255, 255, 0.24);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      font-size: 0.84rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .eyebrow-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: var(--orange-500);
+      box-shadow: 0 0 0 5px rgba(249, 115, 22, 0.2);
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.35rem, 5vw, 4.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.055em;
+    }
+
+    .subtitle {
+      max-width: 780px;
+      margin: 22px 0 0;
+      color: rgba(255, 255, 255, 0.82);
+      font-size: clamp(1rem, 1.7vw, 1.2rem);
+      line-height: 1.7;
+    }
+
+    .hero-stats {
+      display: grid;
+      gap: 14px;
+    }
+
+    .stat-card {
+      padding: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.11);
+      backdrop-filter: blur(12px);
+    }
+
+    .stat-number {
+      display: block;
+      font-size: 2.25rem;
+      line-height: 1;
+      font-weight: 850;
+      letter-spacing: -0.055em;
+      color: #ffffff;
+    }
+
+    .stat-label {
+      display: block;
+      margin-top: 8px;
+      color: rgba(255, 255, 255, 0.74);
+      font-size: 0.88rem;
+      line-height: 1.4;
+    }
+
+    .toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 22px;
+      padding: 18px;
+      border: 1px solid rgba(226, 232, 240, 0.9);
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.78);
+      box-shadow: var(--shadow-soft);
+      backdrop-filter: blur(16px);
+    }
+
+    .toolbar-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 850;
+      color: var(--navy-900);
+      letter-spacing: -0.02em;
+    }
+
+    .toolbar-icon {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--teal-700), var(--navy-800));
+      box-shadow: 0 10px 20px rgba(15, 118, 110, 0.22);
+    }
+
+    .search-wrap {
+      flex: 1 1 320px;
+      max-width: 440px;
+      position: relative;
+    }
+
+    .search-wrap input {
+      width: 100%;
+      height: 48px;
+      padding: 0 16px 0 44px;
+      border: 1px solid var(--slate-200);
+      border-radius: 999px;
+      background: #ffffff;
+      color: var(--slate-900);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 180ms ease, box-shadow 180ms ease;
+    }
+
+    .search-wrap input:focus {
+      border-color: var(--teal-600);
+      box-shadow: 0 0 0 4px rgba(13, 148, 136, 0.14);
+    }
+
+    .search-wrap svg {
+      position: absolute;
+      left: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 18px;
+      height: 18px;
+      color: var(--slate-500);
+    }
+
+    .chapter-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      padding-bottom: 52px;
+    }
+
+    .chapter-card {
+      position: relative;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      min-height: 250px;
+      padding: 22px;
+      overflow: hidden;
+      border: 1px solid rgba(226, 232, 240, 0.95);
+      border-radius: 24px;
+      background: rgba(255, 255, 255, 0.86);
+      box-shadow: var(--shadow-soft);
+      transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+    }
+
+    .chapter-card::before {
+      content: "";
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--navy-800), var(--teal-600), var(--orange-500));
+    }
+
+    .chapter-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(13, 148, 136, 0.32);
+      box-shadow: 0 22px 48px rgba(11, 31, 51, 0.14);
+    }
+
+    .chapter-card:focus-visible {
+      outline: 4px solid rgba(249, 115, 22, 0.28);
+      outline-offset: 4px;
+    }
+
+    .chapter-topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .chapter-number {
+      display: grid;
+      place-items: center;
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      background: var(--mint-50);
+      color: var(--teal-700);
+      font-size: 1.1rem;
+      font-weight: 850;
+      border: 1px solid rgba(13, 148, 136, 0.18);
+    }
+
+    .chapter-tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: var(--orange-100);
+      color: #9a3412;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .chapter-title {
+      margin: 0;
+      color: var(--navy-950);
+      font-size: 1.25rem;
+      line-height: 1.22;
+      letter-spacing: -0.035em;
+    }
+
+    .chapter-description {
+      margin: 12px 0 20px;
+      color: var(--slate-700);
+      font-size: 0.94rem;
+      line-height: 1.62;
+    }
+
+    .chapter-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      margin-top: auto;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 44px;
+      padding: 0 16px;
+      border-radius: 999px;
+      font-size: 0.9rem;
+      font-weight: 800;
+      transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease;
+    }
+
+    .btn-primary {
+      color: #ffffff;
+      background: linear-gradient(135deg, var(--navy-800), var(--teal-700));
+      box-shadow: 0 12px 24px rgba(23, 63, 103, 0.18);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 28px rgba(23, 63, 103, 0.24);
+    }
+
+    .btn-ghost {
+      color: var(--navy-900);
+      background: var(--slate-100);
+    }
+
+    .btn-ghost:hover {
+      background: var(--teal-100);
+    }
+
+    .footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 12px;
+      margin: 4px auto 34px;
+      padding-top: 20px;
+      border-top: 1px solid var(--slate-200);
+      color: var(--slate-500);
+      font-size: 0.88rem;
+      line-height: 1.5;
+    }
+
+    .footer strong {
+      color: var(--navy-900);
+    }
+
+    .empty-state {
+      display: none;
+      grid-column: 1 / -1;
+      padding: 40px 24px;
+      border: 1px dashed rgba(100, 116, 139, 0.42);
+      border-radius: 24px;
+      color: var(--slate-500);
+      text-align: center;
+      background: rgba(255, 255, 255, 0.75);
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        padding: 34px;
+      }
+
+      .hero-content {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      .chapter-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      .page-shell {
+        width: min(100% - 24px, var(--max-width));
+      }
+
+      .hero {
+        padding: 26px;
+        border-radius: 24px;
+      }
+
+      .hero-stats,
+      .chapter-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .toolbar {
+        align-items: stretch;
+      }
+
+      .search-wrap {
+        flex-basis: 100%;
+        max-width: none;
+      }
+
+      .chapter-card {
+        min-height: auto;
+      }
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+      }
+
+      .hero,
+      .toolbar,
+      .chapter-card {
+        box-shadow: none;
+      }
+
+      .search-wrap,
+      .chapter-actions {
+        display: none;
+      }
+
+      .chapter-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-content">
+        <div>
+          <p class="eyebrow"><span class="eyebrow-dot"></span> Learning Document Series</p>
+          <h1 id="page-title">Foundations of Numbers & Algebra</h1>
+          <p class="subtitle">
+            หน้า Index สำหรับบทเรียน 12 บทในชุดพื้นฐานจำนวนและพีชคณิต นักเรียนสามารถกดเข้าแต่ละบทเพื่อเรียนแบบ Interactive HTML และหากต้องการเก็บเอกสารไว้ทบทวน สามารถกดปุ่ม Download เพื่อดาวน์โหลดไฟล์ PDF ของบทนั้นได้
+          </p>
+        </div>
+        <div class="hero-stats" aria-label="Series summary">
+          <div class="stat-card">
+            <span class="stat-number">12</span>
+            <span class="stat-label">Interactive chapters</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">01</span>
+            <span class="stat-label">Unified course set</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-number">A</span>
+            <span class="stat-label">Number & algebra foundation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="toolbar" aria-label="Index controls">
+      <div class="toolbar-title">
+        <span class="toolbar-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+          </svg>
+        </span>
+        <span>Course Index</span>
+      </div>
+      <label class="search-wrap" for="chapter-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8" />
+          <path d="m21 21-4.35-4.35" />
+        </svg>
+        <input id="chapter-search" type="search" placeholder="Search chapter title or topic..." autocomplete="off" />
+      </label>
+    </section>
+
+    <section class="chapter-grid" id="chapter-grid" aria-label="Chapter list">
+      <article class="chapter-card" data-href="interactive/chapter-01/index.html" data-search="number systems real numbers integers decimals rationals irrationals">
+        <div class="chapter-topline"><span class="chapter-number">01</span><span class="chapter-tag">Core</span></div>
+        <h2 class="chapter-title">Number Systems and Real Numbers</h2>
+        <p class="chapter-description">ทำความเข้าใจชนิดของจำนวน ตั้งแต่จำนวนเต็ม ทศนิยม เศษส่วน จำนวนตรรกยะ จำนวนอตรรกยะ และภาพรวมของระบบจำนวนจริง ซึ่งเป็นพื้นฐานสำคัญก่อนเรียนพีชคณิต</p>
+        <div class="chapter-actions"><a class="btn btn-primary" href="interactive/chapter-01/index.html">Open Interactive</a><a class="btn btn-ghost" href="docs/chapter-01.pdf" download>Download</a></div>
+      </article>
+
+      <article class="chapter-card" data-href="interactive/chapter-02/index.html" data-search="fractions ratios percentages proportion conversion comparison">
+        <div class="chapter-topline"><span class="chapter-number">02</span><span class="chapter-tag">Arithmetic</span></div>
+        <h2 class="chapter-title">Fractions, Ratios, and Percentages</h2>
+        <p class="chapter-description">ฝึกเปลี่ยนรูปเศษส่วน อัตราส่วน และร้อยละ รวมถึงการเปรียบเทียบสัดส่วน เพื่อนำไปใช้แก้โจทย์ในชีวิตประจำวันและโจทย์คณิตศาสตร์ได้แม่นยำขึ้น</p>
+        <div class="chapter-actions"><a class="btn btn-primary" href="interactive/chapter-02/index.html">Open Interactive</a><a class="btn btn-ghost" href="docs/chapter-02.pdf" download>Download</a></div>
+      </article>
+
+      <article class="chapter-card" data-href="interactive/chapter-03/index.html" data-search="exponents powers laws negative powers zero powers fractional powers">
+        <div class="chapter-topline"><span class="chapter-number">03</span><span class="chapter-tag">Algebra</span></div>
+        <h2 class="chapter-title">Exponents and Power Rules</h2>
+        <p class="chapter-description">เรียนรู้ความหมายของเลขยกกำลัง กฎการคำนวณ เลขชี้กำลังศูนย์ เลขชี้กำลังลบ และเลขชี้กำลังที่เกี่ยวข้องกับเศษส่วน เพื่อจัดรูปนิพจน์ได้ถูกต้อง</p>
+        <div class="chapter-actions"><a class="btn btn-primary" href="interactive/chapter-03/index.html">Open Interactive</a><a class="btn btn-ghost" href="docs/chapter-03.pdf" download>Download</a></div>
+      </article>
+
+      <article class="chapter-card" data-href="interactive/chapter-04/index.html" data-search="square root radicals approximation simplification radical expression">
+        <div class="chapter-topline"><span class="chapter-number">04</span><span class="chapter-tag">Algebra</span></div>
+        <h2 class="chapter-title">Square Roots and Radicals</h2>
+        <p class="chapter-description">เข้าใจรากที่สอง เครื่องหมายกรณฑ์ การจัดรูป การประมาณค่า และการอ่านความหมายของนิพจน์ที่มีราก เพื่อเชื่อมต่อกับสมการและพีชคณิตขั้นต่อไป</p>
+        <div class="chapter-actions"><a class="btn btn-primary" href="interactive/chapter-04/index.html">Open Interactive</a><a class="btn btn-ghost" href="docs/chapter-04.pdf" download>Download</a></div>
+      </article>
+
+      <article class="chapter-card" data-href="interactive/chapter-05/index.html" data-search="absolute value distance number line equations inequalities">
+        <div class="chapter-topline"><span class="chapter-number">05</span><span class="chapter-tag">Concept</span></div>
+        <h2 class="chapter-title">Absolute Value</h2>
+        <p class="chapter-description">อธิบายค่าสัมบูรณ์ในฐานะระยะห่างบนเส้นจำนวน พร้อมฝึกตีความโจทย์และสมการค่าสัมบูรณ์พื้นฐานอย่างเป็นระบบ</p>
+        <div class="chapter-actions"><a class="btn btn-primary" href="interactive/chapter-05/index.html">Open Interactive</a><a class="btn btn-ghost" href="docs/chapter-05.pdf" download>Download</a></div>
+      </article>
+
+      <article class="chapter-card" data-href="interactive/chapter-06/index.html" data-search="basic algebra identities distribution common factor difference of squares perfect square">
+        <div class="chapter-topline"><span class="chapter-number">06</span><span class="chapter-tag">Algebra</span></div>
+        <h2 class="chapter-title">Basic Algebra and Identities</h2>
+        <p class="chapter-description">ปูพื้นฐานพีชคณิต เช่น การกระจาย การดึงตัวร่วม ผลต่างกำลังสอง และกำลังสองสมบูรณ์ เพื่อใช้จัดรูปนิพจน์ให้สั้นและแก้โจทย์ได้ง่ายขึ้น</p>
+        <div class="chapter-actions"><a class="btn btn-primary" href="interactive/chapter-06/index.html">Open Interactive</a><a class="btn btn-ghost" href="docs/chapter-06.pdf" download>Download</a></div>
+      </article>
+
+      <article class="chapter-card" data-href="interactive/chapter-07/index.html" data-search="polynomials factoring addition subtraction multiplication division expression factorization">
+        <div class="chapter-topline"><span class="chapter-number">07</span><span class="chapter-tag">Algebra</span></div>
+        <h2 class="chapter-title">Polynomials and Factoring</h2>
+        <p class="chapter-description">ฝึกบวก ลบ คูณ และแยกตัวประกอบพหุนาม รวมถึงมองรูปแบบของนิพจน์ เพื่อเตรียมใช้ในการแก้สมการและโจทย์ประยุกต์</p>
+        <div class="chapter-actions"><a class="btn btn-primary" href="interactive/chapter-07/index.html">Open Interactive</a><a class="btn btn-ghost" href="docs/chapter-07.pdf" download>Download</a></div>
+      </article>
+
+      <article class="chapter-card" data-href="interactive/chapter-08/index.html" data-search="algebraic fractions rational expressions equations proportions simplify">
+        <div class="chapter-topline"><span class="chapter-number">08</span><span class="chapter-tag">Algebra</span></div>
+        <h2 class="chapter-title">Algebraic Fractions and Proportions</h2>
+        <p class="chapter-description">เรียนรู้เศษส่วนที่มีตัวแปร การตัดทอน การจัดรูป และการตั้งสมการจากอัตราส่วน เพื่อเชื่อมความรู้เรื่องเศษส่วนกับพีชคณิต</p>
+        <div class="chapter-actions"><a class="btn btn-primary" href="interactive/chapter-08/index.html">Open Interactive</a><a class="btn btn-ghost" href="docs/chapter-08.pdf" download>Download</a></div>
+      </article>
+
+      <article class="chapter-card" data-href="interactive/chapter-09/index.html" data-search="linear equations systems of equations one variable two variables word problems">
+        <div class="chapter-topline"><span class="chapter-number">09</span><span class="chapter-tag">Equation</span></div>
+        <h2 class="chapter-title">Linear Equations and Systems</h2>
+        <p class="chapter-description">ฝึกแก้สมการเชิงเส้นตัวแปรเดียว ระบบสมการสองตัวแปร และการตั้งสมการจากโจทย์ปัญหา เพื่อหาคำตอบอย่างมีขั้นตอน</p>
+        <div class="chapter-actions"><a class="btn btn-primary" href="interactive/chapter-09/index.html">Open Interactive</a><a class="btn btn-ghost" href="docs/chapter-09.pdf" download>Download</a></div>
+      </article>
+
+      <article class="chapter-card" data-href="interactive/chapter-10/index.html" data-search="quadratic equations factorization formula roots relationship parabola">
+        <div class="chapter-topline"><span class="chapter-number">10</span><span class="chapter-tag">Equation</span></div>
+        <h2 class="chapter-title">Quadratic Equations</h2>
+        <p class="chapter-description">เรียนรู้สมการกำลังสอง การแยกตัวประกอบ สูตรกำลังสอง คำตอบของสมการ และความสัมพันธ์ของราก เพื่อวิเคราะห์โจทย์ได้ลึกขึ้น</p>
+        <div class="chapter-actions"><a class="btn btn-primary" href="interactive/chapter-10/index.html">Open Interactive</a><a class="btn btn-ghost" href="docs/chapter-10.pdf" download>Download</a></div>
+      </article>
+
+      <article class="chapter-card" data-href="interactive/chapter-11/index.html" data-search="inequalities linear quadratic interval notation solution range">
+        <div class="chapter-topline"><span class="chapter-number">11</span><span class="chapter-tag">Logic</span></div>
+        <h2 class="chapter-title">Inequalities</h2>
+        <p class="chapter-description">ทำความเข้าใจอสมการเชิงเส้นและอสมการกำลังสอง การเขียนช่วงคำตอบ และการใช้เส้นจำนวนช่วยตรวจคำตอบอย่างชัดเจน</p>
+        <div class="chapter-actions"><a class="btn btn-primary" href="interactive/chapter-11/index.html">Open Interactive</a><a class="btn btn-ghost" href="docs/chapter-11.pdf" download>Download</a></div>
+      </article>
+
+      <article class="chapter-card" data-href="interactive/chapter-12/index.html" data-search="division quotient remainder modulo divisibility arithmetic algorithm">
+        <div class="chapter-topline"><span class="chapter-number">12</span><span class="chapter-tag">Number</span></div>
+        <h2 class="chapter-title">Division, Quotients, and Remainders</h2>
+        <p class="chapter-description">ทบทวนการหารลงตัวและเศษเหลือ ความหมายของ quotient และ remainder รวมถึงการใช้แนวคิดเรื่องเศษเหลือในการแก้โจทย์จำนวน</p>
+        <div class="chapter-actions"><a class="btn btn-primary" href="interactive/chapter-12/index.html">Open Interactive</a><a class="btn btn-ghost" href="docs/chapter-12.pdf" download>Download</a></div>
+      </article>
+
+      <div class="empty-state" id="empty-state">No chapter matched your search.</div>
+    </section>
+
+    <footer class="footer">
+      <span><strong>Foundations of Numbers & Algebra</strong> — 12 interactive chapters with PDF downloads</span>
+      <span>ใส่ไฟล์ Interactive HTML ที่ <code>interactive/chapter-XX/index.html</code> และใส่ไฟล์ PDF ที่ <code>docs/chapter-XX.pdf</code></span>
+    </footer>
+  </main>
+
+  <script>
+    const searchInput = document.getElementById('chapter-search');
+    const cards = Array.from(document.querySelectorAll('.chapter-card'));
+    const emptyState = document.getElementById('empty-state');
+
+    cards.forEach((card) => {
+      card.setAttribute('tabindex', '0');
+      card.setAttribute('role', 'link');
+      card.setAttribute('aria-label', `${card.querySelector('.chapter-title').innerText} interactive chapter`);
+
+      card.addEventListener('click', (event) => {
+        if (event.target.closest('a, button, input, textarea, select')) return;
+        window.location.href = card.dataset.href;
+      });
+
+      card.addEventListener('keydown', (event) => {
+        if (event.key !== 'Enter' && event.key !== ' ') return;
+        if (event.target.closest('a, button, input, textarea, select')) return;
+        event.preventDefault();
+        window.location.href = card.dataset.href;
+      });
+    });
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.trim().toLowerCase();
+      let visibleCount = 0;
+
+      cards.forEach((card) => {
+        const text = card.innerText.toLowerCase() + ' ' + card.dataset.search.toLowerCase();
+        const isVisible = text.includes(query);
+        card.style.display = isVisible ? 'flex' : 'none';
+        if (isVisible) visibleCount += 1;
+      });
+
+      emptyState.style.display = visibleCount === 0 ? 'block' : 'none';
+    });
+  </script>
+</body>
+</html>
